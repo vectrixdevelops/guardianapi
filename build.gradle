@@ -1,0 +1,94 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.puppycrawl.tools:checkstyle:7.6.1'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'com.github.hierynomus.license' version '0.14.0'
+    id 'com.github.johnrengelman.shadow' version '2.0.0'
+}
+
+apply plugin: 'checkstyle'
+apply plugin: 'com.github.hierynomus.license'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+defaultTasks 'licenseFormat', 'build'
+
+group = pluginGroup
+version = pluginVersion
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/groups/public/' }
+}
+
+dependencies {
+    compile 'net.kyori:event:1.0.0-SNAPSHOT'
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+license {
+    header = file('LICENSE.txt')
+    include '**/*.java'
+
+    ignoreFailures = false
+    strictCheck = true
+
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+}
+
+checkstyle {
+    toolVersion = '7.6.1'
+    configFile = file('checkstyle.xml')
+    configProperties = [
+            'basedir': project.projectDir,
+            'severity': 'warning'
+    ]
+}
+
+task sourceJar(type: Jar) {
+    classifier = 'source'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+shadowJar {
+    classifier = ''
+
+    dependencies {
+        include(dependency('com.github.ben-manes.caffeine:caffeine'))
+        include(dependency('com.github.ben-manes.caffeine:guava'))
+        include(dependency('net.kyori:event'))
+    }
+}
+
+artifacts {
+    archives sourceJar
+    archives javadocJar
+    archives shadowJar
+}
+
+build.dependsOn(sourceJar)
+build.dependsOn(javadocJar)
+build.dependsOn(shadowJar)
