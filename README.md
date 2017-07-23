@@ -8,17 +8,21 @@
   <a href="https://discord.gg/pvSFtMm"><img alt="Join Discord" src="https://img.shields.io/badge/Join-Discord-blue.svg?style=flat-square"></a>
 </p>
 
-Guardian is an extensible AntiCheat for Sponge that gives you the flexibility to customize the checks to fit your servers needs.
+Guardian is an extensible AntiCheat API that gives you the flexibility to add detections, checks and more and integrate with
+their results and transforms. You are able to listen for various events that the API has and modify their results using a built
+in event bus. All of these features are linked together in a chain-able way that makes adding and removing summaries through the chain
+easy.
 
-The plugin is a work in progress and there are plans for more detections to be added. Make sure to come chat with us on the
-[Guardian Discord](https://discord.gg/pvSFtMm) or the [IchorPowered Discord](https://discord.gg/NzfKazX).
+The plugin is a work in progress and may appear difficult to understand without an implementation or documentation yet.
+
+Make sure to come chat with us on the [Guardian Discord](https://discord.gg/pvSFtMm) or the [IchorPowered Discord](https://discord.gg/NzfKazX).
 
 ## Contributing
 
 There many ways to contribute to the project. Some being...
 
 - Creating issues for reporting bugs.
-- Creating issues for reporting new cheats that are not detected or new features.
+- Creating issues for suggesting new features.
 - Contributing to the plugin by making a pull request, which fixes bugs or adds new features.
 
 Developers:
