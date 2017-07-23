@@ -21,8 +21,8 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 defaultTasks 'licenseFormat', 'build'
 
-group = pluginGroup
-version = pluginVersion
+group = apiGroup
+version = apiVersion
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

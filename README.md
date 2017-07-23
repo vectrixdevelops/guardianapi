@@ -4,7 +4,7 @@
 <p align="center">An Extensible AntiCheat Plugin API For Sponge.</p>
 
 <p align="center">
-  <a href="https://travis-ci.org/ichorpowered/guardian-api"><img alt="Build Status" src="https://travis-ci.org/ichorpowered/guardian-api.svg?branch=master"></a>
+  <a href="https://travis-ci.org/ichorpowered/guardianapi"><img alt="Build Status" src="https://travis-ci.org/ichorpowered/guardianapi.svg?branch=master"></a>
   <a href="https://discord.gg/pvSFtMm"><img alt="Join Discord" src="https://img.shields.io/badge/Join-Discord-blue.svg?style=flat-square"></a>
 </p>
 
