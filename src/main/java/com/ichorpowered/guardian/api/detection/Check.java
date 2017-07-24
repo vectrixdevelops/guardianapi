@@ -24,7 +24,6 @@
 package com.ichorpowered.guardian.api.detection;
 
 import com.ichorpowered.guardian.api.Guardian;
-
 import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.action.Action;

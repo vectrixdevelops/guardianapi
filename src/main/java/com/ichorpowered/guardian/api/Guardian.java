@@ -30,28 +30,13 @@ import com.ichorpowered.guardian.api.heuristic.HeuristicRegistry;
 import com.ichorpowered.guardian.api.module.ModuleRegistry;
 import com.ichorpowered.guardian.api.penalty.PenaltyRegistry;
 import com.ichorpowered.guardian.api.sequence.SequenceManager;
-import com.ichorpowered.guardian.api.util.ImplementationException;
-import net.kyori.event.EventBus;
 import net.kyori.event.SimpleEventBus;
-
-import javax.annotation.Nullable;
 
 /**
  * Represents an accessor to registries for
  * this cheat detection system.
  */
-public interface Guardian {
-
-    /**
-     * Returns the instance of the implementation from
-     * a class if present.
-     *
-     * @param clazz the implementation class
-     * @param <T> the implementation class type
-     * @return possible implementation instance
-     * @throws ImplementationException possible exception
-     */
-    <T extends Guardian> T getInstance(@Nullable Class<T> clazz) throws ImplementationException;
+public interface Guardian extends GuardianBasic {
 
     /**
      * Returns the event bus.

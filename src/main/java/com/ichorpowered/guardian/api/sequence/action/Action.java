@@ -23,8 +23,8 @@
  */
 package com.ichorpowered.guardian.api.sequence.action;
 
+import com.ichorpowered.guardian.api.sequence.Condition;
 import com.ichorpowered.guardian.api.sequence.Sequence;
-import com.ichorpowered.guardian.api.sequence.condition.Condition;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

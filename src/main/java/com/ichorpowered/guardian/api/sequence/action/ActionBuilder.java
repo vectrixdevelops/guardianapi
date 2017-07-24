@@ -24,9 +24,9 @@
 package com.ichorpowered.guardian.api.sequence.action;
 
 import com.ichorpowered.guardian.api.detection.Check;
+import com.ichorpowered.guardian.api.sequence.Condition;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
-import com.ichorpowered.guardian.api.sequence.condition.Condition;
 
 /**
  * Represents a builder to create {@link Action}s with.

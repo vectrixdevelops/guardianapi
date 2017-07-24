@@ -21,55 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.report;
-
-import com.ichorpowered.guardian.api.event.origin.Origin;
-
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+package com.ichorpowered.guardian.api.event;
 
 /**
- * Represents a brief report created by a
- * single operation that can be provided
- * as evidence to the final summary.
+ * Represents an event that is cancellable.
  */
-public interface Report {
+public interface Cancellable {
 
     /**
-     * Inserts the property into this report.
+     * Sets the event cancel state.
      *
-     * @param key the property key
-     * @param value the property value
-     * @param <T> the property type
+     * @param cancelled the cancel state
      */
-    <T> void put(@Nonnull String key, @Nullable T value);
+    void setCancelled(boolean cancelled);
 
     /**
-     * Returns the property that is represented by its key.
+     * Returns the event cancel state.
      *
-     * @param key the property key
-     * @param <T> the property type
-     * @return the property
-     * @throws IllegalArgumentException if the specified arguments are not of the correct type
+     * @return the event cancel state
      */
-    @Nullable
-    <T> T get(@Nonnull String key) throws IllegalArgumentException;
-
-    /**
-     * Returns a set of keys contained inside this report.
-     *
-     * @return a set of property keys
-     */
-    Set<String> keySet();
-
-    /**
-     * Returns the {@link Origin} of this {@link Report}.
-     *
-     * @return the summary origin
-     */
-    @Nonnull
-    Origin getOrigin();
+    boolean isCancelled();
 
 }

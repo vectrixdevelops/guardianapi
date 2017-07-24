@@ -21,34 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.sequence.condition;
+package com.ichorpowered.guardian.api;
 
-import com.ichorpowered.guardian.api.report.Summary;
-import com.ichorpowered.guardian.api.sequence.Sequence;
+import com.ichorpowered.guardian.api.util.ImplementationException;
+
+import javax.annotation.Nullable;
 
 /**
- * Represents an operation used to
- * gather and calculate data in a {@link Sequence}
- * chain.
- *
- * @param <T> the event type
- * @param <P> the player type
+ * Represents the methods that are accessible during
+ * any state.
  */
-@FunctionalInterface
-public interface Condition<T, P> {
+public interface GuardianBasic {
 
     /**
-     * Returns the result of applying this condition
-     * to its arguments.
+     * Returns the instance of the implementation from
+     * a class if present.
      *
-     * @param player the player
-     * @param event the event
-     * @param summary the summary
-     * @param lastActionTime the last action time
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
-     * @return the summary
+     * @param clazz the implementation class
+     * @param <T> the implementation class type
+     * @return possible implementation instance
+     * @throws ImplementationException possible exception
      */
-    <E, F> Summary<E, F> apply(P player, T event, Summary<E, F> summary, long lastActionTime);
+    <T extends Guardian> T getInstance(@Nullable Class<T> clazz) throws ImplementationException;
+
+    /**
+     * Returns the plugin state.
+     *
+     * @return the plugin state
+     */
+    GuardianState getState();
 
 }
