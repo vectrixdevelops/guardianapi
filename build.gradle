@@ -10,6 +10,7 @@ buildscript {
 plugins {
     id 'java'
     id 'idea'
+    id 'maven'
     id 'eclipse'
     id 'com.github.hierynomus.license' version '0.14.0'
     id 'com.github.johnrengelman.shadow' version '2.0.0'
@@ -20,6 +21,8 @@ apply plugin: 'com.github.hierynomus.license'
 apply plugin: 'com.github.johnrengelman.shadow'
 
 defaultTasks 'licenseFormat', 'build'
+
+final boolean uploadArtifacts = project.hasProperty("doArtifactUpdate") && doArtifactUpdate
 
 group = apiGroup
 version = apiVersion
@@ -92,3 +95,23 @@ artifacts {
 build.dependsOn(sourceJar)
 build.dependsOn(javadocJar)
 build.dependsOn(shadowJar)
+
+if (uploadArtifacts) {
+    final String nexusUsername = System.getenv("NEXUS_USER")
+    final String nexusPassword = System.getenv("NEXUS_PASS")
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: "http://repo.foxdenstudio.net/repository/maven-vectrix/") {
+                    authentication(userName: nexusUsername, password: nexusPassword)
+                }
+
+                pom.version = "${apiVersion}"
+                pom.artifactId = "guardianapi"
+                pom.groupId = "${apiGroup}"
+            }
+        }
+    }
+
+}
