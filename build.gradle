@@ -25,6 +25,7 @@ defaultTasks 'licenseFormat', 'build'
 
 group = apiGroup
 version = apiVersion
+archivesBaseName = "guardianapi"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
