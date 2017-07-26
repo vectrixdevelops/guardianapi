@@ -9,7 +9,7 @@ before_install:
   - chmod +x gradlew
 
 install: true
-script: ./gradlew build travisPublish
+script: ./gradlew build uploadArchives
 
 notifications:
   email: false

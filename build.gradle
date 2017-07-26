@@ -12,7 +12,6 @@ plugins {
     id 'idea'
     id 'maven'
     id 'eclipse'
-    id 'maven-publish'
     id 'com.github.hierynomus.license' version '0.14.0'
     id 'com.github.johnrengelman.shadow' version '2.0.0'
 }
@@ -66,28 +65,6 @@ checkstyle {
     ]
 }
 
-publishing {
-    repositories {
-        maven {
-            credentials {
-                username = System.env.NEXUS_USER
-                password = System.env.NEXUS_PASS
-            }
-            name = 'FDSVectrix'
-            url = "http://repo.foxdenstudio.net/repository/maven-vectrix/"
-        }
-    }
-    publications {
-        general(MavenPublication) {
-            artifactId = archivesBaseName
-
-            artifact shadowJar {
-                classifier ""
-            }
-        }
-    }
-}
-
 task sourceJar(type: Jar) {
     classifier = 'source'
     from sourceSets.main.allSource
@@ -96,10 +73,6 @@ task sourceJar(type: Jar) {
 task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
-}
-
-task travisPublish {
-    group = 'publishing'
 }
 
 shadowJar {
@@ -119,7 +92,37 @@ artifacts {
 }
 
 if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
-    travisPublish.dependsOn 'publishGeneralPublicationToFDSVectrixRepository'
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: 'http://repo.foxdenstudio.net/repository/maven-vectrix/') {
+                    authentication(userName: System.env.NEXUS_USER, password: System.env.NEXUS_PASS)
+                }
+
+                pom.project {
+                    name project.name
+
+                    licenses {
+                        license {
+                            name 'MIT License'
+                            url 'https://opensource.org/licenses/MIT'
+                        }
+                    }
+
+                    issueManagement {
+                        system 'Github Issues'
+                        url 'https://github.com/ichorpowered/guardianapi/issues'
+                    }
+
+                    scm {
+                        connection 'scm:git@github.com/ichorpowered/guardianapi.git'
+                        developerConnection 'scm:git@github.com/ichorpowered/guardianapi.git'
+                        url 'https://github.com/ichorpowered/guardianapi/'
+                    }
+                }
+            }
+        }
+    }
 }
 
 build.dependsOn(sourceJar)
