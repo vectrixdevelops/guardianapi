@@ -9,7 +9,7 @@ before_install:
   - chmod +x gradlew
 
 install: true
-script: ./gradlew build -PdoArtifactUpdate=true
+script: ./gradlew build travisPublish
 
 notifications:
   email: false
