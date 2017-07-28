@@ -3,13 +3,14 @@ dist: trusty
 language: java
 jdk:
   - openjdk8
-  - oraclejdk8
 
 before_install:
   - chmod +x gradlew
 
 install: true
-script: ./gradlew build uploadArchives
+
+script: ./gradlew build
+after_success: ./gradlew uploadArchives
 
 notifications:
   email: false
