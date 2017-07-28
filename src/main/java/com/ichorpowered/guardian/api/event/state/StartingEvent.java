@@ -24,8 +24,8 @@
 package com.ichorpowered.guardian.api.event.state;
 
 import com.ichorpowered.guardian.api.Guardian;
-import com.ichorpowered.guardian.api.event.Cancellable;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
+import net.kyori.event.Cancellable;
 
 public interface StartingEvent extends GuardianEvent, Cancellable {
 
