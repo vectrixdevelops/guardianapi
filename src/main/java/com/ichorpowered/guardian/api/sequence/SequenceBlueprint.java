@@ -44,7 +44,7 @@ public interface SequenceBlueprint<E, F, P> {
      * @return the sequence
      */
     @Nonnull
-    Sequence<E, F, P> create(P player);
+    Sequence<P> create(P player);
 
     /**
      * Returns the {@link Check} that owns this {@link Sequence}.
@@ -52,6 +52,6 @@ public interface SequenceBlueprint<E, F, P> {
      * @return the check
      */
     @Nonnull
-    Check<E, F> getCheck();
+    Check<E, F, P> getCheck();
 
 }

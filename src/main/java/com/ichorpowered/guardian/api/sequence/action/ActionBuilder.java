@@ -120,7 +120,7 @@ public interface ActionBuilder<T, P> {
      * @param <F> the checks detection configuration type
      * @return the sequence blueprint
      */
-    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F> check);
+    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F, P> check);
 
 
 }

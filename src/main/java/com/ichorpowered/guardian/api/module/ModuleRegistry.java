@@ -84,7 +84,7 @@ public interface ModuleRegistry {
      * @param predicate a function to decide the modules enable state
      * @param <M> the module type
      */
-    <M> void enableModules(Predicate predicate);
+    <M> void enableModules(Predicate<M> predicate);
 
     /**
      * Disables each module in the registry based on

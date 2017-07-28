@@ -37,8 +37,9 @@ import javax.annotation.Nullable;
  *
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
+ * @param <P> the player type
  */
-public interface Summary<E, F> extends Iterable<Report> {
+public interface Summary<E, F, P> extends Iterable<Report> {
 
     /**
      * Returns the plugin that owns the detection
@@ -55,7 +56,7 @@ public interface Summary<E, F> extends Iterable<Report> {
      * @return the summary owner
      */
     @Nonnull
-    Detection<E, F> getDetection();
+    Detection<E, F, P> getDetection();
 
     /**
      * Inserts a {@link Report} into a map, for summary.

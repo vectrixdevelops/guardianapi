@@ -27,7 +27,6 @@ import com.ichorpowered.guardian.api.sequence.Condition;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Represents a set of conditions to run in
@@ -51,14 +50,14 @@ public interface Action<T, P> {
      *
      * @param time the delay period
      */
-    void setDelay(@Nonnull int time);
+    void setDelay(int time);
 
     /**
      * Sets this actions expire period.
      *
      * @param time the expire period
      */
-    void setExpire(@Nonnull int time);
+    void setExpire(int time);
 
     /**
      * Returns the result of applying this action
@@ -69,7 +68,7 @@ public interface Action<T, P> {
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean apply(@Nonnull P player, @Nonnull T event, @Nullable long lastActionTime);
+    boolean apply(@Nonnull P player, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
@@ -80,7 +79,7 @@ public interface Action<T, P> {
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean succeed(@Nonnull P player, @Nonnull T event, @Nullable long lastActionTime);
+    boolean succeed(@Nonnull P player, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
@@ -91,14 +90,13 @@ public interface Action<T, P> {
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean fail(@Nonnull P player, @Nonnull T event, @Nullable long lastActionTime);
+    boolean fail(@Nonnull P player, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns this actions delay period.
      *
      * @return the delay period
      */
-    @Nonnull
     int getDelay();
 
     /**
@@ -106,7 +104,6 @@ public interface Action<T, P> {
      *
      * @return the expire period
      */
-    @Nonnull
     int getExpire();
 
     /**

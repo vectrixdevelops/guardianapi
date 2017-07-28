@@ -31,12 +31,10 @@ import com.ichorpowered.guardian.api.report.Summary;
  * Supplier for registered heuristics in running and acquiring
  * the result.
  *
- * @param <P> the plugin container type
- * @param <E> the detection owner type
- * @param <F> the detection configuration type
+ * @param <P> the player type
  */
 @FunctionalInterface
-public interface HeuristicSupplier<P, E, F> {
+public interface HeuristicSupplier<P> {
 
     /**
      * Applies a plugin container, {@link Detection} and {@link Summary}
@@ -46,8 +44,11 @@ public interface HeuristicSupplier<P, E, F> {
      * @param pluginContainer the plugin container
      * @param detection the detection
      * @param summary the summary
+     * @param <C> the plugin container type
+     * @param <E> the detection owner type
+     * @param <F> the detection configuration type
      * @return the updated summary
      */
-    Summary<E, F> apply(P pluginContainer, Detection<E, F> detection, Summary<E, F> summary);
+    <E, F, C> Summary<E, F, P> apply(C pluginContainer, Detection<E, F, P> detection, Summary<E, F, P> summary);
 
 }

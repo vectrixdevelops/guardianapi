@@ -39,8 +39,9 @@ import javax.annotation.Nullable;
  *
  * @param <E> the check owner type
  * @param <F> the check owner configuration type
+ * @param <P> the player type
  */
-public interface Check<E, F> {
+public interface Check<E, F, P> {
 
     /**
      * Returns the plugin that owns the detection
@@ -57,18 +58,17 @@ public interface Check<E, F> {
      * @return the check owner
      */
     @Nonnull
-    Detection<E, F> getDetection();
+    Detection<E, F, P> getDetection();
 
     /**
      * Returns the {@link Sequence} that contains the chained
      * {@link Action}s that produce a {@link Summary} for players
      * checked.
      *
-     * @param <P> the player type
      * @return the sequence
      */
     @Nonnull
-    <P> Sequence<E, F, P> getSequence();
+    Sequence<P> getSequence();
 
     /**
      * Compares this check to another check and returns true,
@@ -79,6 +79,6 @@ public interface Check<E, F> {
      * @param <G> another check owner configuration type
      * @return true whether they are the same, false if not
      */
-    <K extends Guardian, G> boolean compare(@Nullable Check<K, G> check);
+    <K extends Guardian, G> boolean compare(@Nullable Check<K, G, P> check);
 
 }

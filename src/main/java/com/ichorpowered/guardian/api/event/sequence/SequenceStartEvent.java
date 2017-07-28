@@ -29,10 +29,10 @@ import com.ichorpowered.guardian.api.sequence.Sequence;
 
 public interface SequenceStartEvent<E, F, P> extends GuardianEvent {
 
-    Sequence<E, F, P> getSequence();
+    Sequence<P> getSequence();
 
     P getPlayer();
 
-    Summary<E, F> getSummary();
+    Summary<E, F, P> getSummary();
 
 }

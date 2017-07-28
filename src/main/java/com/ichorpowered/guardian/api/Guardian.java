@@ -35,8 +35,11 @@ import net.kyori.event.SimpleEventBus;
 /**
  * Represents an accessor to registries for
  * this cheat detection system.
+ *
+ * @param <P> the player type
+ * @param <T> the event type
  */
-public interface Guardian extends GuardianBasic {
+public interface Guardian<P, T> extends GuardianBasic {
 
     /**
      * Returns the event bus.
@@ -50,7 +53,7 @@ public interface Guardian extends GuardianBasic {
      *
      * @return the detection registry
      */
-    DetectionRegistry getDetectionRegistry();
+    DetectionRegistry<P> getDetectionRegistry();
 
     /**
      * Returns the heuristic registry.
@@ -78,6 +81,6 @@ public interface Guardian extends GuardianBasic {
      *
      * @return the sequence manager
      */
-    SequenceManager getSequenceManager();
+    SequenceManager<P, T> getSequenceManager();
 
 }

@@ -48,6 +48,6 @@ public interface Condition<T, P> {
      * @param <F> the checks detection configuration type
      * @return the summary
      */
-    <E, F> Summary<E, F> apply(P player, T event, Summary<E, F> summary, long lastActionTime);
+    <E, F> Summary<E, F, P> apply(P player, T event, Summary<E, F, P> summary, long lastActionTime);
 
 }

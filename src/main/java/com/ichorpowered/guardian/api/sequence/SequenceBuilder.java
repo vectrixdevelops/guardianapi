@@ -81,6 +81,6 @@ public interface SequenceBuilder<P> {
      * @return the sequence blueprint
      */
     @Nonnull
-    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F> check);
+    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F, P> check);
 
 }
