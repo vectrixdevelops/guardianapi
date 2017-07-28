@@ -13,12 +13,10 @@ plugins {
     id 'maven'
     id 'eclipse'
     id 'com.github.hierynomus.license' version '0.14.0'
-    id 'com.github.johnrengelman.shadow' version '2.0.0'
 }
 
 apply plugin: 'checkstyle'
 apply plugin: 'com.github.hierynomus.license'
-apply plugin: 'com.github.johnrengelman.shadow'
 
 defaultTasks 'licenseFormat', 'build'
 
@@ -75,20 +73,14 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-shadowJar {
+jar {
     classifier = ''
-
-    dependencies {
-        include(dependency('com.github.ben-manes.caffeine:caffeine'))
-        include(dependency('com.github.ben-manes.caffeine:guava'))
-        include(dependency('net.kyori:event'))
-    }
 }
 
 artifacts {
     archives sourceJar
     archives javadocJar
-    archives shadowJar
+    archives jar
 }
 
 if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
@@ -127,4 +119,4 @@ if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
 
 build.dependsOn(sourceJar)
 build.dependsOn(javadocJar)
-build.dependsOn(shadowJar)
+build.dependsOn(jar)
