@@ -44,4 +44,45 @@ public interface Sequence<P> {
      */
     <T> boolean apply(P player, T event);
 
+    /**
+     * Returns the {@link SequenceBlueprint} for this sequence.
+     *
+     * @param <E> the check detections owner type
+     * @param <F> the check detections configuration type
+     * @return the sequence blueprint
+     */
+    <E, F> SequenceBlueprint<E, F, P> getSequenceBlueprint();
+
+    /**
+     * Returns {code true} if the sequence is running and
+     * {@code false} if it is not.
+     *
+     * @return the sequence running state
+     */
+    boolean isRunning();
+
+    /**
+     * Returns {@code true} if the sequence has been cancelled
+     * and {@code false} if it has not.
+     *
+     * @return the sequence cancel state
+     */
+    boolean isCancelled();
+
+    /**
+     * Returns {@code true} if the sequence has been running
+     * past the expiry time and {@code false} if it has not.
+     *
+     * @return the sequence expiry state
+     */
+    boolean isExpired();
+
+    /**
+     * Returns {@code true} if the sequence has finished
+     * running its actions and {@code false} if it has not.
+     *
+     * @return the sequence finish state
+     */
+    boolean isFinished();
+
 }
