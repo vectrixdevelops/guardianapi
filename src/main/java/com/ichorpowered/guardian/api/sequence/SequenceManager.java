@@ -23,8 +23,6 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
-import com.ichorpowered.guardian.api.util.ImplementationException;
-
 /**
  * Represents a way to manage sequences.
  *
@@ -39,9 +37,8 @@ public interface SequenceManager<P, T> {
      *
      * @param player the player
      * @param event the event
-     * @throws ImplementationException if invalid arguments are used
      */
-    void invoke(P player, T event) throws ImplementationException;
+    void invoke(P player, T event);
 
     /**
      * Cleans up discontinued sequences.
@@ -63,8 +60,7 @@ public interface SequenceManager<P, T> {
      *
      * @param player the player
      * @param force the option to forcefully remove
-     * @throws ImplementationException if invalid arguments are used
      */
-    void clean(P player, boolean force) throws ImplementationException;
+    void clean(P player, boolean force);
 
 }
