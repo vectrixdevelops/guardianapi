@@ -23,7 +23,6 @@
  */
 package com.ichorpowered.guardian.api.detection;
 
-import com.ichorpowered.guardian.api.Guardian;
 import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.action.Action;
@@ -75,10 +74,8 @@ public interface Check<E, F, P> {
      * if they are the same, false if they are not.
      *
      * @param check another check
-     * @param <K> another check owner type
-     * @param <G> another check owner configuration type
      * @return true whether they are the same, false if not
      */
-    <K extends Guardian, G> boolean compare(@Nullable Check<K, G, P> check);
+    boolean compare(@Nullable Check<?, ?, P> check);
 
 }
