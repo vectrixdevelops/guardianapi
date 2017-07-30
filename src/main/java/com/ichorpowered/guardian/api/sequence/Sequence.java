@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.sequence.action.Action;
+import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
 
 /**
  * Represents a sequence of {@link Action}s that can be
@@ -43,6 +44,13 @@ public interface Sequence<P> {
      * @return the result
      */
     <T> boolean apply(P player, T event);
+
+    /**
+     * Returns the {@link CaptureRegistry} for this sequence.
+     *
+     * @return the capture registry
+     */
+    CaptureRegistry<P> getCaptureRegistry();
 
     /**
      * Returns the {@link SequenceBlueprint} for this sequence.
