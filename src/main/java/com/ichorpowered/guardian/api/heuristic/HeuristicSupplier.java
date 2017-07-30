@@ -27,6 +27,8 @@ import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.report.Report;
 import com.ichorpowered.guardian.api.report.Summary;
 
+import javax.annotation.Nonnull;
+
 /**
  * Supplier for registered heuristics in running and acquiring
  * the result.
@@ -41,14 +43,14 @@ public interface HeuristicSupplier<P> {
      * to this operation to add a {@link Report} to the existing {@link Summary}
      * to improve accuracy of the final evaluation.
      *
-     * @param pluginContainer the plugin container
+     * @param player the player
      * @param detection the detection
      * @param summary the summary
-     * @param <C> the plugin container type
      * @param <E> the detection owner type
      * @param <F> the detection configuration type
      * @return the updated summary
      */
-    <E, F, C> Summary<E, F, P> apply(C pluginContainer, Detection<E, F, P> detection, Summary<E, F, P> summary);
+    @Nonnull
+    <E, F> Summary<E, F, P> apply(P player, Detection<E, F, P> detection, Summary<E, F, P> summary);
 
 }

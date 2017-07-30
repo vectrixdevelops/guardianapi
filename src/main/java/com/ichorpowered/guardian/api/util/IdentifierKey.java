@@ -21,36 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.sequence;
-
-import com.ichorpowered.guardian.api.report.Summary;
-
-import javax.annotation.Nonnull;
+package com.ichorpowered.guardian.api.util;
 
 /**
- * Represents an operation used to
- * gather and calculate data in a {@link Sequence}
- * chain.
+ * Represents a simple way of acquiring a complex key.
  *
- * @param <T> the event type
- * @param <P> the player type
+ * @param <T> the key type
  */
-@FunctionalInterface
-public interface Condition<T, P> {
+public class IdentifierKey<T> {
+
+    private final T key;
 
     /**
-     * Returns the result of applying this condition
-     * to its arguments.
+     * Returns a new {@link IdentifierKey}.
      *
-     * @param player the player
-     * @param event the event
-     * @param summary the summary
-     * @param lastActionTime the last action time
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
-     * @return the summary
+     * @param id the key
+     * @param <K> the key type
+     * @return a new identifier key
      */
-    @Nonnull
-    <E, F> Summary<E, F, P> apply(P player, T event, Summary<E, F, P> summary, long lastActionTime);
+    public static <K> IdentifierKey<K> of(K id) {
+        return new IdentifierKey<>(id);
+    }
+
+    private IdentifierKey(T id) {
+        this.key = id;
+    }
+
+    /**
+     * Returns the key that this represents.
+     *
+     * @return the key
+     */
+    public T get() {
+        return this.key;
+    }
 
 }

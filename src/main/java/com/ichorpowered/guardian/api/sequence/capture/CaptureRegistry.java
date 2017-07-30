@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  *
  * @param <P> the player type
  */
-public interface CaptureRegistry<P> {
+public interface CaptureRegistry<P> extends Iterable<Capture> {
 
     /**
      * Inserts the {@link Capture} into this registry.

@@ -23,8 +23,6 @@
  */
 package com.ichorpowered.guardian.api.detection;
 
-import com.google.common.collect.ImmutableSet;
-
 import javax.annotation.Nonnull;
 
 /**
@@ -64,7 +62,8 @@ public interface Detection<E, F, P> {
     F getConfiguration();
 
     /**
-     * Returns the state of readiness the detection is in.
+     * Returns the {@link State} of readiness the detection
+     * is in.
      *
      * @return the state of readiness
      */
@@ -72,11 +71,12 @@ public interface Detection<E, F, P> {
     State getState();
 
     /**
-     * Returns the set of checks this detection uses.
+     * Returns the {@link DetectionChain} of operation keys
+     * used for this detection.
      *
-     * @return the set of checks
+     * @return the detection chain
      */
-    ImmutableSet<Check<E, F, P>> getChecks();
+    DetectionChain<E, F, P> getChain();
 
     enum State {
 

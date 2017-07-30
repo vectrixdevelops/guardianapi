@@ -23,22 +23,25 @@
  */
 package com.ichorpowered.guardian.api.heuristic;
 
-import java.util.function.Function;
+import javax.annotation.Nonnull;
 
 /**
  * Represents an operation used to analyze
  * existing reports and produce its own from
  * to improve the accuracy of the outcome.
  *
- * @param <P> the plugin container type
+ * @param <P> the player type
  */
 public interface Heuristic<P> {
 
     /**
-     * Returns the function used for analysis.
+     * Returns the function to apply in
+     * order to acquire a report on heuristic
+     * evidence.
      *
-     * @return the analysis function
+     * @return the heuristic function
      */
-    Function<P, Boolean> getFunction();
+    @Nonnull
+    HeuristicSupplier<P> getSupplier();
 
 }

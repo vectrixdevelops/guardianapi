@@ -39,9 +39,9 @@ public interface HeuristicRegistry extends Iterable<Heuristic> {
      * @param pluginContainer the plugin that registered the heuristic
      * @param key the heuristic class
      * @param heuristic the heuristic
-     * @param <P> the plugin container type
+     * @param <C> the plugin container type
      */
-    <P> void put(@Nonnull P pluginContainer, @Nonnull Class<? extends Heuristic> key,
+    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Heuristic> key,
              @Nonnull Heuristic heuristic);
 
     /**

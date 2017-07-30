@@ -51,6 +51,15 @@ public interface Summary<E, F, P> extends Iterable<Report> {
     E getOwner();
 
     /**
+     * Returns the player that this summary belongs
+     * to.
+     *
+     * @return the player
+     */
+    @Nonnull
+    P getPlayer();
+
+    /**
      * Returns the {@link Detection} that owns this summary.
      *
      * @return the summary owner
