@@ -33,9 +33,8 @@ import java.util.Set;
  *
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
- * @param <P> the player type
  */
-public interface DetectionChain<E, F, P> {
+public interface DetectionChain<E, F> {
 
     /**
      * Returns a set of keys that represents a {@link Check}
@@ -43,7 +42,7 @@ public interface DetectionChain<E, F, P> {
      *
      * @return a set of check keys
      */
-    Set<Class<? extends Check<E, F, P>>> checkKeys();
+    Set<Class<? extends Check<E, F>>> checkKeys();
 
     /**
      * Returns a set of keys that represents a {@link Heuristic}
@@ -51,9 +50,9 @@ public interface DetectionChain<E, F, P> {
      *
      * @return a set of heuristic keys
      */
-    Set<Class<? extends Heuristic<P>>> heuristicKeys();
+    Set<Class<? extends Heuristic>> heuristicKeys();
 
-    interface Builder<E, F, P> {
+    interface Builder<E, F> {
 
         /**
          * Inserts a {@link Check} key into the chain to be
@@ -62,7 +61,7 @@ public interface DetectionChain<E, F, P> {
          * @param check the check key
          * @return this builder
          */
-        Builder<E, F, P> check(Class<? extends Check<E, F, P>> check);
+        Builder<E, F> check(Class<? extends Check<E, F>> check);
 
         /**
          * Inserts a {@link Heuristic} key into the chain to be
@@ -71,7 +70,7 @@ public interface DetectionChain<E, F, P> {
          * @param heuristic the heuristic key
          * @return this builder
          */
-        Builder<E, F, P> heuristic(Class<? extends Heuristic<P>> heuristic);
+        Builder<E, F> heuristic(Class<? extends Heuristic> heuristic);
 
         /**
          * Returns a new {@link DetectionChain} using the keys
@@ -79,7 +78,7 @@ public interface DetectionChain<E, F, P> {
          *
          * @return a detection chain assigned by the builder
          */
-        DetectionChain<E, F, P> build();
+        DetectionChain<E, F> build();
 
     }
 

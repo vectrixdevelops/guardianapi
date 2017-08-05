@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
+import com.ichorpowered.guardian.api.entry.EntityEntry;
+
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -32,10 +34,8 @@ import javax.annotation.Nullable;
 /**
  * Represents a registry for captures for a specific
  * player.
- *
- * @param <P> the player type
  */
-public interface CaptureRegistry<P> extends Iterable<Capture> {
+public interface CaptureRegistry extends Iterable<Capture> {
 
     /**
      * Inserts the {@link Capture} into this registry.
@@ -63,7 +63,7 @@ public interface CaptureRegistry<P> extends Iterable<Capture> {
      * @throws IllegalArgumentException if the specific arguments are not of the correct type
      */
     @Nonnull
-    <E, F> Capture<E, F, P> expect(@Nonnull Class<? extends Capture<E, F, P>> key)
+    <E, F> Capture<E, F> expect(@Nonnull Class<? extends Capture<E, F>> key)
         throws NoSuchElementException, IllegalArgumentException;
 
     /**
@@ -92,11 +92,11 @@ public interface CaptureRegistry<P> extends Iterable<Capture> {
     Set<String> keySet();
 
     /**
-     * Returns the player that this registry is used by.
+     * Returns the entity entry that this registry is used by.
      *
-     * @return the player
+     * @return the entity entry
      */
-    P getPlayer();
+    EntityEntry getEntityEntry();
 
     /**
      * Returns the {@link CaptureContainer} that contains

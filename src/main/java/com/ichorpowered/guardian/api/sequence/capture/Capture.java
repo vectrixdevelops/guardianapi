@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.sequence.capture;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.entry.EntityEntry;
 
 /**
  * Represents a system of capturing data
@@ -33,9 +34,8 @@ import com.ichorpowered.guardian.api.detection.Detection;
  *
  * @param <E> the check detections owner type
  * @param <F> the check detections configuration type
- * @param <P> the player type
  */
-public interface Capture<E, F, P> {
+public interface Capture<E, F> {
 
     /**
      * Represents a method of starting the data
@@ -44,19 +44,19 @@ public interface Capture<E, F, P> {
      * <p>This should only be called once each time
      * at the beginning of a player sequence.</p>
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param captureContainer the capture container
      */
-    void start(P player, CaptureContainer captureContainer);
+    void start(EntityEntry entry, CaptureContainer captureContainer);
 
     /**
      * Represents a method of updating the data
      * collection.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param captureContainer the capture container
      */
-    void update(P player, CaptureContainer captureContainer);
+    void update(EntityEntry entry, CaptureContainer captureContainer);
 
     /**
      * Represents a method of stopping the data
@@ -65,10 +65,10 @@ public interface Capture<E, F, P> {
      * <p>This should only be called once each time
      * at the end of a player sequence.</p>
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param captureContainer the capture container
      */
-    void stop(P player, CaptureContainer captureContainer);
+    void stop(EntityEntry entry, CaptureContainer captureContainer);
 
     /**
      * Returns the plugin owner of this capture.
@@ -82,6 +82,6 @@ public interface Capture<E, F, P> {
      *
      * @return the capture detection
      */
-    Detection<E, F, P> getDetection();
+    Detection<E, F> getDetection();
 
 }

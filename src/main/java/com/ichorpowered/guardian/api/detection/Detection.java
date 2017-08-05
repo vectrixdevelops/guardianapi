@@ -32,9 +32,8 @@ import javax.annotation.Nonnull;
  *
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
- * @param <P> the player type
  */
-public interface Detection<E, F, P> {
+public interface Detection<E, F> {
 
     /**
      * Returns the plugin that owns this detection.
@@ -76,7 +75,7 @@ public interface Detection<E, F, P> {
      *
      * @return the detection chain
      */
-    DetectionChain<E, F, P> getChain();
+    DetectionChain<E, F> getChain();
 
     enum State {
 

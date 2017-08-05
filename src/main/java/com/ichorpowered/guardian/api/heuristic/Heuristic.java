@@ -29,10 +29,8 @@ import javax.annotation.Nonnull;
  * Represents an operation used to analyze
  * existing reports and produce its own from
  * to improve the accuracy of the outcome.
- *
- * @param <P> the player type
  */
-public interface Heuristic<P> {
+public interface Heuristic {
 
     /**
      * Returns the function to apply in
@@ -42,6 +40,6 @@ public interface Heuristic<P> {
      * @return the heuristic function
      */
     @Nonnull
-    HeuristicSupplier<P> getSupplier();
+    HeuristicSupplier getSupplier();
 
 }

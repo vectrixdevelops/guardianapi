@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
 
@@ -30,36 +31,35 @@ import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
  * Represents a sequence of {@link Action}s that can be
  * run in a chain.
  *
- * @param <P> the player type
+ * @param <E> the check detections owner type
+ * @param <F> the check detections configuration type
  */
-public interface Sequence<P> {
+public interface Sequence<E, F> {
 
     /**
      * Returns the result of applying the
      * player and event to the sequence.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param event the event
      * @param <T> the event type
      * @return the result
      */
-    <T> boolean apply(P player, T event);
+    <T> boolean apply(EntityEntry entry, T event);
 
     /**
      * Returns the {@link CaptureRegistry} for this sequence.
      *
      * @return the capture registry
      */
-    CaptureRegistry<P> getCaptureRegistry();
+    CaptureRegistry getCaptureRegistry();
 
     /**
      * Returns the {@link SequenceBlueprint} for this sequence.
      *
-     * @param <E> the check detections owner type
-     * @param <F> the check detections configuration type
      * @return the sequence blueprint
      */
-    <E, F> SequenceBlueprint<E, F, P> getSequenceBlueprint();
+    SequenceBlueprint<E, F> getSequenceBlueprint();
 
     /**
      * Returns {code true} if the sequence is running and

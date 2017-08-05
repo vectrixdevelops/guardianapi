@@ -25,20 +25,22 @@ package com.ichorpowered.guardian.api.sequence.action;
 
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a blueprint for creating an {@link Action}
  * for a {@link Sequence}.
  *
  * @param <T> the event type
- * @param <P> the player type
  */
-public interface ActionBlueprint<T, P> {
+public interface ActionBlueprint<T> {
 
     /**
      * Creates a new {@link Action}.
      *
      * @return the action
      */
-    Action<T, P> create();
+    @Nonnull
+    Action<T> create();
 
 }

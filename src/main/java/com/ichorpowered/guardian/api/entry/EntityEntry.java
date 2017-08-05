@@ -21,36 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.sequence;
+package com.ichorpowered.guardian.api.entry;
 
-import com.ichorpowered.guardian.api.report.Summary;
+import com.google.common.reflect.TypeToken;
+
+import java.util.Optional;
+import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
 /**
- * Represents an operation used to
- * gather and calculate data in a {@link Sequence}
- * chain.
- *
- * @param <T> the event type
- * @param <P> the player type
+ * Represents an entry that is of an entity
+ * that contains a reference to something that
+ * may not exist, but can access and manipulate
+ * some data.
  */
-@FunctionalInterface
-public interface Condition<T, P> {
+public interface EntityEntry {
 
     /**
-     * Returns the result of applying this condition
-     * to its arguments.
+     * Returns the entities unique identifier.
      *
-     * @param player the player
-     * @param event the event
-     * @param summary the summary
-     * @param lastActionTime the last action time
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
-     * @return the summary
+     * @return the entities unique identifier
      */
     @Nonnull
-    <E, F> Summary<E, F, P> apply(P player, T event, Summary<E, F, P> summary, long lastActionTime);
+    UUID getUniqueId();
+
+    /**
+     * Returns an {@link Optional} that may contain
+     * the entity if it is present.
+     *
+     * @param <E> the entity type
+     * @return the entity reference if present
+     */
+    @Nonnull
+    <E> Optional<E> getEntity(TypeToken<E> typeToken);
 
 }

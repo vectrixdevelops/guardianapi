@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.report;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.origin.Origin;
 
 import javax.annotation.Nonnull;
@@ -37,9 +38,8 @@ import javax.annotation.Nullable;
  *
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
- * @param <P> the player type
  */
-public interface Summary<E, F, P> extends Iterable<Report> {
+public interface Summary<E, F> extends Iterable<Report> {
 
     /**
      * Returns the plugin that owns the detection
@@ -51,13 +51,13 @@ public interface Summary<E, F, P> extends Iterable<Report> {
     E getOwner();
 
     /**
-     * Returns the player that this summary belongs
+     * Returns the entity entry that this summary belongs
      * to.
      *
-     * @return the player
+     * @return the entity entry
      */
     @Nonnull
-    P getPlayer();
+    EntityEntry getEntityEntry();
 
     /**
      * Returns the {@link Detection} that owns this summary.
@@ -65,7 +65,7 @@ public interface Summary<E, F, P> extends Iterable<Report> {
      * @return the summary owner
      */
     @Nonnull
-    Detection<E, F, P> getDetection();
+    Detection<E, F> getDetection();
 
     /**
      * Inserts a {@link Report} into a map, for summary.

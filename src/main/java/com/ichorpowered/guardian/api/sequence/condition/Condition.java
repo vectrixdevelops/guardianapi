@@ -21,37 +21,54 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.sequence;
+package com.ichorpowered.guardian.api.sequence.condition;
 
-import com.ichorpowered.guardian.api.detection.Check;
-import com.ichorpowered.guardian.api.entry.EntityEntry;
-
-import javax.annotation.Nonnull;
+import com.ichorpowered.guardian.api.sequence.Sequence;
 
 /**
- * Represents a blueprint for creating a {@link Sequence}
- * for {@link Check}.
+ * Represents an operation used to
+ * gather and calculate data in a {@link Sequence}
+ * chain.
  *
- * @param <E> the check detections owner type
- * @param <F> the check detections configuration type
+ * @param <T> the event type
  */
-public interface SequenceBlueprint<E, F> {
+public interface Condition<T> {
 
     /**
-     * Creates a new {@link Sequence} and passes in the player.
+     * Returns the interface that allows you
+     * to apply the condition operation.
      *
-     * @param entry the entity entry
-     * @return the sequence
+     * @return the condition operation
      */
-    @Nonnull
-    Sequence<E, F> create(EntityEntry entry);
+    ConditionSupplier<T> get();
 
     /**
-     * Returns the {@link Check} that owns this {@link Sequence}.
+     * Returns the type of condition this has
+     * been set to be.
      *
-     * @return the check
+     * @return the type of condition of this
      */
-    @Nonnull
-    Check<E, F> getCheck();
+    Type getType();
+
+    enum Type {
+
+        /**
+         * A condition that runs on the success of an
+         * action.
+         */
+        SUCCESS,
+
+        /**
+         * A condition that runs on the failure of an
+         * action.
+         */
+        FAIL,
+
+        /**
+         * A condition that runs normally on an action.
+         */
+        NORMAL
+
+    }
 
 }

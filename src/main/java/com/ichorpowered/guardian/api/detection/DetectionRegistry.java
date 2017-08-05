@@ -31,10 +31,8 @@ import javax.annotation.Nullable;
 
 /**
  * Represents a registry for detections.
- *
- * @param <P> the player type
  */
-public interface DetectionRegistry<P> extends Iterable<Detection> {
+public interface DetectionRegistry extends Iterable<Detection> {
 
     /**
      * Inserts the {@link Detection} into this registry.
@@ -58,7 +56,7 @@ public interface DetectionRegistry<P> extends Iterable<Detection> {
      * @throws IllegalArgumentException if the specified arguments are not of the correct type
      */
     @Nonnull
-    <E, F> Detection<E, F, P> expect(@Nonnull Class<? extends Detection<E, F, P>> key)
+    <E, F> Detection<E, F> expect(@Nonnull Class<? extends Detection<E, F>> key)
             throws NoSuchElementException, IllegalArgumentException;
 
     /**

@@ -21,37 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.sequence;
+package com.ichorpowered.guardian.api.sequence.condition;
 
-import com.ichorpowered.guardian.api.detection.Check;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
+import com.ichorpowered.guardian.api.report.Summary;
 
 import javax.annotation.Nonnull;
 
 /**
- * Represents a blueprint for creating a {@link Sequence}
- * for {@link Check}.
+ * Supplier of an operation for acquiring
+ * the summary over a set of conditions.
  *
- * @param <E> the check detections owner type
- * @param <F> the check detections configuration type
+ * @param <T> the event type
  */
-public interface SequenceBlueprint<E, F> {
+@FunctionalInterface
+public interface ConditionSupplier<T> {
 
     /**
-     * Creates a new {@link Sequence} and passes in the player.
+     * Returns the result of applying this condition
+     * to its arguments.
      *
      * @param entry the entity entry
-     * @return the sequence
+     * @param event the event
+     * @param summary the summary
+     * @param lastActionTime the last action time
+     * @param <E> the checks detection owner type
+     * @param <F> the checks detection configuration type
+     * @return the summary
      */
     @Nonnull
-    Sequence<E, F> create(EntityEntry entry);
-
-    /**
-     * Returns the {@link Check} that owns this {@link Sequence}.
-     *
-     * @return the check
-     */
-    @Nonnull
-    Check<E, F> getCheck();
+    <E, F> Summary<E, F> apply(EntityEntry entry, T event, Summary<E, F> summary, long lastActionTime);
 
 }

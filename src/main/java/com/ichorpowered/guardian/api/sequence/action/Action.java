@@ -23,8 +23,9 @@
  */
 package com.ichorpowered.guardian.api.sequence.action;
 
-import com.ichorpowered.guardian.api.sequence.Condition;
+import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.sequence.Sequence;
+import com.ichorpowered.guardian.api.sequence.condition.Condition;
 
 import javax.annotation.Nonnull;
 
@@ -33,9 +34,8 @@ import javax.annotation.Nonnull;
  * a {@link Sequence}.
  *
  * @param <T> the event type
- * @param <P> the player type
  */
-public interface Action<T, P> {
+public interface Action<T> {
 
     /**
      * Inserts a condition to this {@link Action} to
@@ -43,7 +43,7 @@ public interface Action<T, P> {
      *
      * @param condition the condition
      */
-    void addCondition(@Nonnull Condition<T, P> condition);
+    void addCondition(@Nonnull Condition<T> condition);
 
     /**
      * Sets this actions delay period.
@@ -63,34 +63,34 @@ public interface Action<T, P> {
      * Returns the result of applying this action
      * in the {@link Sequence}.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean apply(@Nonnull P player, @Nonnull T event, long lastActionTime);
+    boolean apply(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
      * success {@link Condition}s in the {@link Sequence}.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean succeed(@Nonnull P player, @Nonnull T event, long lastActionTime);
+    boolean succeed(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
      * fail {@link Condition}s in the {@link Sequence}.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
      * @return the result
      */
-    boolean fail(@Nonnull P player, @Nonnull T event, long lastActionTime);
+    boolean fail(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns this actions delay period.

@@ -23,16 +23,17 @@
  */
 package com.ichorpowered.guardian.api.event.sequence;
 
+import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
-public interface SequenceStartEvent<E, F, P> extends GuardianEvent {
+public interface SequenceStartEvent<E, F> extends GuardianEvent {
 
-    Sequence<P> getSequence();
+    Sequence<E, F> getSequence();
 
-    P getPlayer();
+    EntityEntry getEntityEntry();
 
-    Summary<E, F, P> getSummary();
+    Summary<E, F> getSummary();
 
 }

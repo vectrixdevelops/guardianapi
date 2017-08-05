@@ -33,10 +33,8 @@ import javax.annotation.Nullable;
 
 /**
  * Represents a builder to create a {@link Sequence} with.
- *
- * @param <P> the player type
  */
-public interface SequenceBuilder<P> {
+public interface SequenceBuilder {
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -47,7 +45,7 @@ public interface SequenceBuilder<P> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T, P> action(@Nullable Class<T> clazz);
+    <T> ActionBuilder<T> action(@Nullable Class<T> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -58,7 +56,7 @@ public interface SequenceBuilder<P> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T, P> action(@Nullable ActionBlueprint<T, P> blueprint);
+    <T> ActionBuilder<T> action(@Nullable ActionBlueprint<T> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -69,7 +67,7 @@ public interface SequenceBuilder<P> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T, P> action(@Nullable Action<T, P> action);
+    <T> ActionBuilder<T> action(@Nullable Action<T> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
@@ -81,6 +79,6 @@ public interface SequenceBuilder<P> {
      * @return the sequence blueprint
      */
     @Nonnull
-    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F, P> check);
+    <E, F> SequenceBlueprint<E, F> build(Check<E, F> check);
 
 }

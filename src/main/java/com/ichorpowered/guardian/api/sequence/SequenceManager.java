@@ -23,22 +23,25 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.entry.EntityEntry;
+
+import javax.annotation.Nonnull;
+
 /**
  * Represents a way to manage sequences.
  *
- * @param <P> the player type
  * @param <T> the event type
  */
-public interface SequenceManager<P, T> {
+public interface SequenceManager<T> {
 
     /**
      * Invokes a sequence check passing on the
      * player and event.
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param event the event
      */
-    void invoke(P player, T event);
+    void invoke(@Nonnull EntityEntry entry, @Nonnull T event);
 
     /**
      * Cleans up discontinued sequences.
@@ -58,9 +61,9 @@ public interface SequenceManager<P, T> {
      * all the sequences from the player regardless
      * whether the sequences have stopped.</p>
      *
-     * @param player the player
+     * @param entry the entity entry
      * @param force the option to forcefully remove
      */
-    void clean(P player, boolean force);
+    void clean(@Nonnull EntityEntry entry, boolean force);
 
 }

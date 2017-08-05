@@ -24,17 +24,16 @@
 package com.ichorpowered.guardian.api.sequence.action;
 
 import com.ichorpowered.guardian.api.detection.Check;
-import com.ichorpowered.guardian.api.sequence.Condition;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
+import com.ichorpowered.guardian.api.sequence.condition.Condition;
 
 /**
  * Represents a builder to create {@link Action}s with.
  *
  * @param <T> the event type
- * @param <P> the player type
  */
-public interface ActionBuilder<T, P> {
+public interface ActionBuilder<T> {
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -43,7 +42,7 @@ public interface ActionBuilder<T, P> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T, P> condition(Condition<T, P> condition);
+    ActionBuilder<T> condition(Condition<T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -52,7 +51,7 @@ public interface ActionBuilder<T, P> {
      * @param time the delay period
      * @return this builder
      */
-    ActionBuilder<T, P> delay(int time);
+    ActionBuilder<T> delay(int time);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -61,7 +60,7 @@ public interface ActionBuilder<T, P> {
      * @param time the expire period
      * @return this builder
      */
-    ActionBuilder<T, P> expire(int time);
+    ActionBuilder<T> expire(int time);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -70,7 +69,7 @@ public interface ActionBuilder<T, P> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T, P> success(Condition<T, P> condition);
+    ActionBuilder<T> success(Condition<T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -79,7 +78,7 @@ public interface ActionBuilder<T, P> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T, P> failure(Condition<T, P> condition);
+    ActionBuilder<T> failure(Condition<T> condition);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -89,7 +88,7 @@ public interface ActionBuilder<T, P> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K, P> action(Class<K> clazz);
+    <K> ActionBuilder<K> action(Class<K> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -99,7 +98,7 @@ public interface ActionBuilder<T, P> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K, P> action(ActionBlueprint<K, P> blueprint);
+    <K> ActionBuilder<K> action(ActionBlueprint<K> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -109,7 +108,7 @@ public interface ActionBuilder<T, P> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K, P> action(Action<K, P> action);
+    <K> ActionBuilder<K> action(Action<K> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
@@ -120,7 +119,7 @@ public interface ActionBuilder<T, P> {
      * @param <F> the checks detection configuration type
      * @return the sequence blueprint
      */
-    <E, F> SequenceBlueprint<E, F, P> build(Check<E, F, P> check);
+    <E, F> SequenceBlueprint<E, F> build(Check<E, F> check);
 
 
 }
