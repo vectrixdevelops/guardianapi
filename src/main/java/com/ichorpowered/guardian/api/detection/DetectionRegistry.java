@@ -53,11 +53,10 @@ public interface DetectionRegistry extends Iterable<Detection> {
      * @param <F> the detection configuration type
      * @return the detection
      * @throws NoSuchElementException if the detection is not contained in this registry
-     * @throws IllegalArgumentException if the specified arguments are not of the correct type
      */
     @Nonnull
     <E, F> Detection<E, F> expect(@Nonnull Class<? extends Detection<E, F>> key)
-            throws NoSuchElementException, IllegalArgumentException;
+            throws NoSuchElementException;
 
     /**
      * Returns the {@link Detection} that is represented by its key.

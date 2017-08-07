@@ -60,11 +60,10 @@ public interface CaptureRegistry extends Iterable<Capture> {
      * @param <F> the check detection configuration type
      * @return the capture
      * @throws NoSuchElementException if the capture is not contained in this registry
-     * @throws IllegalArgumentException if the specific arguments are not of the correct type
      */
     @Nonnull
     <E, F> Capture<E, F> expect(@Nonnull Class<? extends Capture<E, F>> key)
-        throws NoSuchElementException, IllegalArgumentException;
+        throws NoSuchElementException;
 
     /**
      * Returns the {@link Capture} that is represented by its key.
@@ -89,7 +88,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      *
      * @return a set of capture keys
      */
-    Set<String> keySet();
+    Set<Class<? extends Capture>> keySet();
 
     /**
      * Returns the entity entry that this registry is used by.
