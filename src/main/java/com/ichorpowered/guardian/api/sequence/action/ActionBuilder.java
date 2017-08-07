@@ -27,6 +27,7 @@ import com.ichorpowered.guardian.api.detection.Check;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
 import com.ichorpowered.guardian.api.sequence.condition.Condition;
+import com.ichorpowered.guardian.api.sequence.condition.ConditionSupplier;
 
 /**
  * Represents a builder to create {@link Action}s with.
@@ -42,7 +43,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> condition(Condition<T> condition);
+    ActionBuilder<T> condition(ConditionSupplier<T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -69,7 +70,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> success(Condition<T> condition);
+    ActionBuilder<T> success(ConditionSupplier<T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -78,7 +79,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> failure(Condition<T> condition);
+    ActionBuilder<T> failure(ConditionSupplier<T> condition);
 
     /**
      * Returns a new {@link ActionBuilder} for an
