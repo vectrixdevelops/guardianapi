@@ -26,15 +26,16 @@ package com.ichorpowered.guardian.api.sequence.action;
 import com.ichorpowered.guardian.api.detection.Check;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
-import com.ichorpowered.guardian.api.sequence.condition.Condition;
 import com.ichorpowered.guardian.api.sequence.condition.ConditionSupplier;
 
 /**
  * Represents a builder to create {@link Action}s with.
  *
+ * @param <E> the checks detection owner type
+ * @param <F> the checks detection configuration type
  * @param <T> the event type
  */
-public interface ActionBuilder<T> {
+public interface ActionBuilder<E, F, T> {
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -43,7 +44,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> condition(ConditionSupplier<T> condition);
+    ActionBuilder<E, F, T> condition(ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -52,7 +53,7 @@ public interface ActionBuilder<T> {
      * @param time the delay period
      * @return this builder
      */
-    ActionBuilder<T> delay(int time);
+    ActionBuilder<E, F, T> delay(int time);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -61,7 +62,7 @@ public interface ActionBuilder<T> {
      * @param time the expire period
      * @return this builder
      */
-    ActionBuilder<T> expire(int time);
+    ActionBuilder<E, F, T> expire(int time);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -70,7 +71,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> success(ConditionSupplier<T> condition);
+    ActionBuilder<E, F, T> success(ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -79,7 +80,7 @@ public interface ActionBuilder<T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<T> failure(ConditionSupplier<T> condition);
+    ActionBuilder<E, F, T> failure(ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -89,7 +90,7 @@ public interface ActionBuilder<T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K> action(Class<K> clazz);
+    <K> ActionBuilder<E, F, K> action(Class<K> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -99,7 +100,7 @@ public interface ActionBuilder<T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K> action(ActionBlueprint<K> blueprint);
+    <K> ActionBuilder<E, F, K> action(ActionBlueprint<K> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -109,18 +110,16 @@ public interface ActionBuilder<T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<K> action(Action<K> action);
+    <K> ActionBuilder<E, F, K> action(Action<K> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
      * creating new {@link Sequence}s with.
      *
      * @param check the check
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
      * @return the sequence blueprint
      */
-    <E, F> SequenceBlueprint<E, F> build(Check<E, F> check);
+    SequenceBlueprint<E, F> build(Check<E, F> check);
 
 
 }

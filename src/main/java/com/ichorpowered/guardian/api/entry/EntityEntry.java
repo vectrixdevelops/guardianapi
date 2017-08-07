@@ -51,6 +51,7 @@ public interface EntityEntry {
      * the entity if it is present.
      *
      * @param <E> the entity type
+     * @param typeToken the type token for the entity type
      * @return the entity reference if present
      */
     @Nonnull

@@ -33,8 +33,11 @@ import javax.annotation.Nullable;
 
 /**
  * Represents a builder to create a {@link Sequence} with.
+ *
+ * @param <E> the checks detection owner type
+ * @param <F> the checks detection configuration type
  */
-public interface SequenceBuilder {
+public interface SequenceBuilder<E, F> {
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -45,7 +48,7 @@ public interface SequenceBuilder {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T> action(@Nullable Class<T> clazz);
+    <T> ActionBuilder<E, F, T> action(@Nullable Class<T> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -56,7 +59,7 @@ public interface SequenceBuilder {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T> action(@Nullable ActionBlueprint<T> blueprint);
+    <T> ActionBuilder<E, F, T> action(@Nullable ActionBlueprint<T> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -67,18 +70,16 @@ public interface SequenceBuilder {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<T> action(@Nullable Action<T> action);
+    <T> ActionBuilder<E, F, T> action(@Nullable Action<T> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
      * creating new {@link Sequence}s with.
      *
      * @param check the check
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
      * @return the sequence blueprint
      */
     @Nonnull
-    <E, F> SequenceBlueprint<E, F> build(Check<E, F> check);
+    SequenceBlueprint<E, F> build(Check<E, F> check);
 
 }

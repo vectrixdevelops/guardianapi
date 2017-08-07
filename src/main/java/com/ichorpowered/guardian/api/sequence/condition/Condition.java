@@ -38,9 +38,11 @@ public interface Condition<T> {
      * Returns the interface that allows you
      * to apply the condition operation.
      *
+     * @param <E> the check detections owner type
+     * @param <F> the check detections configuration type
      * @return the condition operation
      */
-    ConditionSupplier<T> get();
+    <E, F> ConditionSupplier<E, F, T> get();
 
     /**
      * Returns the type of condition this has

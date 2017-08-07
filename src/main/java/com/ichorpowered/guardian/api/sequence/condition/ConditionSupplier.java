@@ -32,10 +32,12 @@ import javax.annotation.Nonnull;
  * Supplier of an operation for acquiring
  * the summary over a set of conditions.
  *
+ * @param <E> the check detections owner type
+ * @param <F> the check detections configuration type
  * @param <T> the event type
  */
 @FunctionalInterface
-public interface ConditionSupplier<T> {
+public interface ConditionSupplier<E, F, T> {
 
     /**
      * Returns the result of applying this condition
@@ -45,11 +47,9 @@ public interface ConditionSupplier<T> {
      * @param event the event
      * @param summary the summary
      * @param lastActionTime the last action time
-     * @param <E> the checks detection owner type
-     * @param <F> the checks detection configuration type
      * @return the summary
      */
     @Nonnull
-    <E, F> Summary<E, F> apply(EntityEntry entry, T event, Summary<E, F> summary, long lastActionTime);
+    Summary<E, F> apply(EntityEntry entry, T event, Summary<E, F> summary, long lastActionTime);
 
 }
