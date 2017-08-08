@@ -30,21 +30,21 @@ import com.ichorpowered.guardian.api.sequence.Sequence;
 
 /**
  * The event that is fired when a sequence has
- * been started.
+ * received a sequence result.
  */
-public interface SequenceStartEvent extends GuardianEvent {
+public interface SequenceResultEvent extends GuardianEvent {
 
     /**
      * Returns the entity entry that the
-     * {@link Sequence} was started for.
+     * {@link Sequence} is for.
      *
      * @return the entity entry
      */
     EntityEntry getEntityEntry();
 
     /**
-     * Returns the {@link Sequence} that
-     * was started.
+     * Returns the {@link Sequence} that received
+     * a result.
      *
      * @param <E> the check detections owner type
      * @param <F> the check detections configuration type
@@ -54,12 +54,28 @@ public interface SequenceStartEvent extends GuardianEvent {
 
     /**
      * Returns the {@link Summary} that was
-     * created by the {@link Sequence}.
+     * updated by the {@link Sequence} result.
      *
      * @param <E> the check detections owner type
      * @param <F> the check detections configuration type
      * @return the summary
      */
     <E, F> Summary<E, F> getSummary();
+
+    /**
+     * The event that is fired when a sequence has
+     * received a successful sequence result.
+     */
+    interface Succeed extends SequenceResultEvent {
+
+    }
+
+    /**
+     * The event that is fired when a sequence has
+     * received a failed sequence result.
+     */
+    interface Fail extends SequenceResultEvent {
+
+    }
 
 }

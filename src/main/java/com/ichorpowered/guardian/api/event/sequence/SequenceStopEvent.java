@@ -30,13 +30,13 @@ import com.ichorpowered.guardian.api.sequence.Sequence;
 
 /**
  * The event that is fired when a sequence has
- * been started.
+ * been stopped.
  */
-public interface SequenceStartEvent extends GuardianEvent {
+public interface SequenceStopEvent extends GuardianEvent {
 
     /**
      * Returns the entity entry that the
-     * {@link Sequence} was started for.
+     * {@link Sequence} was stopped for.
      *
      * @return the entity entry
      */
@@ -44,7 +44,7 @@ public interface SequenceStartEvent extends GuardianEvent {
 
     /**
      * Returns the {@link Sequence} that
-     * was started.
+     * was stopped.
      *
      * @param <E> the check detections owner type
      * @param <F> the check detections configuration type
