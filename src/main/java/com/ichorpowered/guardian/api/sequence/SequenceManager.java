@@ -25,6 +25,8 @@ package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
+import java.util.function.Predicate;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -42,6 +44,17 @@ public interface SequenceManager<T> {
      * @param event the event
      */
     void invoke(@Nonnull EntityEntry entry, @Nonnull T event);
+
+    /**
+     * Invokes a sequence check if the predicate
+     * for the provided sequence passes with the
+     * player and event.
+     *
+     * @param entry the entity entry
+     * @param event the event
+     * @param predicate the predicate test
+     */
+    void invokeFor(@Nonnull EntityEntry entry, @Nonnull T event, Predicate<Sequence> predicate);
 
     /**
      * Cleans up discontinued sequences.
