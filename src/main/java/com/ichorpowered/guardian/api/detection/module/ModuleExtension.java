@@ -21,25 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.heuristic;
-
-import javax.annotation.Nonnull;
+package com.ichorpowered.guardian.api.detection.module;
 
 /**
- * Represents an operation used to analyze
- * existing reports and produce its own from
- * to improve the accuracy of the outcome.
+ * Represents an optional template that modules
+ * may use to be provided with enable and disable
+ * methods.
  */
-public interface Heuristic {
+public interface ModuleExtension {
 
     /**
-     * Returns the function to apply in
-     * order to acquire a report on heuristic
-     * evidence.
-     *
-     * @return the heuristic function
+     * The method that is invoked after the {@link ModuleRegistry}
+     * initializes it.
      */
-    @Nonnull
-    HeuristicSupplier getSupplier();
+    void onConstruction();
+
+    /**
+     * The method that is invoked before the {@link ModuleRegistry}
+     * unloads it.
+     */
+    void onDeconstruction();
 
 }

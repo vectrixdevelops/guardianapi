@@ -23,7 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
-import com.ichorpowered.guardian.api.detection.Check;
+import com.ichorpowered.guardian.api.detection.check.Check;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
 import javax.annotation.Nonnull;

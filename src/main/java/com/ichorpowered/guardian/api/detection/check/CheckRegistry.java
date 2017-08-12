@@ -21,53 +21,66 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.heuristic;
+package com.ichorpowered.guardian.api.detection.check;
 
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
- * Represents a registry for heuristics.
+ * Represents a registry for checks.
  */
-public interface HeuristicRegistry extends Iterable<Heuristic> {
+public interface CheckRegistry {
 
     /**
-     * Inserts the {@link Heuristic} into this registry.
+     * Inserts the {@link Check} into this registry.
      *
-     * @param pluginContainer the plugin that registered the heuristic
-     * @param key the heuristic class
-     * @param heuristic the heuristic
+     * @param pluginContainer the plugin that registered the check
+     * @param key the check class
+     * @param check the check
      * @param <C> the plugin container type
      */
-    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Heuristic> key,
-             @Nonnull Heuristic heuristic);
+    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Check> key,
+                 @Nonnull Check check);
 
     /**
-     * Returns the {@link Heuristic} that is represented by its key.
+     * Returns the {@link Check} that is represented by its key.
      *
-     * @param key the heuristic key
-     * @return the heuristic, or {@code null} if the heuristic is not contained in this registry
+     * @param key the check key
+     * @param <E> the check detections owner type
+     * @param <F> the check detections configuration type
+     * @return the check
+     * @throws NoSuchElementException if the check is not contained in this registry
      */
-    @Nullable
-    Heuristic get(@Nonnull Class<? extends Heuristic> key);
+    @Nonnull
+    <E, F> Check<E, F> expect(@Nonnull Class<? extends Check<E, F>> key) throws NoSuchElementException;
 
     /**
-     * Returns the key that represents its {@link Heuristic}.
+     * Returns the {@link Check} that is represented by its key.
      *
-     * @param heuristic the heuristic
-     * @return the heuristic key, or {@code null} if the heuristic is not contained in this registry
+     * @param key the check key
+     * @return the check, or {@code null} if the check is not contained inside this registry
      */
     @Nullable
-    Class<? extends Heuristic> key(@Nonnull Heuristic heuristic);
+    Check get(@Nonnull Class<? extends Check> key);
+
+    /**
+     * Returns the key that represents its {@link Check}.
+     *
+     * @param check the check
+     * @return the check key, or {@code null} if the check is not contained inside this registry
+     */
+    @Nullable
+    Class<? extends Check> key(@Nonnull Check check);
 
     /**
      * Returns a set of keys that are contained inside this registry.
      *
-     * @return a set of heuristic keys
+     * @return a set of check keys
      */
     @Nonnull
-    Set<Class<? extends Heuristic>> keySet();
+    Set<Class<? extends Check>> keySet();
 
 }

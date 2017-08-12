@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.module;
+package com.ichorpowered.guardian.api.detection.module;
 
 import java.util.Optional;
 import java.util.Set;

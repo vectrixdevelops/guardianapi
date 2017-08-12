@@ -21,35 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.heuristic;
-
-import com.ichorpowered.guardian.api.detection.Detection;
-import com.ichorpowered.guardian.api.entry.EntityEntry;
-import com.ichorpowered.guardian.api.report.Report;
-import com.ichorpowered.guardian.api.report.Summary;
+package com.ichorpowered.guardian.api.detection.heuristic;
 
 import javax.annotation.Nonnull;
 
 /**
- * Supplier for registered heuristics in running and acquiring
- * the result.
+ * Represents an operation used to analyze
+ * existing reports and produce its own from
+ * to improve the accuracy of the outcome.
  */
-@FunctionalInterface
-public interface HeuristicSupplier {
+public interface Heuristic {
 
     /**
-     * Applies a plugin container, {@link Detection} and {@link Summary}
-     * to this operation to add a {@link Report} to the existing {@link Summary}
-     * to improve accuracy of the final evaluation.
+     * Returns the function to apply in
+     * order to acquire a report on heuristic
+     * evidence.
      *
-     * @param entry the entity entry
-     * @param detection the detection
-     * @param summary the summary
-     * @param <E> the detection owner type
-     * @param <F> the detection configuration type
-     * @return the updated summary
+     * @return the heuristic function
      */
     @Nonnull
-    <E, F> Summary<E, F> apply(EntityEntry entry, Detection<E, F> detection, Summary<E, F> summary);
+    HeuristicSupplier getSupplier();
 
 }

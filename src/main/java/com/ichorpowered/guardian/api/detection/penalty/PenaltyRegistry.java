@@ -21,25 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.module;
+package com.ichorpowered.guardian.api.detection.penalty;
 
-/**
- * Represents an optional template that modules
- * may use to be provided with enable and disable
- * methods.
- */
-public interface ModuleExtension {
-
-    /**
-     * The method that is invoked after the {@link ModuleRegistry}
-     * initializes it.
-     */
-    void onConstruction();
-
-    /**
-     * The method that is invoked before the {@link ModuleRegistry}
-     * unloads it.
-     */
-    void onDeconstruction();
-
+public interface PenaltyRegistry {
 }

@@ -23,7 +23,8 @@
  */
 package com.ichorpowered.guardian.api.detection;
 
-import com.ichorpowered.guardian.api.heuristic.Heuristic;
+import com.ichorpowered.guardian.api.detection.check.Check;
+import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
 
 import java.util.Set;
 
