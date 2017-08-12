@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
+import com.ichorpowered.guardian.api.util.IdentifierKey;
+
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -48,6 +50,15 @@ public interface CaptureContainer {
     <T> void put(@Nonnull String key, @Nullable T value);
 
     /**
+     * Inserts the {@link Capture} into this registry.
+     *
+     * @param key the capture key
+     * @param value the capture value
+     * @param <T> the capture value type
+     */
+    <T> void put(@Nonnull IdentifierKey<String> key, @Nonnull T value);
+
+    /**
      * Returns the {@link Capture} that is represented by its key.
      *
      * @param key the capture key
@@ -56,6 +67,16 @@ public interface CaptureContainer {
      */
     @Nullable
     <T> T get(@Nonnull String key);
+
+    /**
+     * Returns the {@link Capture} that is represented by its {@link IdentifierKey}.
+     *
+     * @param key the capture key
+     * @param <T> the capture value type
+     * @return the capture value, or {@code null} if the capture is not contained in this registry
+     */
+    @Nullable
+    <T> T get(@Nonnull IdentifierKey<String> key);
 
     /**
      * Returns the key that represents its {@link Capture}.
