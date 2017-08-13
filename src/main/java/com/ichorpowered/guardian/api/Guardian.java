@@ -24,12 +24,14 @@
 package com.ichorpowered.guardian.api;
 
 import com.ichorpowered.guardian.api.detection.DetectionRegistry;
+import com.ichorpowered.guardian.api.detection.check.CheckRegistry;
 import com.ichorpowered.guardian.api.detection.heuristic.HeuristicRegistry;
 import com.ichorpowered.guardian.api.detection.module.ModuleRegistry;
 import com.ichorpowered.guardian.api.detection.penalty.PenaltyRegistry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.event.GuardianListener;
 import com.ichorpowered.guardian.api.sequence.SequenceManager;
+import com.ichorpowered.guardian.api.sequence.SequenceRegistry;
 import net.kyori.event.SimpleEventBus;
 
 /**
@@ -48,11 +50,25 @@ public interface Guardian<T> extends GuardianBasic {
     SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
 
     /**
+     * Returns the module registry.
+     *
+     * @return the module registry
+     */
+    ModuleRegistry getModuleRegistry();
+
+    /**
      * Returns the detection registry.
      *
      * @return the detection registry
      */
     DetectionRegistry getDetectionRegistry();
+
+    /**
+     * Returns the check registry.
+     *
+     * @return the check registry
+     */
+    CheckRegistry getCheckRegistry();
 
     /**
      * Returns the heuristic registry.
@@ -62,18 +78,18 @@ public interface Guardian<T> extends GuardianBasic {
     HeuristicRegistry getHeuristicRegistry();
 
     /**
-     * Returns the module registry.
-     *
-     * @return the module registry
-     */
-    ModuleRegistry getModuleRegistry();
-
-    /**
      * Returns the penalty registry.
      *
      * @return the penalty registry
      */
     PenaltyRegistry getPenaltyRegistry();
+
+    /**
+     * Returns the sequence registry.
+     *
+     * @return the sequence registry
+     */
+    SequenceRegistry getSequenceRegistry();
 
     /**
      * Returns the sequence manager.

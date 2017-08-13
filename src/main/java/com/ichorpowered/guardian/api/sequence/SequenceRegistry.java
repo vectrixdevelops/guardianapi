@@ -31,7 +31,7 @@ import javax.annotation.Nonnull;
 /**
  * Represents a registry for sequences.
  */
-public interface SequenceRegistry {
+public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
 
     /**
      * Inserts the {@link SequenceBlueprint} into this registry.
@@ -59,7 +59,7 @@ public interface SequenceRegistry {
      * Returns the {@link SequenceBlueprint} that is represented by its key.
      *
      * @param key the blueprint key
-     * @return the blueprint, or {@code null} if the blueprint is not contained inside this registry
+     * @return the blueprint, or {@code null} if the blueprint is not contained in this registry
      */
     SequenceBlueprint get(@Nonnull Class<? extends SequenceBlueprint> key);
 
@@ -67,7 +67,7 @@ public interface SequenceRegistry {
      * Returns the key that represents its {@link SequenceBlueprint}.
      *
      * @param sequenceBlueprint the blueprint
-     * @return the blueprint key, or {@code null} if they check is not contained inside this registry
+     * @return the blueprint key, or {@code null} if they check is not contained in this registry
      */
     Class<? extends SequenceBlueprint> key(@Nonnull SequenceBlueprint sequenceBlueprint);
 

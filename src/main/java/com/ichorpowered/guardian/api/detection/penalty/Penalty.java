@@ -21,27 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection.heuristic;
+package com.ichorpowered.guardian.api.detection.penalty;
 
 import javax.annotation.Nonnull;
 
 /**
- * Represents an operation used to analyze
- * existing reports and produce its own from
- * to improve the accuracy of the outcome.
+ * Represents an operation that can be used
+ * at the end of a detection chain to invoke
+ * a penalty on a player that has violated
+ * a detection check.
  */
-public interface Heuristic {
+public interface Penalty {
 
     /**
-     * Returns the function to apply in
-     * order to acquire a report on heuristic
-     * evidence.
+     * Returns the function to test in
+     * order to invoke the correct punishment
+     * on a player who has violated a detection
+     * check.
      *
      * @param <E> the detection owner type
      * @param <F> the detection configuration type
-     * @return the heuristic function
+     * @return the penalty predicate
      */
     @Nonnull
-    <E, F> HeuristicSupplier<E, F> getSupplier();
+    <E, F> PenaltyPredicate<E, F> getPredicate();
 
 }

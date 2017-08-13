@@ -21,36 +21,59 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection.heuristic;
+package com.ichorpowered.guardian.api.event.detection;
 
-import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionChain;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
-import com.ichorpowered.guardian.api.report.Report;
+import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
 
-import javax.annotation.Nonnull;
-
 /**
- * Supplier for registered heuristics in running and acquiring
- * the result.
- *
- * @param <E> the detection owner type
- * @param <F> the detection configuration type
+ * The event that is fired when a detection chain
+ * has started, changed a phase, or finished.
  */
-@FunctionalInterface
-public interface HeuristicSupplier<E, F> {
+public interface DetectionChainEvent extends GuardianEvent {
 
     /**
-     * Applies a plugin container, {@link Detection} and {@link Summary}
-     * to this operation to add a {@link Report} to the existing {@link Summary}
-     * to improve accuracy of the final evaluation.
+     * Returns the entity entry that the
+     * {@link DetectionChain} is running for.
      *
-     * @param entry the entity entry
-     * @param detection the detection
-     * @param summary the summary
-     * @return the updated summary
+     * @return the entity entry
      */
-    @Nonnull
-    Summary<E, F> apply(EntityEntry entry, Detection<E, F> detection, Summary<E, F> summary);
+    EntityEntry getEntityEntry();
+
+    /**
+     * Returns the {@link Summary} that was
+     * updated during the {@link DetectionChain}.
+     *
+     * @param <E> the check detections owner type
+     * @param <F> the check detections configuration type
+     * @return the summary
+     */
+    <E, F> Summary<E, F> getSummary();
+
+    /**
+     * The event that is fired when a detection chain
+     * has started.
+     */
+    interface Start extends DetectionChainEvent {
+
+    }
+
+    /**
+     * The event that is fired when a detection chain
+     * has changed its phase.
+     */
+    interface PhaseChange extends DetectionChainEvent {
+
+    }
+
+    /**
+     * The event that is fired when a detection chain
+     * has ended.
+     */
+    interface End extends DetectionChainEvent {
+
+    }
 
 }

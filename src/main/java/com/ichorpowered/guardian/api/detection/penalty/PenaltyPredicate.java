@@ -21,27 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection.heuristic;
+package com.ichorpowered.guardian.api.detection.penalty;
 
-import javax.annotation.Nonnull;
+import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.entry.EntityEntry;
+import com.ichorpowered.guardian.api.report.Report;
+import com.ichorpowered.guardian.api.report.Summary;
 
 /**
- * Represents an operation used to analyze
- * existing reports and produce its own from
- * to improve the accuracy of the outcome.
+ * Predicate for registered penalties in testing the
+ * invocation of a punishment against a player that
+ * has violated a detection check.
+ *
+ * @param <E> the detection owner type
+ * @param <F> the detection configuration type
  */
-public interface Heuristic {
+@FunctionalInterface
+public interface PenaltyPredicate<E, F> {
 
     /**
-     * Returns the function to apply in
-     * order to acquire a report on heuristic
-     * evidence.
+     * Tests a plugin container, {@link Detection} and {@link Summary}
+     * to this operation to punish the {@link EntityEntry} by the evidence
+     * provided by the {@link Summary}s {@link Report}s.
      *
-     * @param <E> the detection owner type
-     * @param <F> the detection configuration type
-     * @return the heuristic function
+     * @param entry the entity entry
+     * @param detection the detection
+     * @param summary the summary
+     * @return {@code true} if the punishment was successfully executed, {@code false} if it was not
      */
-    @Nonnull
-    <E, F> HeuristicSupplier<E, F> getSupplier();
+    boolean test(EntityEntry entry, Detection<E, F> detection, Summary<E, F> summary);
 
 }

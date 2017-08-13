@@ -32,7 +32,7 @@ import javax.annotation.Nullable;
 /**
  * Represents a registry for checks.
  */
-public interface CheckRegistry {
+public interface CheckRegistry extends Iterable<Check> {
 
     /**
      * Inserts the {@link Check} into this registry.
