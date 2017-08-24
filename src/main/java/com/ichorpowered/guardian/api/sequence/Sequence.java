@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
@@ -34,7 +35,7 @@ import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
  * @param <E> the check detections owner type
  * @param <F> the check detections configuration type
  */
-public interface Sequence<E, F> {
+public interface Sequence<E, F extends DetectionConfiguration> {
 
     /**
      * Returns the result of applying the

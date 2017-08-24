@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.sequence.capture;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
 /**
@@ -35,7 +36,7 @@ import com.ichorpowered.guardian.api.entry.EntityEntry;
  * @param <E> the check detections owner type
  * @param <F> the check detections configuration type
  */
-public interface Capture<E, F> {
+public interface Capture<E, F extends DetectionConfiguration> {
 
     /**
      * Represents a method of starting the data

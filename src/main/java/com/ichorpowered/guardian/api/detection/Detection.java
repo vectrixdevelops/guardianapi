@@ -33,7 +33,7 @@ import javax.annotation.Nonnull;
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
  */
-public interface Detection<E, F> {
+public interface Detection<E, F extends DetectionConfiguration> {
 
     /**
      * Returns the plugin that owns this detection.

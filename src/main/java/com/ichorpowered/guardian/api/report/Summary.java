@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.report;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.origin.Origin;
 
@@ -39,7 +40,7 @@ import javax.annotation.Nullable;
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
  */
-public interface Summary<E, F> extends Iterable<Report> {
+public interface Summary<E, F extends DetectionConfiguration> extends Iterable<Report> {
 
     /**
      * Returns the plugin that owns the detection

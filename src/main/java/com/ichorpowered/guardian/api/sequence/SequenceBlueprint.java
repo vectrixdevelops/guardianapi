@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.detection.check.Check;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
@@ -35,7 +36,7 @@ import javax.annotation.Nonnull;
  * @param <E> the check detections owner type
  * @param <F> the check detections configuration type
  */
-public interface SequenceBlueprint<E, F> {
+public interface SequenceBlueprint<E, F extends DetectionConfiguration> {
 
     /**
      * Creates a new {@link Sequence} and passes in the player.

@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.detection.check;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -55,7 +57,7 @@ public interface CheckRegistry extends Iterable<Check> {
      * @throws NoSuchElementException if the check is not contained in this registry
      */
     @Nonnull
-    <E, F> Check<E, F> expect(@Nonnull Class<? extends Check<E, F>> key) throws NoSuchElementException;
+    <E, F extends DetectionConfiguration> Check<E, F> expect(@Nonnull Class<? extends Check<E, F>> key) throws NoSuchElementException;
 
     /**
      * Returns the {@link Check} that is represented by its key.

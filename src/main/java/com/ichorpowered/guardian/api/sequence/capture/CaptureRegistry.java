@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
 import java.util.NoSuchElementException;
@@ -62,7 +63,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      * @throws NoSuchElementException if the capture is not contained in this registry
      */
     @Nonnull
-    <E, F> Capture<E, F> expect(@Nonnull Class<? extends Capture<E, F>> key)
+    <E, F extends DetectionConfiguration> Capture<E, F> expect(@Nonnull Class<? extends Capture<E, F>> key)
         throws NoSuchElementException;
 
     /**

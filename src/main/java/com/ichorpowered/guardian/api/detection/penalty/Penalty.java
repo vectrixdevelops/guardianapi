@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.detection.penalty;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -44,6 +46,6 @@ public interface Penalty {
      * @return the penalty predicate
      */
     @Nonnull
-    <E, F> PenaltyPredicate<E, F> getPredicate();
+    <E, F extends DetectionConfiguration> PenaltyPredicate<E, F> getPredicate();
 
 }

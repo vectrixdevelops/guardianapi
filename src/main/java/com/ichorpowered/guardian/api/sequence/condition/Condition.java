@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.condition;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
 /**
@@ -42,7 +43,7 @@ public interface Condition<T> {
      * @param <F> the check detections configuration type
      * @return the condition operation
      */
-    <E, F> ConditionSupplier<E, F, T> get();
+    <E, F extends DetectionConfiguration> ConditionSupplier<E, F, T> get();
 
     /**
      * Returns the type of condition this has

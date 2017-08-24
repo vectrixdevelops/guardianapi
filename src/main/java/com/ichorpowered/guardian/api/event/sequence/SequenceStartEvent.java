@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.event.sequence;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
@@ -50,7 +51,7 @@ public interface SequenceStartEvent extends GuardianEvent {
      * @param <F> the check detections configuration type
      * @return the sequence
      */
-    <E, F> Sequence<E, F> getSequence();
+    <E, F extends DetectionConfiguration> Sequence<E, F> getSequence();
 
     /**
      * Returns the {@link Summary} that was
@@ -60,6 +61,6 @@ public interface SequenceStartEvent extends GuardianEvent {
      * @param <F> the check detections configuration type
      * @return the summary
      */
-    <E, F> Summary<E, F> getSummary();
+    <E, F extends DetectionConfiguration> Summary<E, F> getSummary();
 
 }

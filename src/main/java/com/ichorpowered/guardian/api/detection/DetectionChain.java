@@ -35,7 +35,7 @@ import java.util.Set;
  * @param <E> the detection owner type
  * @param <F> the detection configuration type
  */
-public interface DetectionChain<E, F> {
+public interface DetectionChain<E, F extends DetectionConfiguration> {
 
     /**
      * Returns a set of keys that represents a {@link Check}
@@ -53,7 +53,7 @@ public interface DetectionChain<E, F> {
      */
     Set<Class<? extends Heuristic>> heuristicKeys();
 
-    interface Builder<E, F> {
+    interface Builder<E, F extends DetectionConfiguration> {
 
         /**
          * Inserts a {@link Check} key into the chain to be

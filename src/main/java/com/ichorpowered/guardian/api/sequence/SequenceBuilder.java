@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.detection.check.Check;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.action.ActionBlueprint;
@@ -37,7 +38,7 @@ import javax.annotation.Nullable;
  * @param <E> the checks detection owner type
  * @param <F> the checks detection configuration type
  */
-public interface SequenceBuilder<E, F> {
+public interface SequenceBuilder<E, F extends DetectionConfiguration> {
 
     /**
      * Returns a new {@link ActionBuilder} for an

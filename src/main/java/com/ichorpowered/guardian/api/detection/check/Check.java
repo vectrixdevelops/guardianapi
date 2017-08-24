@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.detection.check;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
 import com.ichorpowered.guardian.api.sequence.action.Action;
@@ -40,7 +41,7 @@ import javax.annotation.Nullable;
  * @param <E> the check owner type
  * @param <F> the check owner configuration type
  */
-public interface Check<E, F> {
+public interface Check<E, F extends DetectionConfiguration> {
 
     /**
      * Returns the plugin that owns the detection

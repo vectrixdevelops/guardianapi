@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.detection.heuristic;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+
 import javax.annotation.Nonnull;
 
 /**
@@ -42,6 +44,6 @@ public interface Heuristic {
      * @return the heuristic function
      */
     @Nonnull
-    <E, F> HeuristicSupplier<E, F> getSupplier();
+    <E, F extends DetectionConfiguration> HeuristicSupplier<E, F> getSupplier();
 
 }

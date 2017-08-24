@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.condition;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.report.Summary;
 
@@ -37,7 +38,7 @@ import javax.annotation.Nonnull;
  * @param <T> the event type
  */
 @FunctionalInterface
-public interface ConditionSupplier<E, F, T> {
+public interface ConditionSupplier<E, F extends DetectionConfiguration, T> {
 
     /**
      * Returns the result of applying this condition

@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.action;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.detection.check.Check;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
@@ -35,7 +36,7 @@ import com.ichorpowered.guardian.api.sequence.condition.ConditionSupplier;
  * @param <F> the checks detection configuration type
  * @param <T> the event type
  */
-public interface ActionBuilder<E, F, T> {
+public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
 
     /**
      * Returns this {@link ActionBuilder} and adds the

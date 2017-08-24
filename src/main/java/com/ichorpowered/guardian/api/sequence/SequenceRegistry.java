@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -53,7 +55,7 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * @return the blueprint
      * @throws NoSuchElementException if the blueprint is not contained in this registry
      */
-    <E, F> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends SequenceBlueprint> key) throws NoSuchElementException;
+    <E, F extends DetectionConfiguration> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends SequenceBlueprint> key) throws NoSuchElementException;
 
     /**
      * Returns the {@link SequenceBlueprint} that is represented by its key.

@@ -55,7 +55,7 @@ public interface DetectionRegistry extends Iterable<Detection> {
      * @throws NoSuchElementException if the detection is not contained in this registry
      */
     @Nonnull
-    <E, F> Detection<E, F> expect(@Nonnull Class<? extends Detection<E, F>> key)
+    <E, F extends DetectionConfiguration> Detection<E, F> expect(@Nonnull Class<? extends Detection<E, F>> key)
             throws NoSuchElementException;
 
     /**

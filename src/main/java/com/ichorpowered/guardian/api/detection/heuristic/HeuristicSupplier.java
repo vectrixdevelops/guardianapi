@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.detection.heuristic;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.report.Report;
 import com.ichorpowered.guardian.api.report.Summary;
@@ -38,7 +39,7 @@ import javax.annotation.Nonnull;
  * @param <F> the detection configuration type
  */
 @FunctionalInterface
-public interface HeuristicSupplier<E, F> {
+public interface HeuristicSupplier<E, F extends DetectionConfiguration> {
 
     /**
      * Applies a plugin container, {@link Detection} and {@link Summary}

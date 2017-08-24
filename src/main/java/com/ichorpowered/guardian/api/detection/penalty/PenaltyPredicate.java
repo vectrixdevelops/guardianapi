@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.detection.penalty;
 
 import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.report.Report;
 import com.ichorpowered.guardian.api.report.Summary;
@@ -37,7 +38,7 @@ import com.ichorpowered.guardian.api.report.Summary;
  * @param <F> the detection configuration type
  */
 @FunctionalInterface
-public interface PenaltyPredicate<E, F> {
+public interface PenaltyPredicate<E, F extends DetectionConfiguration> {
 
     /**
      * Tests a plugin container, {@link Detection} and {@link Summary}
