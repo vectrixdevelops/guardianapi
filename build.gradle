@@ -34,6 +34,8 @@ repositories {
 
 dependencies {
     compile 'net.kyori:event:1.0.0-SNAPSHOT'
+    compile 'tech.ferus.util:ConfigKeys:3.0.0'
+    compile 'tech.ferus.util:basicsql-core:2.0.1'
 }
 
 tasks.withType(JavaCompile) {
