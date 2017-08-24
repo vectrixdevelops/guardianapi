@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.sequence.capture;
 
 import com.ichorpowered.guardian.api.util.IdentifierKey;
+import com.ichorpowered.guardian.api.util.Transform;
 
 import java.util.Set;
 
@@ -57,6 +58,28 @@ public interface CaptureContainer {
      * @param <T> the capture value type
      */
     <T> void put(@Nonnull IdentifierKey<String> key, @Nonnull T value);
+
+    /**
+     * Transforms the {@link Capture} in this registry.
+     *
+     * <p>The capture key must be a unique key and is
+     * recommended to use the class name and a custom
+     * name.</p>
+     *
+     * @param key the capture key
+     * @param transform the capture transformer
+     * @param <T> the capture value type
+     */
+    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform);
+
+    /**
+     * Transforms the {@link Capture} in this registry.
+     *
+     * @param key the capture key
+     * @param transform the capture transformer
+     * @param <T> the capture value
+     */
+    <T> void tranform(@Nonnull IdentifierKey<String> key, @Nonnull Transform<T> transform);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
