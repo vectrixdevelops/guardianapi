@@ -79,7 +79,7 @@ public interface CaptureContainer {
      * @param transform the capture transformer
      * @param <T> the capture value
      */
-    <T> void tranform(@Nonnull IdentifierKey<String> key, @Nonnull Transform<T> transform);
+    <T> void transform(@Nonnull IdentifierKey<String> key, @Nonnull Transform<T> transform);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
