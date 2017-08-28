@@ -26,6 +26,7 @@ package com.ichorpowered.guardian.api.sequence.condition;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.report.Summary;
+import com.ichorpowered.guardian.api.sequence.capture.CaptureContainer;
 
 import javax.annotation.Nonnull;
 
@@ -46,11 +47,12 @@ public interface ConditionSupplier<E, F extends DetectionConfiguration, T> {
      *
      * @param entry the entity entry
      * @param event the event
+     * @param captureContainer the capture container
      * @param summary the summary
      * @param lastActionTime the last action time
      * @return the summary
      */
     @Nonnull
-    Summary<E, F> apply(EntityEntry entry, T event, Summary<E, F> summary, long lastActionTime);
+    Summary<E, F> apply(EntityEntry entry, T event, CaptureContainer captureContainer, Summary<E, F> summary, long lastActionTime);
 
 }
