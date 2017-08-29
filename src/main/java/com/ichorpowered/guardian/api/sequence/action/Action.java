@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.action;
 
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.condition.Condition;
@@ -63,34 +64,43 @@ public interface Action<T> {
      * Returns the result of applying this action
      * in the {@link Sequence}.
      *
+     * @param sequence the sequence
      * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
+     * @param <E> the check owner type
+     * @param <F> the check owner configuration type
      * @return the result
      */
-    boolean apply(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean apply(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
      * success {@link Condition}s in the {@link Sequence}.
      *
+     * @param sequence the sequence
      * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
+     * @param <E> the check owner type
+     * @param <F> the check owner configuration type
      * @return the result
      */
-    boolean succeed(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean succeed(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
      * fail {@link Condition}s in the {@link Sequence}.
      *
+     * @param sequence the sequence
      * @param entry the entity entry
      * @param event the event
      * @param lastActionTime the last action time
+     * @param <E> the check owner type
+     * @param <F> the check owner configuration type
      * @return the result
      */
-    boolean fail(@Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean fail(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
 
     /**
      * Returns this actions delay period.

@@ -25,6 +25,7 @@ package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
+import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
 
@@ -47,6 +48,13 @@ public interface Sequence<E, F extends DetectionConfiguration> {
      * @return the result
      */
     <T> boolean apply(EntityEntry entry, T event);
+
+    /**
+     * Returns the {@link Summary} for this sequence.
+     *
+     * @return the summary
+     */
+    Summary<E, F> getSummary();
 
     /**
      * Returns the {@link CaptureRegistry} for this sequence.
