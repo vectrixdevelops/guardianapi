@@ -44,7 +44,7 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
 
     /**
      * Adds captures to the {@link CaptureRegistry} to be
-     * included on new {@link Sequence}s created.
+     * included when a new {@link Sequence} is created.
      *
      * @param captures the captures
      * @return the sequence builder

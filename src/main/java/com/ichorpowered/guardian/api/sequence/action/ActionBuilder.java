@@ -117,10 +117,12 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * Returns a new {@link SequenceBlueprint} for
      * creating new {@link Sequence}s with.
      *
+     * @param pluginContainer the plugin container
      * @param check the check
+     * @param <C> the plugin container type
      * @return the sequence blueprint
      */
-    SequenceBlueprint<E, F> build(Check<E, F> check);
+    <C> SequenceBlueprint<E, F> build(C pluginContainer, Check<E, F> check);
 
 
 }
