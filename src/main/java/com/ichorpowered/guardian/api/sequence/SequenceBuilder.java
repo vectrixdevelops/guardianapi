@@ -28,6 +28,8 @@ import com.ichorpowered.guardian.api.detection.check.Check;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.action.ActionBlueprint;
 import com.ichorpowered.guardian.api.sequence.action.ActionBuilder;
+import com.ichorpowered.guardian.api.sequence.capture.Capture;
+import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -39,6 +41,15 @@ import javax.annotation.Nullable;
  * @param <F> the checks detection configuration type
  */
 public interface SequenceBuilder<E, F extends DetectionConfiguration> {
+
+    /**
+     * Adds captures to the {@link CaptureRegistry} to be
+     * included on new {@link Sequence}s created.
+     *
+     * @param captures the captures
+     * @return the sequence builder
+     */
+    SequenceBuilder<E, F> capture(Capture<E, F>... captures);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -77,10 +88,12 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
      * Returns a new {@link SequenceBlueprint} for
      * creating new {@link Sequence}s with.
      *
+     * @param pluginContainer the plugin container
      * @param check the check
+     * @param <C> the plugin container type
      * @return the sequence blueprint
      */
     @Nonnull
-    SequenceBlueprint<E, F> build(Check<E, F> check);
+    <C> SequenceBlueprint<E, F> build(C pluginContainer, Check<E, F> check);
 
 }
