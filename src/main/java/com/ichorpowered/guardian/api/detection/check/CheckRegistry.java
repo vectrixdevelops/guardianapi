@@ -34,55 +34,55 @@ import javax.annotation.Nullable;
 /**
  * Represents a registry for checks.
  */
-public interface CheckRegistry extends Iterable<Check> {
+public interface CheckRegistry extends Iterable<CheckBlueprint> {
 
     /**
-     * Inserts the {@link Check} into this registry.
+     * Inserts the {@link CheckBlueprint} into this registry.
      *
      * @param pluginContainer the plugin that registered the check
-     * @param key the check class
-     * @param check the check
+     * @param key the check blueprint class
+     * @param checkBlueprint the check blueprint
      * @param <C> the plugin container type
      */
     <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Check> key,
-                 @Nonnull Check check);
+                 @Nonnull CheckBlueprint checkBlueprint);
 
     /**
-     * Returns the {@link Check} that is represented by its key.
+     * Returns the {@link CheckBlueprint} that is represented by its key.
      *
-     * @param key the check key
-     * @param <E> the check detections owner type
-     * @param <F> the check detections configuration type
-     * @return the check
+     * @param key the check blueprint key
+     * @param <E> the check blueprint detections owner type
+     * @param <F> the check blueprint detections configuration type
+     * @return the check blueprint
      * @throws NoSuchElementException if the check is not contained in this registry
      */
     @Nonnull
-    <E, F extends DetectionConfiguration> Check<E, F> expect(@Nonnull Class<? extends Check<E, F>> key) throws NoSuchElementException;
+    <E, F extends DetectionConfiguration> Check<E, F> expect(@Nonnull Class<? extends CheckBlueprint<E, F>> key) throws NoSuchElementException;
 
     /**
-     * Returns the {@link Check} that is represented by its key.
+     * Returns the {@link CheckBlueprint} that is represented by its key.
      *
      * @param key the check key
      * @return the check, or {@code null} if the check is not contained inside this registry
      */
     @Nullable
-    Check get(@Nonnull Class<? extends Check> key);
+    Check get(@Nonnull Class<? extends CheckBlueprint> key);
 
     /**
-     * Returns the key that represents its {@link Check}.
+     * Returns the key that represents its {@link CheckBlueprint}.
      *
-     * @param check the check
+     * @param check the check blueprint
      * @return the check key, or {@code null} if the check is not contained inside this registry
      */
     @Nullable
-    Class<? extends Check> key(@Nonnull Check check);
+    Class<? extends CheckBlueprint> key(@Nonnull CheckBlueprint check);
 
     /**
      * Returns a set of keys that are contained inside this registry.
      *
-     * @return a set of check keys
+     * @return a set of check blueprint keys
      */
     @Nonnull
-    Set<Class<? extends Check>> keySet();
+    Set<Class<? extends CheckBlueprint>> keySet();
 
 }

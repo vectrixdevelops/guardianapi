@@ -72,7 +72,8 @@ public interface Action<T> {
      * @param <F> the check owner configuration type
      * @return the result
      */
-    <E, F extends DetectionConfiguration> boolean apply(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean apply(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry,
+                                                        @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
@@ -86,7 +87,8 @@ public interface Action<T> {
      * @param <F> the check owner configuration type
      * @return the result
      */
-    <E, F extends DetectionConfiguration> boolean succeed(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean succeed(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry,
+                                                          @Nonnull T event, long lastActionTime);
 
     /**
      * Returns the result of applying this actions
@@ -100,7 +102,8 @@ public interface Action<T> {
      * @param <F> the check owner configuration type
      * @return the result
      */
-    <E, F extends DetectionConfiguration> boolean fail(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry, @Nonnull T event, long lastActionTime);
+    <E, F extends DetectionConfiguration> boolean fail(@Nonnull Sequence<E, F> sequence, @Nonnull EntityEntry entry,
+                                                       @Nonnull T event, long lastActionTime);
 
     /**
      * Returns this actions delay period.

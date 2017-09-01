@@ -29,6 +29,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Represents a registry for sequences.
@@ -55,7 +56,9 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * @return the blueprint
      * @throws NoSuchElementException if the blueprint is not contained in this registry
      */
-    <E, F extends DetectionConfiguration> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends SequenceBlueprint> key) throws NoSuchElementException;
+    @Nonnull
+    <E, F extends DetectionConfiguration> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends SequenceBlueprint> key)
+            throws NoSuchElementException;
 
     /**
      * Returns the {@link SequenceBlueprint} that is represented by its key.
@@ -63,6 +66,7 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * @param key the blueprint key
      * @return the blueprint, or {@code null} if the blueprint is not contained in this registry
      */
+    @Nullable
     SequenceBlueprint get(@Nonnull Class<? extends SequenceBlueprint> key);
 
     /**
@@ -71,6 +75,7 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * @param sequenceBlueprint the blueprint
      * @return the blueprint key, or {@code null} if they check is not contained in this registry
      */
+    @Nullable
     Class<? extends SequenceBlueprint> key(@Nonnull SequenceBlueprint sequenceBlueprint);
 
     /**
@@ -78,6 +83,7 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      *
      * @return a set of blueprint keys
      */
+    @Nonnull
     Set<Class<? extends SequenceBlueprint>> keySet();
 
 }

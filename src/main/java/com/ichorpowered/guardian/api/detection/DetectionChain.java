@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.detection;
 
 import com.ichorpowered.guardian.api.detection.check.Check;
+import com.ichorpowered.guardian.api.detection.check.CheckBlueprint;
 import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
 
 import java.util.Set;
@@ -56,13 +57,13 @@ public interface DetectionChain<E, F extends DetectionConfiguration> {
     interface Builder<E, F extends DetectionConfiguration> {
 
         /**
-         * Inserts a {@link Check} key into the chain to be
+         * Inserts a {@link CheckBlueprint} key into the chain to be
          * used in the detection.
          *
          * @param check the check key
          * @return this builder
          */
-        Builder<E, F> check(Class<? extends Check<E, F>> check);
+        Builder<E, F> check(Class<? extends CheckBlueprint<E, F>> check);
 
         /**
          * Inserts a {@link Heuristic} key into the chain to be

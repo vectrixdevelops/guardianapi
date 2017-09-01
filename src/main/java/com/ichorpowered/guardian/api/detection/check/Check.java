@@ -71,6 +71,14 @@ public interface Check<E, F extends DetectionConfiguration> {
     SequenceBlueprint<E, F> getSequence();
 
     /**
+     * Returns the {@link CheckBlueprint} for this {@link Check}.
+     *
+     * @return the check blueprint
+     */
+    @Nonnull
+    CheckBlueprint<E, F> getCheckBlueprint();
+
+    /**
      * Compares this check to another check and returns true,
      * if they are the same, false if they are not.
      *
