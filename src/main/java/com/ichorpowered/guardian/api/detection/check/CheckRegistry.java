@@ -66,7 +66,7 @@ public interface CheckRegistry extends Iterable<CheckBlueprint> {
      * @return the check, or {@code null} if the check is not contained inside this registry
      */
     @Nullable
-    Check get(@Nonnull Class<? extends CheckBlueprint> key);
+    CheckBlueprint get(@Nonnull Class<? extends CheckBlueprint> key);
 
     /**
      * Returns the key that represents its {@link CheckBlueprint}.
