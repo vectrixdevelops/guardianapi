@@ -44,7 +44,7 @@ public interface CheckRegistry extends Iterable<CheckBlueprint> {
      * @param checkBlueprint the check blueprint
      * @param <C> the plugin container type
      */
-    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Check> key,
+    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends CheckBlueprint> key,
                  @Nonnull CheckBlueprint checkBlueprint);
 
     /**
@@ -57,7 +57,7 @@ public interface CheckRegistry extends Iterable<CheckBlueprint> {
      * @throws NoSuchElementException if the check is not contained in this registry
      */
     @Nonnull
-    <E, F extends DetectionConfiguration> Check<E, F> expect(@Nonnull Class<? extends CheckBlueprint<E, F>> key) throws NoSuchElementException;
+    <E, F extends DetectionConfiguration> CheckBlueprint<E, F> expect(@Nonnull Class<? extends CheckBlueprint<E, F>> key) throws NoSuchElementException;
 
     /**
      * Returns the {@link CheckBlueprint} that is represented by its key.
