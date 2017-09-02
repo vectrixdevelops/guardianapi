@@ -39,12 +39,12 @@ import java.util.Set;
 public interface DetectionChain<E, F extends DetectionConfiguration> {
 
     /**
-     * Returns a set of keys that represents a {@link Check}
+     * Returns a set of keys that represents a {@link CheckBlueprint}
      * to use in the chain of operations.
      *
      * @return a set of check keys
      */
-    Set<Class<? extends Check<E, F>>> checkKeys();
+    Set<Class<? extends CheckBlueprint<E, F>>> checkKeys();
 
     /**
      * Returns a set of keys that represents a {@link Heuristic}
