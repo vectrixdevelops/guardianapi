@@ -57,7 +57,8 @@ public interface CheckRegistry extends Iterable<CheckBlueprint> {
      * @throws NoSuchElementException if the check is not contained in this registry
      */
     @Nonnull
-    <E, F extends DetectionConfiguration> CheckBlueprint<E, F> expect(@Nonnull Class<? extends CheckBlueprint<E, F>> key) throws NoSuchElementException;
+    <E, F extends DetectionConfiguration> CheckBlueprint<E, F> expect(@Nonnull Class<? extends CheckBlueprint<E, F>> key)
+            throws NoSuchElementException;
 
     /**
      * Returns the {@link CheckBlueprint} that is represented by its key.

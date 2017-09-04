@@ -24,6 +24,7 @@
 package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+import com.ichorpowered.guardian.api.detection.check.Check;
 
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -40,24 +41,24 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * Inserts the {@link SequenceBlueprint} into this registry.
      *
      * @param pluginContainer the plugin that registered the blueprint
-     * @param key the blueprint class
+     * @param key the sequence check class
      * @param sequenceBlueprint the blueprint
      * @param <C> the plugin container type
      */
-    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends SequenceBlueprint> key,
+    <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Check> key,
                  @Nonnull SequenceBlueprint sequenceBlueprint);
 
     /**
      * Returns the {@link SequenceBlueprint} that is represented by its key.
      *
-     * @param key the blueprint key
+     * @param key the sequence check key
      * @param <E> the check detections owner type
      * @param <F> the check detections configuration type
      * @return the blueprint
      * @throws NoSuchElementException if the blueprint is not contained in this registry
      */
     @Nonnull
-    <E, F extends DetectionConfiguration> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends SequenceBlueprint> key)
+    <E, F extends DetectionConfiguration> SequenceBlueprint<E, F> expect(@Nonnull Class<? extends Check> key)
             throws NoSuchElementException;
 
     /**
@@ -67,23 +68,23 @@ public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
      * @return the blueprint, or {@code null} if the blueprint is not contained in this registry
      */
     @Nullable
-    SequenceBlueprint get(@Nonnull Class<? extends SequenceBlueprint> key);
+    SequenceBlueprint get(@Nonnull Class<? extends Check> key);
 
     /**
      * Returns the key that represents its {@link SequenceBlueprint}.
      *
      * @param sequenceBlueprint the blueprint
-     * @return the blueprint key, or {@code null} if they check is not contained in this registry
+     * @return the sequence key, or {@code null} if they check is not contained in this registry
      */
     @Nullable
-    Class<? extends SequenceBlueprint> key(@Nonnull SequenceBlueprint sequenceBlueprint);
+    Class<? extends Check> key(@Nonnull SequenceBlueprint sequenceBlueprint);
 
     /**
      * Returns a set of keys that are contained inside this registry.
      *
-     * @return a set of blueprint keys
+     * @return a set of sequence check keys
      */
     @Nonnull
-    Set<Class<? extends SequenceBlueprint>> keySet();
+    Set<Class<? extends Check>> keySet();
 
 }
