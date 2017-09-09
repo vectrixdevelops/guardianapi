@@ -23,65 +23,41 @@
  */
 package com.ichorpowered.guardian.api.detection;
 
-import com.ichorpowered.guardian.api.detection.check.Check;
-import com.ichorpowered.guardian.api.detection.check.CheckBlueprint;
-import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
+import java.util.List;
 
-import java.util.Set;
+import javax.annotation.Nonnull;
 
 /**
- * Represents the chain of operations to run through
+ * Represents the chain of processes to run through
  * for each detection.
- *
- * @param <E> the detection owner type
- * @param <F> the detection configuration type
  */
-public interface DetectionChain<E, F extends DetectionConfiguration> {
+public interface DetectionChain {
 
     /**
-     * Returns a set of keys that represents a {@link CheckBlueprint}
-     * to use in the chain of operations.
+     * Adds a process to the detection chain.
      *
-     * @return a set of check keys
+     * @param pluginContainer the plugin that adds this process
+     * @param processType the process type
+     * @param clazz the process class
+     * @param <C> the plugin type
      */
-    Set<Class<? extends CheckBlueprint<E, F>>> checkKeys();
+    <C> void add(@Nonnull C pluginContainer, @Nonnull ProcessType processType,
+                 @Nonnull Class<?> clazz);
 
     /**
-     * Returns a set of keys that represents a {@link Heuristic}
-     * to use in the chain of operations.
+     * Gets a list of processes from the detection
+     * chain.
      *
-     * @return a set of heuristic keys
+     * @param processType the process type
+     * @param <T> the plugin type
+     * @return the process list
      */
-    Set<Class<? extends Heuristic>> heuristicKeys();
+    <T> List<Class<? extends T>> get(@Nonnull ProcessType processType);
 
-    interface Builder<E, F extends DetectionConfiguration> {
-
-        /**
-         * Inserts a {@link CheckBlueprint} key into the chain to be
-         * used in the detection.
-         *
-         * @param check the check key
-         * @return this builder
-         */
-        Builder<E, F> check(Class<? extends CheckBlueprint<E, F>> check);
-
-        /**
-         * Inserts a {@link Heuristic} key into the chain to be
-         * used in the detection.
-         *
-         * @param heuristic the heuristic key
-         * @return this builder
-         */
-        Builder<E, F> heuristic(Class<? extends Heuristic> heuristic);
-
-        /**
-         * Returns a new {@link DetectionChain} using the keys
-         * this builder has been assigned.
-         *
-         * @return a detection chain assigned by the builder
-         */
-        DetectionChain<E, F> build();
-
+    enum ProcessType {
+        CHECK,
+        HEURISTIC,
+        PENALTY
     }
 
 }

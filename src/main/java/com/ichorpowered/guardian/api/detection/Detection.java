@@ -75,7 +75,7 @@ public interface Detection<E, F extends DetectionConfiguration> {
      *
      * @return the detection chain
      */
-    DetectionChain<E, F> getChain();
+    DetectionChain getChain();
 
     enum State {
 
