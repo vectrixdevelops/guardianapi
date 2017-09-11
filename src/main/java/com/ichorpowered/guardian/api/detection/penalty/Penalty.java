@@ -36,6 +36,13 @@ import javax.annotation.Nonnull;
 public interface Penalty {
 
     /**
+     * Returns the string id for this penalty.
+     *
+     * @return the string id
+     */
+    String getId();
+
+    /**
      * Returns the function to test in
      * order to invoke the correct punishment
      * on a player who has violated a detection
