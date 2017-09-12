@@ -21,44 +21,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection;
+package com.ichorpowered.guardian.api.phase;
 
-import ninja.leaping.configurate.commented.CommentedConfigurationNode;
-import tech.ferus.util.config.ConfigFile;
+import com.ichorpowered.guardian.api.detection.check.CheckBlueprint;
+import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
+import com.ichorpowered.guardian.api.detection.penalty.Penalty;
+import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
 
-import java.nio.file.Path;
-
-import javax.annotation.Nonnull;
+import static com.ichorpowered.guardian.api.util.key.NamedTypeKey.of;
 
 /**
- * Represents a configuration for a {@link Detection}
- * that contains settings to modify properties used
- * in the {@link Detection}.
+ * Represents the default phase types.
  */
-public interface DetectionConfiguration {
+public class PhaseTypes {
 
-    /**
-     * Loads the configuration from disk into
-     * memory.
-     */
-    void load();
+    public static NamedTypeKey<CheckBlueprint> CHECK = of("check", CheckBlueprint.class);
 
-    /**
-     * Returns the {@link ConfigFile} that was
-     * loaded from disk in memory.
-     *
-     * @return the configuration
-     */
-    @Nonnull
-    ConfigFile<CommentedConfigurationNode> getStorage();
+    public static NamedTypeKey<Heuristic> HEURISTIC = of("heuristic", Heuristic.class);
 
-    /**
-     * Returns the location on disk to where
-     * the configuration is located.
-     *
-     * @return the config location on disk
-     */
-    @Nonnull
-    Path getLocation();
+    public static NamedTypeKey<Penalty> PENALTY = of("penalty", Penalty.class);
+
+    private PhaseTypes() {}
 
 }

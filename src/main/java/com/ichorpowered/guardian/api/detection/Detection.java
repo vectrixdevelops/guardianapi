@@ -23,12 +23,9 @@
  */
 package com.ichorpowered.guardian.api.detection;
 
-import com.ichorpowered.guardian.api.detection.check.Check;
-import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
-import com.ichorpowered.guardian.api.detection.penalty.Penalty;
+import com.ichorpowered.guardian.api.phase.PhaseManipulator;
 
 import javax.annotation.Nonnull;
-import java.util.List;
 
 /**
  * Represents a type of cheat or illegal
@@ -75,37 +72,13 @@ public interface Detection<E, F extends DetectionConfiguration> {
     State getState();
 
     /**
-     * Returns the {@link DetectionChain} of operation keys
-     * used for this detection.
+     * Returns the {@link PhaseManipulator} for managing the phases
+     * in this detection.
      *
-     * @return the detection chain
+     * @return the detection phase manipulator
      */
     @Nonnull
-    DetectionChain getChain();
-
-    /**
-     * Returns initialized checks in a list.
-     *
-     * @return the initialized checks
-     */
-    @Nonnull
-    List<Check<E, F>> getChecks();
-
-    /**
-     * Returns initialized heuristics in a list.
-     *
-     * @return the initialized heuristics
-     */
-    @Nonnull
-    List<Heuristic> getHeuristics();
-
-    /**
-     * Returns initialized penalties in a list.
-     *
-     * @return the initialized penalties
-     */
-    @Nonnull
-    List<Penalty> getPenalties();
+    DetectionPhase<E, F> getPhaseManipulator();
 
     enum State {
 

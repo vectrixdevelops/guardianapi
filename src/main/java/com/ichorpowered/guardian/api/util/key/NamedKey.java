@@ -21,43 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection;
-
-import java.util.List;
-
-import javax.annotation.Nonnull;
+package com.ichorpowered.guardian.api.util.key;
 
 /**
- * Represents the chain of processes to run through
- * for each detection.
+ * Represents a simple way of acquiring a complex named key.
  */
-public interface DetectionChain {
+public class NamedKey {
+
+    private final String key;
 
     /**
-     * Adds a process to the detection chain.
+     * Returns a new {@link NamedKey}.
      *
-     * @param pluginContainer the plugin that adds this process
-     * @param processType the process type
-     * @param clazz the process class
-     * @param <C> the plugin type
+     * @param id the key
+     * @return a new named key
      */
-    <C> void add(@Nonnull C pluginContainer, @Nonnull ProcessType processType,
-                 @Nonnull Class<?> clazz);
+    public static NamedKey of(String id) {
+        return new NamedKey(id);
+    }
+
+    private NamedKey(String id) {
+        this.key = id;
+    }
 
     /**
-     * Gets a list of processes from the detection
-     * chain.
+     * Returns the key that this represents.
      *
-     * @param processType the process type
-     * @param <T> the plugin type
-     * @return the process list
+     * @return the key
      */
-    <T> List<Class<? extends T>> get(@Nonnull ProcessType processType);
+    public String getName() {
+        return this.key;
+    }
 
-    enum ProcessType {
-        CHECK,
-        HEURISTIC,
-        PENALTY
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof NamedKey) {
+            return ((NamedKey) object).getName().equals(this.key);
+        }
+
+        return object.equals(this);
     }
 
 }

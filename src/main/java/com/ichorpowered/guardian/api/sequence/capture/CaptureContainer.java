@@ -23,8 +23,8 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
-import com.ichorpowered.guardian.api.util.IdentifierKey;
 import com.ichorpowered.guardian.api.util.Transform;
+import com.ichorpowered.guardian.api.util.key.NamedKey;
 
 import java.util.Set;
 
@@ -57,7 +57,7 @@ public interface CaptureContainer {
      * @param value the capture value
      * @param <T> the capture value type
      */
-    <T> void put(@Nonnull IdentifierKey<String> key, @Nonnull T value);
+    <T> void put(@Nonnull NamedKey key, @Nonnull T value);
 
     /**
      * Transforms the {@link Capture} in this registry.
@@ -79,7 +79,7 @@ public interface CaptureContainer {
      * @param transform the capture transformer
      * @param <T> the capture value
      */
-    <T> void transform(@Nonnull IdentifierKey<String> key, @Nonnull Transform<T> transform);
+    <T> void transform(@Nonnull NamedKey key, @Nonnull Transform<T> transform);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
@@ -92,14 +92,14 @@ public interface CaptureContainer {
     <T> T get(@Nonnull String key);
 
     /**
-     * Returns the {@link Capture} that is represented by its {@link IdentifierKey}.
+     * Returns the {@link Capture} that is represented by its {@link NamedKey}.
      *
      * @param key the capture key
      * @param <T> the capture value type
      * @return the capture value, or {@code null} if the capture is not contained in this registry
      */
     @Nullable
-    <T> T get(@Nonnull IdentifierKey<String> key);
+    <T> T get(@Nonnull NamedKey key);
 
     /**
      * Returns the key that represents its {@link Capture}.

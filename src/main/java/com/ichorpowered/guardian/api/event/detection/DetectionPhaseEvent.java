@@ -23,8 +23,8 @@
  */
 package com.ichorpowered.guardian.api.event.detection;
 
-import com.ichorpowered.guardian.api.detection.DetectionChain;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+import com.ichorpowered.guardian.api.detection.DetectionPhase;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
@@ -33,11 +33,11 @@ import com.ichorpowered.guardian.api.report.Summary;
  * The event that is fired when a detection chain
  * has started, changed a phase, or finished.
  */
-public interface DetectionChainEvent extends GuardianEvent {
+public interface DetectionPhaseEvent extends GuardianEvent {
 
     /**
      * Returns the entity entry that the
-     * {@link DetectionChain} is running for.
+     * {@link DetectionPhase} is running for.
      *
      * @return the entity entry
      */
@@ -45,36 +45,12 @@ public interface DetectionChainEvent extends GuardianEvent {
 
     /**
      * Returns the {@link Summary} that was
-     * updated during the {@link DetectionChain}.
+     * updated during the {@link DetectionPhase}.
      *
      * @param <E> the check detections owner type
      * @param <F> the check detections configuration type
      * @return the summary
      */
     <E, F extends DetectionConfiguration> Summary<E, F> getSummary();
-
-    /**
-     * The event that is fired when a detection chain
-     * has started.
-     */
-    interface Start extends DetectionChainEvent {
-
-    }
-
-    /**
-     * The event that is fired when a detection chain
-     * has changed its phase.
-     */
-    interface PhaseChange extends DetectionChainEvent {
-
-    }
-
-    /**
-     * The event that is fired when a detection chain
-     * has ended.
-     */
-    interface End extends DetectionChainEvent {
-
-    }
 
 }

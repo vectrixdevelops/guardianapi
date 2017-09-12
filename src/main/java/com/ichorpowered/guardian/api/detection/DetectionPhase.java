@@ -21,39 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.util;
+package com.ichorpowered.guardian.api.detection;
+
+import com.ichorpowered.guardian.api.phase.PhaseManipulator;
 
 /**
- * Represents a simple way of acquiring a complex key.
- *
- * @param <T> the key type
+ * Represents the use of a {@link PhaseManipulator} for a {@link Detection}.
  */
-public class IdentifierKey<T> {
-
-    private final T key;
+public interface DetectionPhase<E, F extends DetectionConfiguration> extends PhaseManipulator {
 
     /**
-     * Returns a new {@link IdentifierKey}.
+     * Returns the detection that manages this {@link PhaseManipulator}.
      *
-     * @param id the key
-     * @param <K> the key type
-     * @return a new identifier key
+     * @return the detection
      */
-    public static <K> IdentifierKey<K> of(K id) {
-        return new IdentifierKey<>(id);
-    }
-
-    private IdentifierKey(T id) {
-        this.key = id;
-    }
-
-    /**
-     * Returns the key that this represents.
-     *
-     * @return the key
-     */
-    public T get() {
-        return this.key;
-    }
+    Detection<E, F> getDetection();
 
 }

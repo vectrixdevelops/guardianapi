@@ -21,44 +21,61 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection;
-
-import ninja.leaping.configurate.commented.CommentedConfigurationNode;
-import tech.ferus.util.config.ConfigFile;
-
-import java.nio.file.Path;
-
-import javax.annotation.Nonnull;
+package com.ichorpowered.guardian.api.util.key;
 
 /**
- * Represents a configuration for a {@link Detection}
- * that contains settings to modify properties used
- * in the {@link Detection}.
+ * Represents a simple way of acquiring a complex named key with
+ * a type.
+ *
+ * @param <T> the type
  */
-public interface DetectionConfiguration {
+public class NamedTypeKey<T> {
+
+    private final String key;
+    private final Class<T> clazz;
 
     /**
-     * Loads the configuration from disk into
-     * memory.
-     */
-    void load();
-
-    /**
-     * Returns the {@link ConfigFile} that was
-     * loaded from disk in memory.
+     * Returns a new {@link NamedTypeKey}.
      *
-     * @return the configuration
+     * @param id the key
+     * @param clazz the type class
+     * @param <K> the type
+     * @return a new named type key
      */
-    @Nonnull
-    ConfigFile<CommentedConfigurationNode> getStorage();
+    public static <K> NamedTypeKey<K> of(String id, Class<K> clazz) {
+        return new NamedTypeKey<>(id, clazz);
+    }
+
+    private NamedTypeKey(String id, Class<T> clazz) {
+        this.key = id;
+        this.clazz = clazz;
+    }
 
     /**
-     * Returns the location on disk to where
-     * the configuration is located.
+     * Returns the key name.
      *
-     * @return the config location on disk
+     * @return the key name
      */
-    @Nonnull
-    Path getLocation();
+    public String getName() {
+        return this.key;
+    }
+
+    /**
+     * Returns the key type class.
+     *
+     * @return the key type class
+     */
+    public Class<T> getTypeClass() {
+        return this.clazz;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof NamedTypeKey) {
+            return ((NamedTypeKey) object).getName().equals(this.key);
+        }
+
+        return object.equals(this);
+    }
 
 }
