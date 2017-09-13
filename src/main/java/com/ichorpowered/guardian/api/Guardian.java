@@ -28,6 +28,7 @@ import com.ichorpowered.guardian.api.detection.check.CheckRegistry;
 import com.ichorpowered.guardian.api.detection.heuristic.HeuristicRegistry;
 import com.ichorpowered.guardian.api.detection.module.ModuleRegistry;
 import com.ichorpowered.guardian.api.detection.penalty.PenaltyRegistry;
+import com.ichorpowered.guardian.api.phase.PhaseRegistry;
 import com.ichorpowered.guardian.api.sequence.SequenceManager;
 import com.ichorpowered.guardian.api.sequence.SequenceRegistry;
 
@@ -80,6 +81,13 @@ public interface Guardian<T> extends GuardianBasic {
      * @return the sequence registry
      */
     SequenceRegistry getSequenceRegistry();
+
+    /**
+     * Returns the phase registry.
+     *
+     * @return the phase registry
+     */
+    PhaseRegistry getPhaseRegistry();
 
     /**
      * Returns the sequence manager.

@@ -30,6 +30,9 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+/**
+ * Represents a registry for {@link PhaseViewer}s.
+ */
 public interface PhaseRegistry {
 
     /**
