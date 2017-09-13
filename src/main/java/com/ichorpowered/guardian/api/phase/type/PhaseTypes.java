@@ -21,44 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api;
+package com.ichorpowered.guardian.api.phase.type;
 
-import com.ichorpowered.guardian.api.event.GuardianEvent;
-import com.ichorpowered.guardian.api.event.GuardianListener;
-import com.ichorpowered.guardian.api.util.ImplementationException;
-import net.kyori.event.SimpleEventBus;
+import com.ichorpowered.guardian.api.detection.check.Check;
+import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
+import com.ichorpowered.guardian.api.detection.penalty.Penalty;
+import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
 
-import javax.annotation.Nullable;
+import static com.ichorpowered.guardian.api.util.key.NamedTypeKey.of;
 
 /**
- * Represents the methods that are accessible during
- * any state.
+ * Represents the default phase types.
  */
-public interface GuardianBasic {
+public class PhaseTypes {
 
     /**
-     * Returns the instance of the implementation from
-     * a class if present.
-     *
-     * @param clazz the implementation class
-     * @param <T> the implementation class type
-     * @return possible implementation instance
-     * @throws ImplementationException possible exception
+     * The phase key for checks.
      */
-    <T extends Guardian> T getInstance(@Nullable Class<T> clazz) throws ImplementationException;
+    public static NamedTypeKey<Check> CHECK = of("check", Check.class);
 
     /**
-     * Returns the event bus.
-     *
-     * @return the event bus
+     * The phase key for heuristics.
      */
-    SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
+    public static NamedTypeKey<Heuristic> HEURISTIC = of("heuristic", Heuristic.class);
 
     /**
-     * Returns the plugin state.
-     *
-     * @return the plugin state
+     * The phase key for penalty.
      */
-    GuardianState getState();
+    public static NamedTypeKey<Penalty> PENALTY = of("penalty", Penalty.class);
+
+    private PhaseTypes() {}
 
 }

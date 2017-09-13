@@ -21,44 +21,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api;
-
-import com.ichorpowered.guardian.api.event.GuardianEvent;
-import com.ichorpowered.guardian.api.event.GuardianListener;
-import com.ichorpowered.guardian.api.util.ImplementationException;
-import net.kyori.event.SimpleEventBus;
-
-import javax.annotation.Nullable;
+package com.ichorpowered.guardian.api.phase;
 
 /**
- * Represents the methods that are accessible during
- * any state.
+ * Represents a way to view registered phases.
+ *
+ * @param <T> the phase key type
  */
-public interface GuardianBasic {
+public interface PhaseViewer<T> {
 
     /**
-     * Returns the instance of the implementation from
-     * a class if present.
+     * Creates or acquires the phase instance.
      *
-     * @param clazz the implementation class
-     * @param <T> the implementation class type
-     * @return possible implementation instance
-     * @throws ImplementationException possible exception
+     * @return the phase instance
      */
-    <T extends Guardian> T getInstance(@Nullable Class<T> clazz) throws ImplementationException;
+    T createOrGet();
 
     /**
-     * Returns the event bus.
+     * Returns the state which this phase is in.
      *
-     * @return the event bus
+     * @return the phase state
      */
-    SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
-
-    /**
-     * Returns the plugin state.
-     *
-     * @return the plugin state
-     */
-    GuardianState getState();
+    PhaseState getPhaseState();
 
 }

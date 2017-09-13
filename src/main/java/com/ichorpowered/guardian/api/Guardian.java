@@ -28,11 +28,8 @@ import com.ichorpowered.guardian.api.detection.check.CheckRegistry;
 import com.ichorpowered.guardian.api.detection.heuristic.HeuristicRegistry;
 import com.ichorpowered.guardian.api.detection.module.ModuleRegistry;
 import com.ichorpowered.guardian.api.detection.penalty.PenaltyRegistry;
-import com.ichorpowered.guardian.api.event.GuardianEvent;
-import com.ichorpowered.guardian.api.event.GuardianListener;
 import com.ichorpowered.guardian.api.sequence.SequenceManager;
 import com.ichorpowered.guardian.api.sequence.SequenceRegistry;
-import net.kyori.event.SimpleEventBus;
 
 /**
  * Represents an accessor to registries for
@@ -41,13 +38,6 @@ import net.kyori.event.SimpleEventBus;
  * @param <T> the event type
  */
 public interface Guardian<T> extends GuardianBasic {
-
-    /**
-     * Returns the event bus.
-     *
-     * @return the event bus
-     */
-    SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
 
     /**
      * Returns the module registry.

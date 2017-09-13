@@ -25,26 +25,19 @@ package com.ichorpowered.guardian.api.phase;
 
 import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
 
+/**
+ * Manages manipulation of phases and their states.
+ */
 public interface PhaseManipulator {
-
-    /**
-     * Adds a phase to the manipulator.
-     *
-     * @param phaseKey the phase key
-     * @param phase the phase
-     * @param <T> the phase key type
-     */
-    <T> void add(NamedTypeKey<T> phaseKey, Class<? extends T> phase);
 
     /**
      * Switches to the next phase and returns it.
      *
      * @param phaseKey the phase key
      * @param <T> the phase key type
-     * @param <E> the phase element type
      * @return the next phase
      */
-    <T, E extends T> E next(NamedTypeKey<T> phaseKey);
+    <T> PhaseViewer<T> next(NamedTypeKey<T> phaseKey);
 
     /**
      * Returns {@code true} if there is a phase to switch to

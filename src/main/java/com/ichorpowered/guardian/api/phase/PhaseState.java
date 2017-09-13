@@ -23,24 +23,14 @@
  */
 package com.ichorpowered.guardian.api.phase;
 
-import com.ichorpowered.guardian.api.detection.check.CheckBlueprint;
-import com.ichorpowered.guardian.api.detection.heuristic.Heuristic;
-import com.ichorpowered.guardian.api.detection.penalty.Penalty;
-import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
-
-import static com.ichorpowered.guardian.api.util.key.NamedTypeKey.of;
-
 /**
- * Represents the default phase types.
+ * Represents states phases can be.
  */
-public class PhaseTypes {
+public enum PhaseState {
 
-    public static NamedTypeKey<CheckBlueprint> CHECK = of("check", CheckBlueprint.class);
-
-    public static NamedTypeKey<Heuristic> HEURISTIC = of("heuristic", Heuristic.class);
-
-    public static NamedTypeKey<Penalty> PENALTY = of("penalty", Penalty.class);
-
-    private PhaseTypes() {}
+    INITIALIZED,
+    RUNNING,
+    STOPPING,
+    UNINITIALIZED
 
 }
