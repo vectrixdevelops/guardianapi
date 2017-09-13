@@ -44,4 +44,20 @@ public interface PhaseViewer<T> {
      */
     PhaseState getPhaseState();
 
+    /**
+     * Returns the current index of phases that
+     * have been acquired in this view.
+     *
+     * @return the current phase index
+     */
+    int index();
+
+    /**
+     * Returns the amount of phases in this
+     * view.
+     *
+     * @return the amount of phases
+     */
+    int size();
+
 }

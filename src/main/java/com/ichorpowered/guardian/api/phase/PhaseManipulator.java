@@ -37,7 +37,7 @@ public interface PhaseManipulator {
      * @param <T> the phase key type
      * @return the next phase
      */
-    <T> PhaseViewer<T> next(NamedTypeKey<T> phaseKey);
+    <T> T next(NamedTypeKey<T> phaseKey);
 
     /**
      * Returns {@code true} if there is a phase to switch to
@@ -50,11 +50,13 @@ public interface PhaseManipulator {
     <T> boolean hasNext(NamedTypeKey<T> phaseKey);
 
     /**
-     * Returns the size of all the phases combined.
+     * Returns the {@link PhaseViewer} state.
      *
-     * @return size of all phase types
+     * @param phaseKey the phase key
+     * @param <T> the phase key type
+     * @return the phase viewer state
      */
-    int size();
+    <T> PhaseState getViewerState(NamedTypeKey<T> phaseKey);
 
     /**
      * Returns the size of the phases for this phase key.
@@ -64,5 +66,12 @@ public interface PhaseManipulator {
      * @return the size of phases under this phase key
      */
     <T> int size(NamedTypeKey<T> phaseKey);
+
+    /**
+     * Returns the size of all the phases combined.
+     *
+     * @return size of all phase types
+     */
+    int size();
 
 }
