@@ -24,53 +24,54 @@
 package com.ichorpowered.guardian.api.phase;
 
 /**
- * Represents a way to view registered phases.
- *
- * @param <T> the phase key type
+ * Represents a way to filter phase instances.
  */
-public interface PhaseViewer<T> {
+public interface PhaseFilter {
 
     /**
-     * Returns the creation or reference to
-     * the next phase instance.
+     * Includes a single class to the filter
+     * and returns this.
      *
-     * @return the phase instance
+     * @param include an accepted class
+     * @return this filter
      */
-    T getNext();
+    PhaseFilter include(Class<?> include);
 
     /**
-     * Returns the next phase instance class.
+     * Includes a collection of classes to the
+     * filter and returns this.
      *
-     * @return the phase instance class
+     * @param includeAll a collection of accepted classes
+     * @return this filter
      */
-    Class<? extends T> getNextClass();
+    PhaseFilter include(Class<?>... includeAll);
 
     /**
-     * Skips the next phase in the queue.
-     */
-    void skipNext();
-
-    /**
-     * Returns the state which this phase is in.
+     * Excludes a single class to the filter
+     * and returns this.
      *
-     * @return the phase state
+     * @param exclude a denied class
+     * @return this filter
      */
-    PhaseState getPhaseState();
+    PhaseFilter exclude(Class<?> exclude);
 
     /**
-     * Returns the current index of phases that
-     * have been acquired in this view.
+     * Excludes a collection of classes to the
+     * filter and returns this.
      *
-     * @return the current phase index
+     * @param excludeAll a collection of denied classes
+     * @return this filter
      */
-    int index();
+    PhaseFilter exclude(Class<?>... excludeAll);
 
     /**
-     * Returns the amount of phases in this
-     * view.
+     * Returns {@code true} if this phase class
+     * can pass through the filter, {code false}
+     * if it cannot.
      *
-     * @return the amount of phases
+     * @param phaseClass the phase instance class
+     * @return the filter result
      */
-    int size();
+    boolean accept(Class<?> phaseClass);
 
 }
