@@ -36,19 +36,19 @@ public interface PhaseViewer<T> {
      *
      * @return the phase instance
      */
-    T getNext();
+    T getPhase();
 
     /**
      * Returns the next phase instance class.
      *
      * @return the phase instance class
      */
-    Class<? extends T> getNextClass();
+    Class<? extends T> getPhaseClass();
 
     /**
-     * Skips the next phase in the queue.
+     * Switches to the next phase in the viewer.
      */
-    void skipNext();
+    void next();
 
     /**
      * Returns the state which this phase is in.
