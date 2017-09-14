@@ -48,6 +48,6 @@ public interface CheckBlueprint<E, F extends DetectionConfiguration> {
      *
      * @return the check class
      */
-    Class<? extends Check<E, F>> getCheckClass();
+    Class<? extends Check> getCheckClass();
 
 }
