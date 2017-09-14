@@ -23,6 +23,9 @@
  */
 package com.ichorpowered.guardian.api.phase;
 
+import com.ichorpowered.guardian.api.detection.Detection;
+import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
+
 /**
  * Represents a way to view registered phases.
  *
@@ -34,9 +37,12 @@ public interface PhaseViewer<T> {
      * Returns the creation or reference to
      * the next phase instance.
      *
+     * @param detection the detection
+     * @param <E> the detection owner type
+     * @param <F> the detection configuration type
      * @return the phase instance
      */
-    T getPhase();
+    <E, F extends DetectionConfiguration> T getOrCreatePhase(Detection<E, F> detection);
 
     /**
      * Returns the next phase instance class.
