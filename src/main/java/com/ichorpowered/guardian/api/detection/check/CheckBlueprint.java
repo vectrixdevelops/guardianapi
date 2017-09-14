@@ -43,4 +43,11 @@ public interface CheckBlueprint<E, F extends DetectionConfiguration> {
      */
     Check<E, F> create(Detection<E, F> detection);
 
+    /**
+     * Returns the {@link Check} class that this blueprint creates.
+     *
+     * @return the check class
+     */
+    Class<? extends Check<E, F>> getCheckClass();
+
 }
