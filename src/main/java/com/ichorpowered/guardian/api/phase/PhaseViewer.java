@@ -79,4 +79,13 @@ public interface PhaseViewer<T> {
      */
     int size();
 
+    /**
+     * Returns a filtered amount of phases in
+     * this view.
+     *
+     * @param phaseFilter the phase filter
+     * @return the amount of filtered phases
+     */
+    int size(PhaseFilter phaseFilter);
+
 }

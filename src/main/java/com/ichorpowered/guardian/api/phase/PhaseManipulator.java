@@ -59,6 +59,13 @@ public interface PhaseManipulator {
     <T> PhaseState getViewerState(NamedTypeKey<T> phaseKey);
 
     /**
+     * Returns the {@link PhaseFilter} used for this manipulator.
+     *
+     * @return the phase filter
+     */
+    PhaseFilter getFilter();
+
+    /**
      * Returns the size of the phases for this phase key.
      *
      * @param phaseKey the phase key
@@ -66,13 +73,6 @@ public interface PhaseManipulator {
      * @return the size of phases under this phase key
      */
     <T> int size(NamedTypeKey<T> phaseKey);
-
-    /**
-     * Returns the {@link PhaseFilter} used for this manipulator.
-     *
-     * @return the phase filter
-     */
-    PhaseFilter getFilter();
 
     /**
      * Returns the size of all the phases combined.
