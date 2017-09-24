@@ -23,8 +23,6 @@
  */
 package com.ichorpowered.guardian.api.entry;
 
-import com.google.common.reflect.TypeToken;
-
 import java.util.Optional;
 import java.util.UUID;
 
@@ -51,10 +49,10 @@ public interface EntityEntry {
      * the entity if it is present.
      *
      * @param <E> the entity type
-     * @param typeToken the type token for the entity type
+     * @param clazz the class for this entity
      * @return the entity reference if present
      */
     @Nonnull
-    <E> Optional<E> getEntity(TypeToken<E> typeToken);
+    <E> Optional<E> getEntity(Class<E> clazz);
 
 }

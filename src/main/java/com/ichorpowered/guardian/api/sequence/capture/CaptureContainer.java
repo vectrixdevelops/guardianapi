@@ -25,7 +25,9 @@ package com.ichorpowered.guardian.api.sequence.capture;
 
 import com.ichorpowered.guardian.api.util.Transform;
 import com.ichorpowered.guardian.api.util.key.NamedKey;
+import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -57,7 +59,7 @@ public interface CaptureContainer {
      * @param value the capture value
      * @param <T> the capture value type
      */
-    <T> void put(@Nonnull NamedKey key, @Nonnull T value);
+    <T> void put(@Nonnull NamedTypeKey<T> key, @Nonnull T value);
 
     /**
      * Transforms the {@link Capture} in this registry.
@@ -68,38 +70,40 @@ public interface CaptureContainer {
      *
      * @param key the capture key
      * @param transform the capture transformer
+     * @param defaultValue the default value in case the original value does not exist
      * @param <T> the capture value type
      */
-    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform);
+    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform, T defaultValue);
 
     /**
      * Transforms the {@link Capture} in this registry.
      *
      * @param key the capture key
      * @param transform the capture transformer
+     * @param defaultValue the default value in case the original value does not exist
      * @param <T> the capture value
      */
-    <T> void transform(@Nonnull NamedKey key, @Nonnull Transform<T> transform);
+    <T> void transform(@Nonnull NamedKey key, @Nonnull Transform<T> transform, T defaultValue);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
      *
      * @param key the capture key
      * @param <T> the capture value type
-     * @return the capture value, or {@code null} if the capture is not contained in this registry
+     * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
      */
     @Nullable
-    <T> T get(@Nonnull String key);
+    <T> Optional<T> get(@Nonnull String key);
 
     /**
      * Returns the {@link Capture} that is represented by its {@link NamedKey}.
      *
      * @param key the capture key
      * @param <T> the capture value type
-     * @return the capture value, or {@code null} if the capture is not contained in this registry
+     * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
      */
     @Nullable
-    <T> T get(@Nonnull NamedKey key);
+    <T> Optional<T> get(@Nonnull NamedTypeKey<T> key);
 
     /**
      * Returns the key that represents its {@link Capture}.
