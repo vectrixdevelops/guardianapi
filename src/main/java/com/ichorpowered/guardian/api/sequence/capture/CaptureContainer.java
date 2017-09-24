@@ -83,7 +83,7 @@ public interface CaptureContainer {
      * @param defaultValue the default value in case the original value does not exist
      * @param <T> the capture value
      */
-    <T> void transform(@Nonnull NamedKey key, @Nonnull Transform<T> transform, T defaultValue);
+    <T> void transform(@Nonnull NamedTypeKey<T> key, @Nonnull Transform<T> transform, T defaultValue);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
