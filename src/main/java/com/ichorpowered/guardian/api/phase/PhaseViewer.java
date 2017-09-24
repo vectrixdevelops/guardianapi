@@ -72,6 +72,11 @@ public interface PhaseViewer<T> {
     int index();
 
     /**
+     * Resets the index of the phase viewer.
+     */
+    void resetIndex();
+
+    /**
      * Returns the amount of phases in this
      * view.
      *
