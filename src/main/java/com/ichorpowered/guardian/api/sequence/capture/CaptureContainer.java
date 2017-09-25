@@ -62,6 +62,15 @@ public interface CaptureContainer {
     <T> void put(@Nonnull NamedTypeKey<T> key, @Nonnull T value);
 
     /**
+     * Merges values from another {@link CaptureContainer} into this.
+     *
+     * @param captureContainer another capture container
+     * @return this capture container
+     */
+    @Nonnull
+    CaptureContainer merge(CaptureContainer captureContainer);
+
+    /**
      * Transforms the {@link Capture} in this registry.
      *
      * <p>The capture key must be a unique key and is
