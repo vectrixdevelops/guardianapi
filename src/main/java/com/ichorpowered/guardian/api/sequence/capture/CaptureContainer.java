@@ -40,6 +40,30 @@ import javax.annotation.Nullable;
 public interface CaptureContainer {
 
     /**
+     * Inserts the {@link Capture} into this registry,
+     * if it doesn't exist already.
+     *
+     * <p>The capture key must be a unique key and is
+     * recommended to use the class name and a custom
+     * name.</p>
+     *
+     * @param key the capture key
+     * @param value the capture value
+     * @param <T> the capture value type
+     */
+    <T> void putOnce(@Nonnull String key, @Nullable T value);
+
+    /**
+     * Inserts the {@link Capture} into this registry,
+     * if it doesn't exist already.
+     *
+     * @param key the capture key
+     * @param value the capture value
+     * @param <T> the capture value type
+     */
+    <T> void putOnce(@Nonnull NamedTypeKey<T> key, @Nullable T value);
+
+    /**
      * Inserts the {@link Capture} into this registry.
      *
      * <p>The capture key must be a unique key and is

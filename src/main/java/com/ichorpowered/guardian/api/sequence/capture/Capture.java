@@ -39,18 +39,6 @@ import com.ichorpowered.guardian.api.entry.EntityEntry;
 public interface Capture<E, F extends DetectionConfiguration> {
 
     /**
-     * Represents a method of starting the data
-     * collection process.
-     *
-     * <p>This should only be called once each time
-     * at the beginning of a player sequence.</p>
-     *
-     * @param entry the entity entry
-     * @param captureContainer the capture container
-     */
-    void start(EntityEntry entry, CaptureContainer captureContainer);
-
-    /**
      * Represents a method of updating the data
      * collection.
      *
@@ -58,18 +46,6 @@ public interface Capture<E, F extends DetectionConfiguration> {
      * @param captureContainer the capture container
      */
     void update(EntityEntry entry, CaptureContainer captureContainer);
-
-    /**
-     * Represents a method of stopping the data
-     * collection process.
-     *
-     * <p>This should only be called once each time
-     * at the end of a player sequence.</p>
-     *
-     * @param entry the entity entry
-     * @param captureContainer the capture container
-     */
-    void stop(EntityEntry entry, CaptureContainer captureContainer);
 
     /**
      * Returns the plugin owner of this capture.
