@@ -26,6 +26,8 @@ package com.ichorpowered.guardian.api.event.origin;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
+import javax.annotation.Nonnull;
+
 public class NamedOrigin {
 
     /**
@@ -36,14 +38,15 @@ public class NamedOrigin {
      * @param value the object
      * @return a new named origin
      */
-    public static NamedOrigin of(String name, Object value) {
+    @Nonnull
+    public static NamedOrigin of(@Nonnull String name, @Nonnull Object value) {
         return new NamedOrigin(name, value);
     }
 
     private final String name;
     private final Object object;
 
-    private NamedOrigin(String name, Object value) {
+    private NamedOrigin(@Nonnull String name, @Nonnull Object value) {
         this.name = name;
         this.object = value;
     }
@@ -53,6 +56,7 @@ public class NamedOrigin {
      *
      * @return the name of this origin
      */
+    @Nonnull
     public String getName() {
         return this.name;
     }
@@ -62,6 +66,7 @@ public class NamedOrigin {
      *
      * @return the object
      */
+    @Nonnull
     public Object getOriginObject() {
         return this.object;
     }

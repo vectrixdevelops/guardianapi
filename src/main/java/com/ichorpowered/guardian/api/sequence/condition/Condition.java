@@ -26,6 +26,8 @@ package com.ichorpowered.guardian.api.sequence.condition;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents an operation used to
  * gather and calculate data in a {@link Sequence}
@@ -43,6 +45,7 @@ public interface Condition<T> {
      * @param <F> the check detections configuration type
      * @return the condition operation
      */
+    @Nonnull
     <E, F extends DetectionConfiguration> ConditionSupplier<E, F, T> get();
 
     /**
@@ -51,6 +54,7 @@ public interface Condition<T> {
      *
      * @return the type of condition of this
      */
+    @Nonnull
     Type getType();
 
     enum Type {

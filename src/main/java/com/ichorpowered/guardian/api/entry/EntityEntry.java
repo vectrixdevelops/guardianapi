@@ -53,6 +53,6 @@ public interface EntityEntry {
      * @return the entity reference if present
      */
     @Nonnull
-    <E> Optional<E> getEntity(Class<E> clazz);
+    <E> Optional<E> getEntity(@Nonnull Class<E> clazz);
 
 }

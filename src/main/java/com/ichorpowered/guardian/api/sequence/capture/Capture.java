@@ -27,6 +27,8 @@ import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a system of capturing data
  * in the period of a sequence for a
@@ -45,13 +47,14 @@ public interface Capture<E, F extends DetectionConfiguration> {
      * @param entry the entity entry
      * @param captureContainer the capture container
      */
-    void update(EntityEntry entry, CaptureContainer captureContainer);
+    void update(@Nonnull EntityEntry entry, @Nonnull CaptureContainer captureContainer);
 
     /**
      * Returns the plugin owner of this capture.
      *
      * @return the plugin owner
      */
+    @Nonnull
     E getOwner();
 
     /**
@@ -59,6 +62,7 @@ public interface Capture<E, F extends DetectionConfiguration> {
      *
      * @return the capture detection
      */
+    @Nonnull
     Detection<E, F> getDetection();
 
 }

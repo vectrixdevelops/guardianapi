@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.util;
 
+import javax.annotation.Nullable;
+
 /**
  * A functional interface for transforming values.
  *
@@ -37,6 +39,7 @@ public interface Transform<T> {
      * @param original the original value to transform
      * @return the new transformed value
      */
-    T transform(T original);
+    @Nullable
+    T transform(@Nullable T original);
 
 }

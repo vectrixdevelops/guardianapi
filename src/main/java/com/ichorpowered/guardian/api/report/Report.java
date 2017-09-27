@@ -62,6 +62,7 @@ public interface Report {
      *
      * @return a set of property keys
      */
+    @Nonnull
     Set<String> keySet();
 
     /**

@@ -29,6 +29,8 @@ import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.report.Report;
 import com.ichorpowered.guardian.api.report.Summary;
 
+import javax.annotation.Nonnull;
+
 /**
  * Predicate for registered penalties in testing the
  * invocation of a punishment against a player that
@@ -50,6 +52,7 @@ public interface PenaltyPredicate<E, F extends DetectionConfiguration> {
      * @param summary the summary
      * @return {@code true} if the punishment was successfully executed, {@code false} if it was not
      */
-    boolean test(EntityEntry entry, Detection<E, F> detection, Summary<E, F> summary);
+    boolean test(@Nonnull EntityEntry entry, @Nonnull Detection<E, F> detection,
+                 @Nonnull Summary<E, F> summary);
 
 }

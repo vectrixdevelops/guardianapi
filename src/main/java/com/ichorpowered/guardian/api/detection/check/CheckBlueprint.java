@@ -26,6 +26,8 @@ package com.ichorpowered.guardian.api.detection.check;
 import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a blueprint for creating a {@link Check}
  * for a {@link Detection}.
@@ -41,13 +43,15 @@ public interface CheckBlueprint<E, F extends DetectionConfiguration> {
      * @param detection the detection
      * @return the check
      */
-    Check<E, F> create(Detection<E, F> detection);
+    @Nonnull
+    Check<E, F> create(@Nonnull Detection<E, F> detection);
 
     /**
      * Returns the {@link Check} class that this blueprint creates.
      *
      * @return the check class
      */
+    @Nonnull
     Class<? extends Check> getCheckClass();
 
 }

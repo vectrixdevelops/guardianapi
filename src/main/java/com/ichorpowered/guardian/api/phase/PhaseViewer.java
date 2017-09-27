@@ -26,6 +26,9 @@ package com.ichorpowered.guardian.api.phase;
 import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Represents a way to view registered phases.
  *
@@ -42,13 +45,15 @@ public interface PhaseViewer<T> {
      * @param <F> the detection configuration type
      * @return the phase instance
      */
-    <E, F extends DetectionConfiguration> T getOrCreatePhase(Detection<E, F> detection);
+    @Nullable
+    <E, F extends DetectionConfiguration> T getOrCreatePhase(@Nonnull Detection<E, F> detection);
 
     /**
      * Returns the next phase instance class.
      *
      * @return the phase instance class
      */
+    @Nonnull
     Class<? extends T> getPhaseClass();
 
     /**
@@ -61,6 +66,7 @@ public interface PhaseViewer<T> {
      *
      * @return the phase state
      */
+    @Nonnull
     PhaseState getPhaseState();
 
     /**
@@ -91,6 +97,6 @@ public interface PhaseViewer<T> {
      * @param phaseFilter the phase filter
      * @return the amount of filtered phases
      */
-    int size(PhaseFilter phaseFilter);
+    int size(@Nonnull PhaseFilter phaseFilter);
 
 }

@@ -53,6 +53,8 @@ public interface ConditionSupplier<E, F extends DetectionConfiguration, T> {
      * @return the summary
      */
     @Nonnull
-    Summary<E, F> apply(EntityEntry entry, T event, CaptureContainer captureContainer, Summary<E, F> summary, long lastActionTime);
+    Summary<E, F> apply(@Nonnull EntityEntry entry, @Nonnull T event,
+                        @Nonnull CaptureContainer captureContainer, @Nonnull Summary<E, F> summary,
+                        long lastActionTime);
 
 }

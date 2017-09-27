@@ -52,6 +52,7 @@ public interface HeuristicSupplier<E, F extends DetectionConfiguration> {
      * @return the updated summary
      */
     @Nonnull
-    Summary<E, F> apply(EntityEntry entry, Detection<E, F> detection, Summary<E, F> summary);
+    Summary<E, F> apply(@Nonnull EntityEntry entry, @Nonnull Detection<E, F> detection,
+                        @Nonnull Summary<E, F> summary);
 
 }

@@ -45,7 +45,7 @@ public interface SequenceBlueprint<E, F extends DetectionConfiguration> {
      * @return the sequence
      */
     @Nonnull
-    Sequence<E, F> create(EntityEntry entry);
+    Sequence<E, F> create(@Nonnull EntityEntry entry);
 
     /**
      * Returns the {@link Check} that owns this {@link Sequence}.

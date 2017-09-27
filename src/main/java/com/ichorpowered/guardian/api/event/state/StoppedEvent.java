@@ -26,6 +26,8 @@ package com.ichorpowered.guardian.api.event.state;
 import com.ichorpowered.guardian.api.GuardianBasic;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents the stopped state in the AntiCheat life cycle.
  */
@@ -36,6 +38,7 @@ public interface StoppedEvent extends GuardianEvent {
      *
      * @return the state ready implementation methods
      */
+    @Nonnull
     GuardianBasic getGuardian();
 
 }

@@ -29,6 +29,8 @@ import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.Sequence;
 
+import javax.annotation.Nonnull;
+
 /**
  * The event that is fired when a sequence has
  * received a sequence result.
@@ -41,6 +43,7 @@ public interface SequenceResultEvent extends GuardianEvent {
      *
      * @return the entity entry
      */
+    @Nonnull
     EntityEntry getEntityEntry();
 
     /**
@@ -51,6 +54,7 @@ public interface SequenceResultEvent extends GuardianEvent {
      * @param <F> the check detections configuration type
      * @return the sequence
      */
+    @Nonnull
     <E, F extends DetectionConfiguration> Sequence<E, F> getSequence();
 
     /**
@@ -61,6 +65,7 @@ public interface SequenceResultEvent extends GuardianEvent {
      * @param <F> the check detections configuration type
      * @return the summary
      */
+    @Nonnull
     <E, F extends DetectionConfiguration> Summary<E, F> getSummary();
 
     /**

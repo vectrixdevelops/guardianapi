@@ -27,6 +27,8 @@ import com.ichorpowered.guardian.api.Guardian;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import net.kyori.event.Cancellable;
 
+import javax.annotation.Nonnull;
+
 public interface StartingEvent extends GuardianEvent, Cancellable {
 
     /**
@@ -35,6 +37,7 @@ public interface StartingEvent extends GuardianEvent, Cancellable {
      *
      * @return the accessor managers and registries
      */
+    @Nonnull
     Guardian getGuardian();
 
 }

@@ -67,6 +67,7 @@ public interface PenaltyRegistry extends Iterable<Penalty> {
      *
      * @return a set of penalty keys
      */
+    @Nonnull
     Set<Class<? extends Penalty>> keySet();
 
 }

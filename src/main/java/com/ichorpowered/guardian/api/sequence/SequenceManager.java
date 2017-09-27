@@ -54,7 +54,26 @@ public interface SequenceManager<T> {
      * @param event the event
      * @param predicate the predicate test
      */
-    void invokeFor(@Nonnull EntityEntry entry, @Nonnull T event, Predicate<Sequence> predicate);
+    void invokeFor(@Nonnull EntityEntry entry, @Nonnull T event, @Nonnull Predicate<Sequence> predicate);
+
+    /**
+     * Stops invocation of sequences that contain
+     * this event class as its trigger.
+     *
+     * @param entry the entity entry
+     * @param eventClass the event class
+     * @param removeExisting removes running sequences with this trigger
+     */
+    void closeFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass, boolean removeExisting);
+
+    /**
+     * Opens invocation of sequences that contain
+     * this event class as its trigger.
+     *
+     * @param entry the entity entry
+     * @param eventClass the event class
+     */
+    void openFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass);
 
     /**
      * Cleans up discontinued sequences.

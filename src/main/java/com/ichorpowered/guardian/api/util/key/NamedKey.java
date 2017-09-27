@@ -23,6 +23,9 @@
  */
 package com.ichorpowered.guardian.api.util.key;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Represents a simple way of acquiring a complex named key.
  */
@@ -36,11 +39,12 @@ public class NamedKey {
      * @param id the key
      * @return a new named key
      */
-    public static NamedKey of(String id) {
+    @Nonnull
+    public static NamedKey of(@Nonnull String id) {
         return new NamedKey(id);
     }
 
-    private NamedKey(String id) {
+    private NamedKey(@Nonnull String id) {
         this.key = id;
     }
 
@@ -49,12 +53,17 @@ public class NamedKey {
      *
      * @return the key
      */
+    @Nonnull
     public String getName() {
         return this.key;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(@Nullable Object object) {
+        if (object == null) {
+            return false;
+        }
+
         if (object instanceof NamedKey) {
             return ((NamedKey) object).getName().equals(this.key);
         }

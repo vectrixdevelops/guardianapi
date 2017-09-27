@@ -40,6 +40,7 @@ public interface Penalty {
      *
      * @return the string id
      */
+    @Nonnull
     String getId();
 
     /**

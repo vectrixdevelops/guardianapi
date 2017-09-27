@@ -29,6 +29,8 @@ import com.ichorpowered.guardian.api.report.Summary;
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.capture.CaptureRegistry;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a sequence of {@link Action}s that can be
  * run in a chain.
@@ -47,13 +49,25 @@ public interface Sequence<E, F extends DetectionConfiguration> {
      * @param <T> the event type
      * @return the result
      */
-    <T> boolean apply(EntityEntry entry, T event);
+    <T> boolean apply(@Nonnull EntityEntry entry, @Nonnull T event);
+
+    /**
+     * Returns the event class for the action
+     * at the specified index.
+     *
+     * @param index the action index
+     * @return the action event class
+     * @throws IndexOutOfBoundsException if the index is pointing to an action that does not exist
+     */
+    @Nonnull
+    Class<?> getActionEvent(int index) throws IndexOutOfBoundsException;
 
     /**
      * Returns the {@link Summary} for this sequence.
      *
      * @return the summary
      */
+    @Nonnull
     Summary<E, F> getSummary();
 
     /**
@@ -61,6 +75,7 @@ public interface Sequence<E, F extends DetectionConfiguration> {
      *
      * @return the capture registry
      */
+    @Nonnull
     CaptureRegistry getCaptureRegistry();
 
     /**
@@ -68,6 +83,7 @@ public interface Sequence<E, F extends DetectionConfiguration> {
      *
      * @return the sequence blueprint
      */
+    @Nonnull
     SequenceBlueprint<E, F> getSequenceBlueprint();
 
     /**

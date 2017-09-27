@@ -25,6 +25,8 @@ package com.ichorpowered.guardian.api.detection;
 
 import com.ichorpowered.guardian.api.phase.PhaseManipulator;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents the use of a {@link PhaseManipulator} for a {@link Detection}.
  */
@@ -35,6 +37,7 @@ public interface DetectionPhase<E, F extends DetectionConfiguration> extends Pha
      *
      * @return the detection
      */
+    @Nonnull
     Detection<E, F> getDetection();
 
 }

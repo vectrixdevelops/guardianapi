@@ -27,6 +27,8 @@ import com.ichorpowered.guardian.api.GuardianBasic;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import net.kyori.event.Cancellable;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents the initialization state in the AntiCheat life cycle.
  */
@@ -37,6 +39,7 @@ public interface InitializationEvent extends GuardianEvent, Cancellable {
      *
      * @return the state ready implementation methods
      */
+    @Nonnull
     GuardianBasic getGuardian();
 
 }

@@ -25,6 +25,8 @@ package com.ichorpowered.guardian.api.event;
 
 import com.ichorpowered.guardian.api.event.origin.Origin;
 
+import javax.annotation.Nonnull;
+
 public interface GuardianEvent {
 
     /**
@@ -32,6 +34,7 @@ public interface GuardianEvent {
      *
      * @return the event origin
      */
+    @Nonnull
     Origin getOrigin();
 
 }

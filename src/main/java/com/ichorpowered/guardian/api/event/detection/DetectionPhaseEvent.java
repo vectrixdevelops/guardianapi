@@ -29,6 +29,8 @@ import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
 
+import javax.annotation.Nonnull;
+
 /**
  * The event that is fired when a detection chain
  * has started, changed a phase, or finished.
@@ -41,6 +43,7 @@ public interface DetectionPhaseEvent extends GuardianEvent {
      *
      * @return the entity entry
      */
+    @Nonnull
     EntityEntry getEntityEntry();
 
     /**
@@ -51,6 +54,7 @@ public interface DetectionPhaseEvent extends GuardianEvent {
      * @param <F> the check detections configuration type
      * @return the summary
      */
+    @Nonnull
     <E, F extends DetectionConfiguration> Summary<E, F> getSummary();
 
 }

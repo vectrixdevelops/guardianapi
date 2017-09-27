@@ -23,6 +23,9 @@
  */
 package com.ichorpowered.guardian.api.util.key;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Represents a simple way of acquiring a complex named key with
  * a type.
@@ -42,11 +45,12 @@ public class NamedTypeKey<T> {
      * @param <K> the type
      * @return a new named type key
      */
-    public static <K> NamedTypeKey<K> of(String id, Class<K> clazz) {
+    @Nonnull
+    public static <K> NamedTypeKey<K> of(@Nonnull String id, @Nonnull Class<K> clazz) {
         return new NamedTypeKey<>(id, clazz);
     }
 
-    private NamedTypeKey(String id, Class<T> clazz) {
+    private NamedTypeKey(@Nonnull String id, @Nonnull Class<T> clazz) {
         this.key = id;
         this.clazz = clazz;
     }
@@ -56,6 +60,7 @@ public class NamedTypeKey<T> {
      *
      * @return the key name
      */
+    @Nonnull
     public String getName() {
         return this.key;
     }
@@ -65,12 +70,17 @@ public class NamedTypeKey<T> {
      *
      * @return the key type class
      */
+    @Nonnull
     public Class<T> getTypeClass() {
         return this.clazz;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(@Nullable Object object) {
+        if (object == null) {
+            return false;
+        }
+
         if (object instanceof NamedTypeKey) {
             return ((NamedTypeKey) object).getName().equals(this.key);
         }

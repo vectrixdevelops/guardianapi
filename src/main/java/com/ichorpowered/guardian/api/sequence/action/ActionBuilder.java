@@ -29,6 +29,8 @@ import com.ichorpowered.guardian.api.sequence.Sequence;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
 import com.ichorpowered.guardian.api.sequence.condition.ConditionSupplier;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a builder to create {@link Action}s with.
  *
@@ -40,20 +42,12 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
 
     /**
      * Returns this {@link ActionBuilder} and adds the
-     * {@code condition} to the builder.
-     *
-     * @param condition the condition
-     * @return this builder
-     */
-    ActionBuilder<E, F, T> condition(ConditionSupplier<E, F, T> condition);
-
-    /**
-     * Returns this {@link ActionBuilder} and adds the
      * delay {@code time} to the builder.
      *
      * @param time the delay period
      * @return this builder
      */
+    @Nonnull
     ActionBuilder<E, F, T> delay(int time);
 
     /**
@@ -63,7 +57,18 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param time the expire period
      * @return this builder
      */
+    @Nonnull
     ActionBuilder<E, F, T> expire(int time);
+
+    /**
+     * Returns this {@link ActionBuilder} and adds the
+     * {@code condition} to the builder.
+     *
+     * @param condition the condition
+     * @return this builder
+     */
+    @Nonnull
+    ActionBuilder<E, F, T> condition(@Nonnull ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -72,7 +77,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<E, F, T> success(ConditionSupplier<E, F, T> condition);
+    @Nonnull
+    ActionBuilder<E, F, T> success(@Nonnull ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns this {@link ActionBuilder} and adds the
@@ -81,7 +87,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param condition the condition
      * @return this builder
      */
-    ActionBuilder<E, F, T> failure(ConditionSupplier<E, F, T> condition);
+    @Nonnull
+    ActionBuilder<E, F, T> failure(@Nonnull ConditionSupplier<E, F, T> condition);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -91,7 +98,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<E, F, K> action(Class<K> clazz);
+    @Nonnull
+    <K> ActionBuilder<E, F, K> action(@Nonnull Class<K> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -101,7 +109,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<E, F, K> action(ActionBlueprint<K> blueprint);
+    @Nonnull
+    <K> ActionBuilder<E, F, K> action(@Nonnull ActionBlueprint<K> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -111,7 +120,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param <K> the event type
      * @return the action builder
      */
-    <K> ActionBuilder<E, F, K> action(Action<K> action);
+    @Nonnull
+    <K> ActionBuilder<E, F, K> action(@Nonnull Action<K> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
@@ -122,7 +132,8 @@ public interface ActionBuilder<E, F extends DetectionConfiguration, T> {
      * @param <C> the plugin container type
      * @return the sequence blueprint
      */
-    <C> SequenceBlueprint<E, F> build(C pluginContainer, Check<E, F> check);
+    @Nonnull
+    <C> SequenceBlueprint<E, F> build(@Nonnull C pluginContainer, @Nonnull Check<E, F> check);
 
 
 }

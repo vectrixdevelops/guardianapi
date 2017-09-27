@@ -43,13 +43,14 @@ import javax.annotation.Nullable;
 public interface SequenceBuilder<E, F extends DetectionConfiguration> {
 
     /**
-     * Adds captures to the {@link CaptureRegistry} to be
+     * Adds a capture to the {@link CaptureRegistry} to be
      * included when a new {@link Sequence} is created.
      *
-     * @param captures the captures
+     * @param capture the capture
      * @return the sequence builder
      */
-    SequenceBuilder<E, F> capture(Capture<E, F>... captures);
+    @Nonnull
+    SequenceBuilder<E, F> capture(@Nonnull Capture<E, F> capture);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -60,7 +61,7 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<E, F, T> action(@Nullable Class<T> clazz);
+    <T> ActionBuilder<E, F, T> action(@Nonnull Class<T> clazz);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -71,7 +72,7 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<E, F, T> action(@Nullable ActionBlueprint<T> blueprint);
+    <T> ActionBuilder<E, F, T> action(@Nonnull ActionBlueprint<T> blueprint);
 
     /**
      * Returns a new {@link ActionBuilder} for an
@@ -82,7 +83,7 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
      * @return the action builder
      */
     @Nonnull
-    <T> ActionBuilder<E, F, T> action(@Nullable Action<T> action);
+    <T> ActionBuilder<E, F, T> action(@Nonnull Action<T> action);
 
     /**
      * Returns a new {@link SequenceBlueprint} for
@@ -94,6 +95,6 @@ public interface SequenceBuilder<E, F extends DetectionConfiguration> {
      * @return the sequence blueprint
      */
     @Nonnull
-    <C> SequenceBlueprint<E, F> build(C pluginContainer, Check<E, F> check);
+    <C> SequenceBlueprint<E, F> build(@Nonnull C pluginContainer, @Nonnull Check<E, F> check);
 
 }

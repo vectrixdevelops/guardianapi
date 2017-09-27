@@ -27,6 +27,8 @@ import com.ichorpowered.guardian.api.Guardian;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import net.kyori.event.Cancellable;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents the stopping state in the AntiCheat life cycle.
  */
@@ -38,6 +40,7 @@ public interface StoppingEvent extends GuardianEvent, Cancellable {
      *
      * @return the accessor managers and registries
      */
+    @Nonnull
     Guardian getGuardian();
 
 }

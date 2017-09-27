@@ -26,7 +26,6 @@ package com.ichorpowered.guardian.api;
 import com.ichorpowered.guardian.api.detection.DetectionRegistry;
 import com.ichorpowered.guardian.api.detection.check.CheckRegistry;
 import com.ichorpowered.guardian.api.detection.heuristic.HeuristicRegistry;
-import com.ichorpowered.guardian.api.detection.module.ModuleRegistry;
 import com.ichorpowered.guardian.api.detection.penalty.PenaltyRegistry;
 import com.ichorpowered.guardian.api.phase.PhaseRegistry;
 import com.ichorpowered.guardian.api.sequence.SequenceManager;
@@ -39,13 +38,6 @@ import com.ichorpowered.guardian.api.sequence.SequenceRegistry;
  * @param <T> the event type
  */
 public interface Guardian<T> extends GuardianBasic {
-
-    /**
-     * Returns the module registry.
-     *
-     * @return the module registry
-     */
-    ModuleRegistry getModuleRegistry();
 
     /**
      * Returns the detection registry.

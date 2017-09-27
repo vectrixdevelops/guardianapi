@@ -31,13 +31,13 @@ package com.ichorpowered.guardian.api.detection.module;
 public interface ModuleExtension {
 
     /**
-     * The method that is invoked after the {@link ModuleRegistry}
+     * The method that is invoked after the module registry
      * initializes it.
      */
     void onConstruction();
 
     /**
-     * The method that is invoked before the {@link ModuleRegistry}
+     * The method that is invoked before the module registry
      * unloads it.
      */
     void onDeconstruction();

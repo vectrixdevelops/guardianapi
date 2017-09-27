@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api.phase;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents a way to filter phase instances.
  */
@@ -35,7 +37,8 @@ public interface PhaseFilter {
      * @param include an accepted class
      * @return this filter
      */
-    PhaseFilter include(Class<?> include);
+    @Nonnull
+    PhaseFilter include(@Nonnull Class<?> include);
 
     /**
      * Includes a collection of classes to the
@@ -44,7 +47,8 @@ public interface PhaseFilter {
      * @param includeAll a collection of accepted classes
      * @return this filter
      */
-    PhaseFilter include(Class<?>... includeAll);
+    @Nonnull
+    PhaseFilter include(@Nonnull Class<?>... includeAll);
 
     /**
      * Excludes a single class to the filter
@@ -53,7 +57,8 @@ public interface PhaseFilter {
      * @param exclude a denied class
      * @return this filter
      */
-    PhaseFilter exclude(Class<?> exclude);
+    @Nonnull
+    PhaseFilter exclude(@Nonnull Class<?> exclude);
 
     /**
      * Excludes a collection of classes to the
@@ -62,7 +67,8 @@ public interface PhaseFilter {
      * @param excludeAll a collection of denied classes
      * @return this filter
      */
-    PhaseFilter exclude(Class<?>... excludeAll);
+    @Nonnull
+    PhaseFilter exclude(@Nonnull Class<?>... excludeAll);
 
     /**
      * Returns {@code true} if this phase class
@@ -72,6 +78,6 @@ public interface PhaseFilter {
      * @param phaseClass the phase instance class
      * @return the filter result
      */
-    boolean accept(Class<?> phaseClass);
+    boolean accept(@Nonnull Class<?> phaseClass);
 
 }

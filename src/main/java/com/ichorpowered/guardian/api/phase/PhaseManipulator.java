@@ -25,6 +25,9 @@ package com.ichorpowered.guardian.api.phase;
 
 import com.ichorpowered.guardian.api.util.key.NamedTypeKey;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Manages manipulation of phases and their states.
  */
@@ -37,7 +40,8 @@ public interface PhaseManipulator {
      * @param <T> the phase key type
      * @return the next phase
      */
-    <T> T next(NamedTypeKey<T> phaseKey);
+    @Nullable
+    <T> T next(@Nonnull NamedTypeKey<T> phaseKey);
 
     /**
      * Returns {@code true} if there is a phase to switch to
@@ -47,7 +51,7 @@ public interface PhaseManipulator {
      * @param <T> the phase key type
      * @return possible phase to switch to
      */
-    <T> boolean hasNext(NamedTypeKey<T> phaseKey);
+    <T> boolean hasNext(@Nonnull NamedTypeKey<T> phaseKey);
 
     /**
      * Returns the {@link PhaseViewer} state.
@@ -56,13 +60,15 @@ public interface PhaseManipulator {
      * @param <T> the phase key type
      * @return the phase viewer state
      */
-    <T> PhaseState getViewerState(NamedTypeKey<T> phaseKey);
+    @Nullable
+    <T> PhaseState getViewerState(@Nonnull NamedTypeKey<T> phaseKey);
 
     /**
      * Returns the {@link PhaseFilter} used for this manipulator.
      *
      * @return the phase filter
      */
+    @Nonnull
     PhaseFilter getFilter();
 
     /**
@@ -72,7 +78,7 @@ public interface PhaseManipulator {
      * @param <T> the phase key type
      * @return the size of phases under this phase key
      */
-    <T> int size(NamedTypeKey<T> phaseKey);
+    <T> int size(@Nonnull NamedTypeKey<T> phaseKey);
 
     /**
      * Returns the size of all the phases combined.

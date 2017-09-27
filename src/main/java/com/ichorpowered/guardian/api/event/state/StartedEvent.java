@@ -26,6 +26,8 @@ package com.ichorpowered.guardian.api.event.state;
 import com.ichorpowered.guardian.api.Guardian;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 
+import javax.annotation.Nonnull;
+
 /**
  * Represents the started state in the AntiCheat life cycle.
  */
@@ -37,6 +39,7 @@ public interface StartedEvent extends GuardianEvent {
      *
      * @return the accessor managers and registries
      */
+    @Nonnull
     Guardian getGuardian();
 
 }

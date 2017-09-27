@@ -51,7 +51,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      * @param <C> the plugin container type
      */
     <C> void put(@Nonnull C pluginContainer, @Nonnull Class<? extends Capture> key,
-                                    @Nullable Capture capture);
+                 @Nullable Capture capture);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
@@ -89,6 +89,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      *
      * @return a set of capture keys
      */
+    @Nonnull
     Set<Class<? extends Capture>> keySet();
 
     /**
@@ -96,6 +97,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      *
      * @return the entity entry
      */
+    @Nonnull
     EntityEntry getEntityEntry();
 
     /**
@@ -104,6 +106,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      *
      * @return the data by these registered captures
      */
+    @Nonnull
     CaptureContainer getContainer();
 
 }

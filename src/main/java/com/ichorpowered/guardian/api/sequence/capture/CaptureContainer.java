@@ -92,7 +92,7 @@ public interface CaptureContainer {
      * @return this capture container
      */
     @Nonnull
-    CaptureContainer merge(CaptureContainer captureContainer);
+    CaptureContainer merge(@Nonnull CaptureContainer captureContainer);
 
     /**
      * Transforms the {@link Capture} in this registry.
@@ -106,7 +106,7 @@ public interface CaptureContainer {
      * @param defaultValue the default value in case the original value does not exist
      * @param <T> the capture value type
      */
-    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform, T defaultValue);
+    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform, @Nonnull T defaultValue);
 
     /**
      * Transforms the {@link Capture} in this registry.
@@ -116,7 +116,7 @@ public interface CaptureContainer {
      * @param defaultValue the default value in case the original value does not exist
      * @param <T> the capture value
      */
-    <T> void transform(@Nonnull NamedTypeKey<T> key, @Nonnull Transform<T> transform, T defaultValue);
+    <T> void transform(@Nonnull NamedTypeKey<T> key, @Nonnull Transform<T> transform, @Nonnull T defaultValue);
 
     /**
      * Returns the {@link Capture} that is represented by its key.
@@ -146,13 +146,14 @@ public interface CaptureContainer {
      * @return the capture key, or {@code null} if the capture is not contained in this registry
      */
     @Nullable
-    <T> String key(T value);
+    <T> String key(@Nonnull T value);
 
     /**
      * Returns a set of keys that are contained inside this registry.
      *
      * @return a set of capture keys
      */
+    @Nonnull
     Set<String> keySet();
 
 }
