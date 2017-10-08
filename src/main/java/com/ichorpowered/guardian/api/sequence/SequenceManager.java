@@ -63,7 +63,7 @@ public interface SequenceManager<T> {
      * @param entry the entity entry
      * @param eventClass the event class
      */
-    void removeFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass);
+    void removeFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass);
 
     /**
      * Stops invocation of sequences that contain
@@ -73,7 +73,7 @@ public interface SequenceManager<T> {
      * @param eventClass the event class
      * @param removeExisting removes running sequences with this trigger
      */
-    void closeFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass, boolean removeExisting);
+    void closeFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass, boolean removeExisting);
 
     /**
      * Opens invocation of sequences that contain
@@ -82,7 +82,7 @@ public interface SequenceManager<T> {
      * @param entry the entity entry
      * @param eventClass the event class
      */
-    void openFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass);
+    void openFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass);
 
     /**
      * Cleans up discontinued sequences.
