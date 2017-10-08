@@ -57,6 +57,15 @@ public interface SequenceManager<T> {
     void invokeFor(@Nonnull EntityEntry entry, @Nonnull T event, @Nonnull Predicate<Sequence> predicate);
 
     /**
+     * Removes sequences that contain this event class
+     * as its trigger.
+     *
+     * @param entry the entity entry
+     * @param eventClass the event class
+     */
+    void removeFor(@Nonnull EntityEntry entry, @Nonnull Class<T> eventClass);
+
+    /**
      * Stops invocation of sequences that contain
      * this event class as its trigger.
      *

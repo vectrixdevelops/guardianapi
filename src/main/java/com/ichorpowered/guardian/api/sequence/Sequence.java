@@ -52,6 +52,15 @@ public interface Sequence<E, F extends DetectionConfiguration> {
     <T> boolean apply(@Nonnull EntityEntry entry, @Nonnull T event);
 
     /**
+     * Returns the trigger event class used in
+     * the first action for this sequence.
+     *
+     * @return the trigger event class
+     */
+    @Nonnull
+    Class<?> getTriggerEventClass();
+
+    /**
      * Returns the event class for the action
      * at the specified index.
      *
@@ -60,6 +69,7 @@ public interface Sequence<E, F extends DetectionConfiguration> {
      * @throws IndexOutOfBoundsException if the index is pointing to an action that does not exist
      */
     @Nonnull
+    @Deprecated
     Class<?> getActionEvent(int index) throws IndexOutOfBoundsException;
 
     /**

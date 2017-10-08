@@ -1,8 +1,7 @@
 Change Log
 ==========
 
-Beta 0.4.0
-----------
+1.0.0
+-----
 
-- Break up the API and implementation.
-- Better chain-ability in all parts of the API.
+- Release of the first API build.
