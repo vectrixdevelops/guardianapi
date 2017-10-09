@@ -55,4 +55,13 @@ public interface SequenceBlueprint<E, F extends DetectionConfiguration> {
     @Nonnull
     Check<E, F> getCheck();
 
+    /**
+     * Returns the trigger event class used in
+     * the first action for this sequence.
+     *
+     * @return the trigger event class
+     */
+    @Nonnull
+    Class<?> getTriggerEventClass();
+
 }
