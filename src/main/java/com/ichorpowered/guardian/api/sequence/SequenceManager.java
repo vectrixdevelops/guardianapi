@@ -25,6 +25,7 @@ package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 
+import java.util.UUID;
 import java.util.function.Predicate;
 
 import javax.annotation.Nonnull;
@@ -72,17 +73,19 @@ public interface SequenceManager<T> {
      * @param entry the entity entry
      * @param eventClass the event class
      * @param removeExisting removes running sequences with this trigger
+     * @return the block id
      */
-    void closeFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass, boolean removeExisting);
+    UUID closeFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass, boolean removeExisting);
 
     /**
      * Opens invocation of sequences that contain
      * this event class as its trigger.
      *
+     * @param id the block id
      * @param entry the entity entry
      * @param eventClass the event class
      */
-    void openFor(@Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass);
+    void openFor(@Nonnull UUID id, @Nonnull EntityEntry entry, @Nonnull Class<? extends T> eventClass);
 
     /**
      * Cleans up discontinued sequences.
