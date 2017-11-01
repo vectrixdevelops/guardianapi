@@ -23,42 +23,38 @@
  */
 package com.ichorpowered.guardian.api;
 
-import com.ichorpowered.guardian.api.event.GuardianEvent;
-import com.ichorpowered.guardian.api.event.GuardianListener;
 import com.ichorpowered.guardian.api.util.ImplementationException;
-import net.kyori.event.SimpleEventBus;
-
-import javax.annotation.Nullable;
 
 /**
  * Represents the methods that are accessible during
  * any state.
  */
-public interface GuardianBasic {
+public class SimpleGuardian {
+
+    private static Object INSTANCE;
+
+    /**
+     * Sets the instance of the implementation.
+     *
+     * @param instance the implementation
+     * @param <T> the implementation type
+     */
+    public static <T extends Guardian> void setInstance(final T instance) {
+        INSTANCE = instance;
+    }
 
     /**
      * Returns the instance of the implementation from
      * a class if present.
      *
-     * @param clazz the implementation class
      * @param <T> the implementation class type
      * @return possible implementation instance
      * @throws ImplementationException possible exception
      */
-    <T extends Guardian> T getInstance(@Nullable Class<T> clazz) throws ImplementationException;
-
-    /**
-     * Returns the event bus.
-     *
-     * @return the event bus
-     */
-    SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
-
-    /**
-     * Returns the plugin state.
-     *
-     * @return the plugin state
-     */
-    GuardianState getState();
+    public static <T extends Guardian> T getInstance() throws ImplementationException {
+        if (INSTANCE == null) throw new ImplementationException("Instance has not been initialized yet!");
+        if (!Guardian.class.isAssignableFrom(INSTANCE.getClass())) throw new ImplementationException("Instance is invalid!");
+        return (T) INSTANCE;
+    }
 
 }

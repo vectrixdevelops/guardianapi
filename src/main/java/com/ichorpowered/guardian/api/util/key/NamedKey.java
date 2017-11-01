@@ -40,11 +40,11 @@ public class NamedKey {
      * @return a new named key
      */
     @Nonnull
-    public static NamedKey of(@Nonnull String id) {
+    public static NamedKey of(@Nonnull final String id) {
         return new NamedKey(id);
     }
 
-    private NamedKey(@Nonnull String id) {
+    private NamedKey(@Nonnull final String id) {
         this.key = id;
     }
 
@@ -54,12 +54,12 @@ public class NamedKey {
      * @return the key
      */
     @Nonnull
-    public String getName() {
+    public final String getName() {
         return this.key;
     }
 
     @Override
-    public boolean equals(@Nullable Object object) {
+    public boolean equals(@Nullable final Object object) {
         if (object == null) {
             return false;
         }

@@ -46,11 +46,11 @@ public class NamedTypeKey<T> {
      * @return a new named type key
      */
     @Nonnull
-    public static <K> NamedTypeKey<K> of(@Nonnull String id, @Nonnull Class<K> clazz) {
+    public static <K> NamedTypeKey<K> of(@Nonnull final String id, @Nonnull final Class<K> clazz) {
         return new NamedTypeKey<>(id, clazz);
     }
 
-    private NamedTypeKey(@Nonnull String id, @Nonnull Class<T> clazz) {
+    private NamedTypeKey(@Nonnull final String id, @Nonnull final Class<T> clazz) {
         this.key = id;
         this.clazz = clazz;
     }
@@ -61,7 +61,7 @@ public class NamedTypeKey<T> {
      * @return the key name
      */
     @Nonnull
-    public String getName() {
+    public final String getName() {
         return this.key;
     }
 
@@ -71,12 +71,12 @@ public class NamedTypeKey<T> {
      * @return the key type class
      */
     @Nonnull
-    public Class<T> getTypeClass() {
+    public final Class<T> getTypeClass() {
         return this.clazz;
     }
 
     @Override
-    public boolean equals(@Nullable Object object) {
+    public boolean equals(@Nullable final Object object) {
         if (object == null) {
             return false;
         }

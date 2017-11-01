@@ -23,7 +23,7 @@
  */
 package com.ichorpowered.guardian.api.event.state;
 
-import com.ichorpowered.guardian.api.GuardianBasic;
+import com.ichorpowered.guardian.api.SimpleGuardian;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 
 import javax.annotation.Nonnull;
@@ -39,6 +39,6 @@ public interface StoppedEvent extends GuardianEvent {
      * @return the state ready implementation methods
      */
     @Nonnull
-    GuardianBasic getGuardian();
+    SimpleGuardian getGuardian();
 
 }
