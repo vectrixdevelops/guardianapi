@@ -52,8 +52,12 @@ public class SimpleGuardian {
      * @throws ImplementationException possible exception
      */
     public static <T extends Guardian> T getInstance() throws ImplementationException {
-        if (INSTANCE == null) throw new ImplementationException("Instance has not been initialized yet!");
-        if (!Guardian.class.isAssignableFrom(INSTANCE.getClass())) throw new ImplementationException("Instance is invalid!");
+        if (INSTANCE == null) {
+            throw new ImplementationException("Instance has not been initialized yet!");
+        } else if (!Guardian.class.isAssignableFrom(INSTANCE.getClass())) {
+            throw new ImplementationException("Instance is invalid!");
+        }
+
         return (T) INSTANCE;
     }
 
