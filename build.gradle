@@ -29,10 +29,12 @@ targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
     maven { url 'https://oss.sonatype.org/content/groups/public/' }
 }
 
 dependencies {
+    compile 'com.github.AbilityAPI:SequenceAPI:develop-SNAPSHOT'
     compile 'net.kyori:event:1.0.0-SNAPSHOT'
     compile 'tech.ferus:ConfigKeys:4.0.1'
     compile 'tech.ferus.util:basicsql-core:2.0.1'
