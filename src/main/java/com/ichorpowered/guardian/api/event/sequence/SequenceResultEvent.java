@@ -23,11 +23,11 @@
  */
 package com.ichorpowered.guardian.api.event.sequence;
 
+import com.abilityapi.sequenceapi.Sequence;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.entry.EntityEntry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.report.Summary;
-import com.ichorpowered.guardian.api.sequence.Sequence;
 
 import javax.annotation.Nonnull;
 
@@ -50,12 +50,10 @@ public interface SequenceResultEvent extends GuardianEvent {
      * Returns the {@link Sequence} that received
      * a result.
      *
-     * @param <E> the check detections owner type
-     * @param <F> the check detections configuration type
      * @return the sequence
      */
     @Nonnull
-    <E, F extends DetectionConfiguration> Sequence<E, F> getSequence();
+    Sequence getSequence();
 
     /**
      * Returns the {@link Summary} that was

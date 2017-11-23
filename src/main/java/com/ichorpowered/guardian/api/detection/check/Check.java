@@ -23,11 +23,11 @@
  */
 package com.ichorpowered.guardian.api.detection.check;
 
+import com.abilityapi.sequenceapi.SequenceBlueprint;
+import com.abilityapi.sequenceapi.action.Action;
 import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.detection.DetectionConfiguration;
 import com.ichorpowered.guardian.api.report.Summary;
-import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
-import com.ichorpowered.guardian.api.sequence.action.Action;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -68,7 +68,7 @@ public interface Check<E, F extends DetectionConfiguration> {
      * @return the sequence blueprint
      */
     @Nonnull
-    SequenceBlueprint<E, F> getSequence();
+    SequenceBlueprint getSequence();
 
     /**
      * Returns the {@link CheckBlueprint} for this {@link Check}.

@@ -64,7 +64,7 @@ public interface CaptureRegistry extends Iterable<Capture> {
      */
     @Nonnull
     <E, F extends DetectionConfiguration> Capture<E, F> expect(@Nonnull Class<? extends Capture<E, F>> key)
-        throws NoSuchElementException;
+            throws NoSuchElementException;
 
     /**
      * Returns the {@link Capture} that is represented by its key.

@@ -23,6 +23,8 @@
  */
 package com.ichorpowered.guardian.api;
 
+import com.abilityapi.sequenceapi.SequenceManager;
+import com.abilityapi.sequenceapi.SequenceRegistry;
 import com.ichorpowered.guardian.api.detection.DetectionRegistry;
 import com.ichorpowered.guardian.api.detection.check.CheckRegistry;
 import com.ichorpowered.guardian.api.detection.heuristic.HeuristicRegistry;
@@ -30,8 +32,6 @@ import com.ichorpowered.guardian.api.detection.penalty.PenaltyRegistry;
 import com.ichorpowered.guardian.api.event.GuardianEvent;
 import com.ichorpowered.guardian.api.event.GuardianListener;
 import com.ichorpowered.guardian.api.phase.PhaseRegistry;
-import com.ichorpowered.guardian.api.sequence.SequenceManager;
-import com.ichorpowered.guardian.api.sequence.SequenceRegistry;
 import net.kyori.event.SimpleEventBus;
 
 /**
@@ -42,6 +42,8 @@ import net.kyori.event.SimpleEventBus;
  */
 public interface Guardian<T> {
 
+    // Sub Systems
+
     /**
      * Returns the event bus.
      *
@@ -49,12 +51,16 @@ public interface Guardian<T> {
      */
     SimpleEventBus<GuardianEvent, GuardianListener> getEventBus();
 
+    // Life Cycle
+
     /**
      * Returns the plugin state.
      *
      * @return the plugin state
      */
     GuardianState getState();
+
+    // Registries
 
     /**
      * Returns the detection registry.
@@ -97,6 +103,8 @@ public interface Guardian<T> {
      * @return the phase registry
      */
     PhaseRegistry getPhaseRegistry();
+
+    // Managers
 
     /**
      * Returns the sequence manager.
