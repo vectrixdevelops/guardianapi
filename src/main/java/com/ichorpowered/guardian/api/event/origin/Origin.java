@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardian.api.event.origin;
 
+import com.abilityapi.sequenceapi.context.SequenceContext;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
@@ -55,6 +56,15 @@ public final class Origin {
      */
     public static Builder builder() {
         return new Builder();
+    }
+
+    public static Builder merge(SequenceContext sequenceContext) {
+        final Origin.Builder origin = Origin.builder();
+
+        origin.source(sequenceContext.getSource());
+        origin.owner(sequenceContext.getOwner());
+
+        return origin;
     }
 
     /**
