@@ -23,7 +23,7 @@
  */
 package com.ichorpowered.guardian.api.event.origin;
 
-import com.abilityapi.sequenceapi.context.SequenceContext;
+import com.abilityapi.sequenceapi.SequenceContext;
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableList;
 
