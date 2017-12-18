@@ -1,0 +1,9 @@
+allprojects {
+    apply plugin: "com.github.hierynomus.license"
+
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://oss.sonatype.org/content/groups/public/' }
+    }
+}

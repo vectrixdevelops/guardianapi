@@ -3,12 +3,6 @@ archivesBaseName = project.name.toLowerCase()
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
-repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://oss.sonatype.org/content/groups/public/' }
-}
-
 tasks.withType(JavaCompile) {
     options.compilerArgs += ['-Xlint:all', '-Xlint:-path', '-parameters']
     options.deprecation = true
@@ -21,7 +15,7 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
 
-apply plugin: 'com.github.hierynomus.license'
+// License
 
 license {
     header = file('LICENSE.txt')
@@ -35,6 +29,8 @@ license {
     }
 }
 
+// Checkstyle
+
 apply plugin: 'checkstyle'
 
 checkstyle {
@@ -45,6 +41,8 @@ checkstyle {
             'severity': 'warning'
     ]
 }
+
+// Wrapper
 
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion

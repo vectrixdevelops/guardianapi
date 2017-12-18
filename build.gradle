@@ -1,9 +1,13 @@
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'com.puppycrawl.tools:checkstyle:7.6.1'
+        classpath "gradle.plugin.nl.javadude.gradle.plugins:license-gradle-plugin:0.14.0"
     }
 }
 
@@ -12,17 +16,17 @@ plugins {
     id 'idea'
     id 'maven'
     id 'eclipse'
-    id 'com.github.hierynomus.license' version '0.14.0'
 }
 
 apply from: project.file("gradle/versions.gradle")
+apply from: project.file("gradle/shared.gradle")
 
 defaultTasks 'licenseFormat', 'build'
 
 group = 'com.ichorpowered'
 version = '3.0.0-SNAPSHOT'
 
-apply from: project.file("gradle/base.gradle")
+apply from: project.file("gradle/api.gradle")
 apply from: project.file("gradle/publish.gradle")
 
 dependencies {
