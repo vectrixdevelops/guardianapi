@@ -25,5 +25,15 @@ package com.ichorpowered.guardianapi.detection;
 
 import com.ichorpowered.guardianapi.content.ContentLoader;
 
+/**
+ * Represents a {@link ContentLoader} that can save data to storage.
+ */
 public interface DetectionContentLoader extends ContentLoader {
+
+    /**
+     * Moves the contents from the container
+     * to the configuration files.
+     */
+    void save();
+
 }

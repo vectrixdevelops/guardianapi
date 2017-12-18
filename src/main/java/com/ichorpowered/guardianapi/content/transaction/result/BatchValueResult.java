@@ -27,15 +27,42 @@ import com.ichorpowered.guardianapi.content.ContentContainer;
 import com.ichorpowered.guardianapi.content.transaction.ContentKey;
 
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Represents a batch value result.
+ */
 public interface BatchValueResult {
 
+    /**
+     * Returns false if this content is not
+     * yet stored in the container fully or
+     * the container is only a virtual one.
+     *
+     * @return the storage dirtiness
+     */
     boolean isDirty();
 
+    /**
+     * Returns the keys used with this content.
+     *
+     * @return the keys
+     */
     List<ContentKey> getKeys();
 
+    /**
+     * Returns the elements used with this content.
+     *
+     * @return the values
+     */
     List<?> getValues();
 
-    ContentContainer getOriginalContainer();
+    /**
+     * Returns the original content container
+     * that this key is used for if there is one.
+     *
+     * @return the original content container
+     */
+    Optional<ContentContainer> getOriginalContainer();
 
 }

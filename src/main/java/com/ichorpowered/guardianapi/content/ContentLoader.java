@@ -23,5 +23,44 @@
  */
 package com.ichorpowered.guardianapi.content;
 
+import com.ichorpowered.guardianapi.content.transaction.ContentKey;
+
+import java.util.Set;
+
+/**
+ * Represents a way to load and save content from
+ * an alternative source.
+ */
 public interface ContentLoader {
+
+    /**
+     * Sets a container to load to or
+     * save from.
+     *
+     * @param contentContainer the content container
+     */
+    void set(ContentContainer contentContainer);
+
+    /**
+     * Loads all the possible keys from the
+     * {@link ContentContainer} set.
+     */
+    void loadAll();
+
+    /**
+     * Loads all the keys specified to the
+     * {@link ContentContainer} set.
+     *
+     * @param contentKeys the content keys
+     */
+    void loadAll(Set<ContentKey> contentKeys);
+
+    /**
+     * Loads a single key specified to the
+     * {@link ContentContainer} set.
+     *
+     * @param contentKey the content key
+     */
+    void loadSingle(ContentKey contentKey);
+
 }
