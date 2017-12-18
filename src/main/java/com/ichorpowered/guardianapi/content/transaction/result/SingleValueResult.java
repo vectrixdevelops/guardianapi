@@ -21,40 +21,51 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.stage.model;
+package com.ichorpowered.guardianapi.content.transaction.result;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
+import com.ichorpowered.guardianapi.content.ContentContainer;
+import com.ichorpowered.guardianapi.content.transaction.ContentKey;
 
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.Optional;
 
 /**
- * Represents a submission from the {@link StageModelBuilder}.
+ * Represents a single value result.
  *
- * @param <T> the stage model type
+ * @param <E> the element type
  */
-public interface StageModelArchetype<T extends Stage> {
+public interface SingleValueResult<E> {
 
     /**
-     * Returns the included {@link Stage}s.
+     * Returns false if this content is not
+     * yet stored in the container fully or
+     * the container is only a virtual one.
      *
-     * @return the included stages
+     * @return the storage dirtiness
      */
-    List<Class<? extends T>> getIncludes();
+    boolean isDirty();
 
     /**
-     * Returns the excluded {@link Stage}s.
+     * Returns the key used with this element
+     * content.
      *
-     * @return the excluded stages
+     * @return the key
      */
-    Set<Class<? extends T>> getExcludes();
+    ContentKey getKey();
 
     /**
-     * Returns the {@link Predicate} filters.
+     * Returns the element used with this key
+     * content.
      *
-     * @return the filters
+     * @return the value
      */
-    Set<Predicate<T>> getFilters();
+    Optional<E> getElement();
+
+    /**
+     * Returns the original content container
+     * that this key is used for if there is one.
+     *
+     * @return the original content container
+     */
+    Optional<ContentContainer> getOriginalContainer();
 
 }

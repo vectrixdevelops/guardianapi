@@ -21,40 +21,35 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.stage.model;
+package com.ichorpowered.guardianapi.content.transaction;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
-
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.reflect.TypeToken;
 
 /**
- * Represents a submission from the {@link StageModelBuilder}.
- *
- * @param <T> the stage model type
+ * Represents a key that can be associated to
+ * a content value.
  */
-public interface StageModelArchetype<T extends Stage> {
+public interface ContentKey {
 
     /**
-     * Returns the included {@link Stage}s.
+     * Returns the content key identifier.
      *
-     * @return the included stages
+     * @return the content key identifier
      */
-    List<Class<? extends T>> getIncludes();
+    String getId();
 
     /**
-     * Returns the excluded {@link Stage}s.
+     * Returns the content key name.
      *
-     * @return the excluded stages
+     * @return the content key name
      */
-    Set<Class<? extends T>> getExcludes();
+    String getName();
 
     /**
-     * Returns the {@link Predicate} filters.
+     * Returns the content key element type.
      *
-     * @return the filters
+     * @return the content key element type
      */
-    Set<Predicate<T>> getFilters();
+    TypeToken<?> getElementType();
 
 }

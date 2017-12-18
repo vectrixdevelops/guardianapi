@@ -21,40 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.stage.model;
+package com.ichorpowered.guardianapi.content.transaction.result;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
+import com.ichorpowered.guardianapi.content.ContentContainer;
+import com.ichorpowered.guardianapi.content.transaction.ContentKey;
 
 import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
 
-/**
- * Represents a submission from the {@link StageModelBuilder}.
- *
- * @param <T> the stage model type
- */
-public interface StageModelArchetype<T extends Stage> {
+public interface BatchValueResult {
 
-    /**
-     * Returns the included {@link Stage}s.
-     *
-     * @return the included stages
-     */
-    List<Class<? extends T>> getIncludes();
+    boolean isDirty();
 
-    /**
-     * Returns the excluded {@link Stage}s.
-     *
-     * @return the excluded stages
-     */
-    Set<Class<? extends T>> getExcludes();
+    List<ContentKey> getKeys();
 
-    /**
-     * Returns the {@link Predicate} filters.
-     *
-     * @return the filters
-     */
-    Set<Predicate<T>> getFilters();
+    List<?> getValues();
+
+    ContentContainer getOriginalContainer();
 
 }

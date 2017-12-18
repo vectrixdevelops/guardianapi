@@ -53,13 +53,6 @@ public interface Detection extends ContentContainer {
     StageCycle getStageCycle();
 
     /**
-     * Returns this detections content loader.
-     *
-     * @return this detections content loader
-     */
-    DetectionContentLoader getContentLoader();
-
-    /**
      * Returns this detections owner plugin.
      *
      * @return this detections owner plugin.

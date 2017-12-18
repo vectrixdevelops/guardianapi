@@ -25,6 +25,7 @@ package com.ichorpowered.guardianapi.detection;
 
 import com.ichorpowered.guardianapi.detection.stage.Stage;
 import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.ichorpowered.guardianapi.detection.stage.model.StageModelArchetype;
 import com.ichorpowered.guardianapi.detection.stage.model.StageModelBuilder;
 
 /**
@@ -60,6 +61,17 @@ public interface DetectionBuilder {
      * @return a stage model builder
      */
     <T extends Stage> StageModelBuilder stage(Class<? extends StageModel<T>> stageModelClass);
+
+    /**
+     * Returns this builder and adds a
+     * {@link StageModel} in the order this
+     * method was called in.
+     *
+     * @param stageModelArchetype the stage model archetype
+     * @param <T> the stage model type
+     * @return this builder
+     */
+    <T extends Stage> DetectionBuilder stage(StageModelArchetype<T> stageModelArchetype);
 
     /**
      * Returns this builder and sets the

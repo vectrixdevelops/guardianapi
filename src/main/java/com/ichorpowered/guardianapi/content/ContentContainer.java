@@ -23,5 +23,116 @@
  */
 package com.ichorpowered.guardianapi.content;
 
+import com.ichorpowered.guardianapi.content.transaction.ContentKey;
+import com.ichorpowered.guardianapi.content.transaction.result.BatchValueResult;
+import com.ichorpowered.guardianapi.content.transaction.result.SingleValueResult;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+/**
+ * Represents a container for content data.
+ */
 public interface ContentContainer {
+
+    /**
+     * Returns a {@link SingleValueResult} for offering
+     * the content to be stored in this container under
+     * the {@link ContentKey}
+     *
+     * @param key the key
+     * @param value the value
+     * @param <E> the value type
+     * @return the single value result
+     */
+    <E> SingleValueResult<E> offer(ContentKey key, E value);
+
+    /**
+     * Returns a {@link SingleValueResult} for offering
+     * the content to be stored in this container under
+     * the id.
+     *
+     * @param id the key id
+     * @param value the value
+     * @param <E> the value type
+     * @return the single value result
+     */
+    <E> SingleValueResult<E> offer(String id, E value);
+
+    /**
+     * Returns a {@link BatchValueResult} for offering
+     * a list of content to be stored in this container under
+     * each id.
+     *
+     * @param keys the keys
+     * @param values the values
+     * @return the batch value result
+     */
+    BatchValueResult offer(List<ContentKey> keys, List<?> values);
+
+    /**
+     * Returns a {@link BatchValueResult} for offering
+     * a list of content to be stored in this container under
+     * each key, for another {@link ContentContainer}.
+     *
+     * @param contentContainer another content container
+     * @return the batch value result
+     */
+    BatchValueResult merge(ContentContainer contentContainer);
+
+    /**
+     * Returns a {@link SingleValueResult} for retrieving
+     * the content that may be stored in this container under
+     * the {@link ContentKey}.
+     *
+     * @param key the key
+     * @param <E> the value type
+     * @return the single value result
+     */
+    <E> SingleValueResult<E> get(ContentKey key);
+
+    /**
+     * Returns a {@link SingleValueResult} for retrieving
+     * the content that may be stored in this container under
+     * the id.
+     *
+     * @param id the key id
+     * @param <E> the value type
+     * @return the single value result
+     */
+    <E> SingleValueResult<E> get(String id);
+
+    /**
+     * Returns a set of keys that are stored in this
+     * container.
+     *
+     * @return the set stored keys
+     */
+    Set<ContentKey> getKeys();
+
+    /**
+     * Returns a set of values that are stored in this
+     * container.
+     *
+     * @return the set of stored values
+     */
+    Set<?> getValues();
+
+    /**
+     * Returns a set of keys that may be stored in this
+     * container, or offered to this container.
+     *
+     * @return the set of possible keys
+     */
+    Set<ContentKey> getPossibleKeys();
+
+    /**
+     * Returns an {@link Optional} that may contain a
+     * {@link ContentLoader} if present.
+     *
+     * @return a possible content loader
+     */
+    Optional<ContentLoader> getContentLoader();
+
 }

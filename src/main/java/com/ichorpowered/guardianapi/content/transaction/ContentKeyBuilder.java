@@ -21,40 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.stage.model;
+package com.ichorpowered.guardianapi.content.transaction;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
-
-import java.util.List;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.reflect.TypeToken;
 
 /**
- * Represents a submission from the {@link StageModelBuilder}.
- *
- * @param <T> the stage model type
+ * Represents a {@link ContentKey} builder.
  */
-public interface StageModelArchetype<T extends Stage> {
+public interface ContentKeyBuilder {
 
     /**
-     * Returns the included {@link Stage}s.
+     * Returns this builder and sets the
+     * {@link ContentKey} id.
      *
-     * @return the included stages
+     * @param id the content key id
+     * @return this builder
      */
-    List<Class<? extends T>> getIncludes();
+    ContentKeyBuilder id(String id);
 
     /**
-     * Returns the excluded {@link Stage}s.
+     * Returns this builder and sets the
+     * {@link ContentKey} name.
      *
-     * @return the excluded stages
+     * @param name the content key name
+     * @return this builder
      */
-    Set<Class<? extends T>> getExcludes();
+    ContentKeyBuilder name(String name);
 
     /**
-     * Returns the {@link Predicate} filters.
+     * Returns this builder and sets the
+     * {@link ContentKey} element type.
      *
-     * @return the filters
+     * @param typeToken the content key element type
+     * @return this builder
      */
-    Set<Predicate<T>> getFilters();
+    ContentKeyBuilder element(TypeToken<?> typeToken);
+
+    /**
+     * Returns a built {@link ContentKey} using
+     * this builder.
+     *
+     * @return the new content key
+     */
+    ContentKey build();
 
 }
