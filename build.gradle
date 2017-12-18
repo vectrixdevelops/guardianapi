@@ -15,116 +15,21 @@ plugins {
     id 'com.github.hierynomus.license' version '0.14.0'
 }
 
-apply plugin: 'checkstyle'
-apply plugin: 'com.github.hierynomus.license'
+apply from: project.file("gradle/versions.gradle")
 
 defaultTasks 'licenseFormat', 'build'
 
-group = apiGroup
-version = apiVersion
-archivesBaseName = "guardianapi"
+group = 'com.ichorpowered'
+version = '3.0.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-    maven { url 'https://jitpack.io' }
-    maven { url 'https://oss.sonatype.org/content/groups/public/' }
-}
+apply from: project.file("gradle/base.gradle")
+apply from: project.file("gradle/publish.gradle")
 
 dependencies {
     compile 'com.github.AbilityAPI:SequenceAPI:develop-SNAPSHOT'
     compile 'net.kyori:event:1.0.0-SNAPSHOT'
     compile 'tech.ferus:ConfigKeys:4.0.1'
     compile 'tech.ferus.util:basicsql-core:2.0.1'
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs += ['-Xlint:all', '-Xlint:-path', '-parameters']
-    options.deprecation = true
-    options.encoding = 'UTF-8'
-}
-
-if (JavaVersion.current().isJava8Compatible()) {
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
-    }
-}
-
-license {
-    header = file('LICENSE.txt')
-    include '**/*.java'
-
-    ignoreFailures = false
-    strictCheck = true
-
-    mapping {
-        java = 'SLASHSTAR_STYLE'
-    }
-}
-
-checkstyle {
-    toolVersion = '7.6.1'
-    configFile = file('checkstyle.xml')
-    configProperties = [
-            'basedir': project.projectDir,
-            'severity': 'warning'
-    ]
-}
-
-task sourceJar(type: Jar) {
-    classifier = 'source'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-jar {
-    classifier = ''
-}
-
-artifacts {
-    archives sourceJar
-    archives javadocJar
-    archives jar
-}
-
-if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
-    uploadArchives {
-        repositories {
-            mavenDeployer {
-                repository(url: 'http://repo.foxdenstudio.net/repository/maven-vectrix/') {
-                    authentication(userName: System.env.NEXUS_USER, password: System.env.NEXUS_PASS)
-                }
-
-                pom.project {
-                    name project.name
-
-                    licenses {
-                        license {
-                            name 'MIT License'
-                            url 'https://opensource.org/licenses/MIT'
-                        }
-                    }
-
-                    issueManagement {
-                        system 'Github Issues'
-                        url 'https://github.com/ichorpowered/guardianapi/issues'
-                    }
-
-                    scm {
-                        connection 'scm:git@github.com/ichorpowered/guardianapi.git'
-                        developerConnection 'scm:git@github.com/ichorpowered/guardianapi.git'
-                        url 'https://github.com/ichorpowered/guardianapi/'
-                    }
-                }
-            }
-        }
-    }
 }
 
 build.dependsOn(sourceJar)
