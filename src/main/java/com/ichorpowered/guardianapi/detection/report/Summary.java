@@ -93,6 +93,6 @@ public interface Summary extends Iterable<Report> {
      * @return the detection owner
      */
     @Nonnull
-    Object getOwner();
+    Object getPlugin();
 
 }

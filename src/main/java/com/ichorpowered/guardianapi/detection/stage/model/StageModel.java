@@ -36,6 +36,20 @@ import java.util.Optional;
 public interface StageModel<T extends Stage> extends Iterable<T> {
 
     /**
+     * Returns the identifier of this model.
+     *
+     * @return the model identifier
+     */
+    String getId();
+
+    /**
+     * Returns the name of this model.
+     *
+     * @return the model name
+     */
+    String getName();
+
+    /**
      * Registers a stage into this model.
      *
      * @param stage the stage

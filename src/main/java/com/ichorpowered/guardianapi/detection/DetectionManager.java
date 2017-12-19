@@ -53,32 +53,13 @@ public interface DetectionManager {
 
     /**
      * Returns a {@link DetectionBuilder} that when
-     * submitted registers a detection class to be
-     * provided for.
+     * submitted provides the results to the registered
+     * detection.
      *
      * @param detectionClass the detection class
      * @return a detection builder
      */
-    DetectionBuilder create(Class<? extends Detection> detectionClass);
-
-    /**
-     * Returns a {@link DetectionBuilder} that when
-     * submitted replaces the existing detection
-     * if it is present with the submitted result.
-     *
-     * @param detectionClass the detection class
-     * @return a detection builder
-     */
-    Optional<DetectionBuilder> modify(Class<? extends Detection> detectionClass);
-
-    /**
-     * Removes a detection from the provided registry
-     * if it exists.
-     *
-     * @param detectionClass the detection class
-     * @return this detection manager
-     */
-    DetectionManager remove(Class<? extends Detection> detectionClass);
+    Optional<DetectionBuilder> provider(Class<? extends Detection> detectionClass);
 
     /**
      * Returns an {@link Optional} that may contain

@@ -23,5 +23,95 @@
  */
 package com.ichorpowered.guardianapi.detection.stage.cycle;
 
+import com.ichorpowered.guardianapi.detection.stage.Stage;
+import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+
+import java.util.List;
+
+/**
+ * Represents a way to cycle through the
+ * {@link Stage}s.
+ */
 public interface StageCycle {
+
+    // Iteration
+
+    /**
+     * Iterates to the next stage in this model
+     * or, if this is the last stage in the model
+     * goes to the next model and if this is the
+     * last model resets, whilst calling the
+     * appropriate events.
+     */
+    void next();
+
+    /**
+     * Returns true if there is a stage or model
+     * left in the iterator before a reset.
+     *
+     * @return true if there is an iterable element
+     */
+    boolean hasNext();
+
+    // Getters
+
+    /**
+     * Returns the current model id from the
+     * iterator.
+     *
+     * @return the current stage model id
+     */
+    String getModelId();
+
+    /**
+     * Returns the current model from the iterator.
+     *
+     * @param <T> the stage model type
+     * @return the current stage model
+     */
+    <T extends Stage> StageModel<T> getModel();
+
+    /**
+     * Returns the current stage id from the model
+     * iterator.
+     *
+     * @return the current stage id
+     */
+    String getStageId();
+
+    /**
+     * Returns the current stage from the model
+     * iterator.
+     *
+     * @param <T> the stage type
+     * @return the current stage
+     */
+    <T extends Stage> T getStage();
+
+    /**
+     * Returns the size of the items in the model
+     * iterator.
+     *
+     * @return the model iterator size
+     */
+    int size();
+
+    // Container
+
+    /**
+     * Returns all the stage model classes that
+     * will be iterated in this cycle.
+     *
+     * @return the iterable stage models
+     */
+    List<Class<? extends StageModel<?>>> getAll();
+
+    /**
+     * The size of all models iterators in this
+     * cycle.
+     *
+     * @return the models iterator size total
+     */
+    int totalSize();
+
 }

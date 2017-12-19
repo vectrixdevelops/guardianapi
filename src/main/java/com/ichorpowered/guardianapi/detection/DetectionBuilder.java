@@ -60,7 +60,7 @@ public interface DetectionBuilder {
      * @param <T> the stage model type
      * @return a stage model builder
      */
-    <T extends Stage> StageModelBuilder stage(Class<? extends StageModel<T>> stageModelClass);
+    <T extends Stage> StageModelBuilder<T> stage(Class<? extends StageModel<T>> stageModelClass);
 
     /**
      * Returns this builder and adds a
@@ -68,10 +68,9 @@ public interface DetectionBuilder {
      * method was called in.
      *
      * @param stageModelArchetype the stage model archetype
-     * @param <T> the stage model type
      * @return this builder
      */
-    <T extends Stage> DetectionBuilder stage(StageModelArchetype<T> stageModelArchetype);
+    DetectionBuilder stage(StageModelArchetype stageModelArchetype);
 
     /**
      * Returns this builder and sets the
