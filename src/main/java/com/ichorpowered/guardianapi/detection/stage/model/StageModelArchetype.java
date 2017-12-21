@@ -37,6 +37,16 @@ import java.util.function.Predicate;
 public interface StageModelArchetype<T extends Stage> {
 
     /**
+     * Returns the {@link StageModel} class this
+     * archetype represents.
+     *
+     * @return the stage model class
+     */
+    Class<? extends StageModel<T>> getModelClass();
+
+    Predicate<T> getModelFilter();
+
+    /**
      * Returns the included {@link Stage}s.
      *
      * @return the included stages
@@ -56,5 +66,21 @@ public interface StageModelArchetype<T extends Stage> {
      * @return the filters
      */
     Set<Predicate<T>> getFilters();
+
+    /**
+     * Returns the minimum {@link Stage}s that
+     * will be executed.
+     *
+     * @return the minimum stages
+     */
+    int getMinimum();
+
+    /**
+     * Returns the maximum {@link Stage}s that
+     * will be executed.
+     *
+     * @return the maximum stages
+     */
+    int getMaximum();
 
 }

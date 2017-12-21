@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.stage.cycle;
+package com.ichorpowered.guardianapi.detection.stage;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
 import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Represents a way to cycle through the
@@ -42,16 +42,14 @@ public interface StageCycle {
      * goes to the next model and if this is the
      * last model resets, whilst calling the
      * appropriate events.
-     */
-    void next();
-
-    /**
-     * Returns true if there is a stage or model
-     * left in the iterator before a reset.
      *
-     * @return true if there is an iterable element
+     * <p>Returns {@code false} when the cycle is
+     * complete. Called again will start the cycle
+     * from the beginning.</p>
+     *
+     * @return the cycle state
      */
-    boolean hasNext();
+    boolean next();
 
     // Getters
 
@@ -61,7 +59,7 @@ public interface StageCycle {
      *
      * @return the current stage model id
      */
-    String getModelId();
+    Optional<String> getModelId();
 
     /**
      * Returns the current model from the iterator.
@@ -69,7 +67,7 @@ public interface StageCycle {
      * @param <T> the stage model type
      * @return the current stage model
      */
-    <T extends Stage> StageModel<T> getModel();
+    <T extends Stage> Optional<StageModel<T>> getModel();
 
     /**
      * Returns the current stage id from the model
@@ -77,7 +75,7 @@ public interface StageCycle {
      *
      * @return the current stage id
      */
-    String getStageId();
+    Optional<String> getStageId();
 
     /**
      * Returns the current stage from the model
@@ -86,7 +84,7 @@ public interface StageCycle {
      * @param <T> the stage type
      * @return the current stage
      */
-    <T extends Stage> T getStage();
+    <T extends Stage> Optional<T> getStage();
 
     /**
      * Returns the size of the items in the model

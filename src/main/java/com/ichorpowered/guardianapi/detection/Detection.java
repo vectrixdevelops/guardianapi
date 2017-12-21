@@ -24,7 +24,7 @@
 package com.ichorpowered.guardianapi.detection;
 
 import com.ichorpowered.guardianapi.content.ContentContainer;
-import com.ichorpowered.guardianapi.detection.stage.cycle.StageCycle;
+import com.ichorpowered.guardianapi.detection.stage.StageCycle;
 
 /**
  * Represents a detection.

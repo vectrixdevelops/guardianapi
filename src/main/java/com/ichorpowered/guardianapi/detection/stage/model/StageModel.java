@@ -33,7 +33,7 @@ import java.util.Optional;
  *
  * @param <T> the stage model type
  */
-public interface StageModel<T extends Stage> extends Iterable<T> {
+public interface StageModel<T extends Stage> extends Iterable<Stage> {
 
     /**
      * Returns the identifier of this model.
@@ -81,5 +81,12 @@ public interface StageModel<T extends Stage> extends Iterable<T> {
      * @return the optionally present stage
      */
     Optional<? extends T> get(Class<? extends T> stageClass);
+
+    /**
+     * Returns the amount of elements inside this registry.
+     *
+     * @return the registry size
+     */
+    int getSize();
 
 }

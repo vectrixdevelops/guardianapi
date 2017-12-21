@@ -24,7 +24,7 @@
 package com.ichorpowered.guardianapi.event.detection;
 
 import com.ichorpowered.guardianapi.detection.report.Summary;
-import com.ichorpowered.guardianapi.detection.stage.cycle.StageCycle;
+import com.ichorpowered.guardianapi.detection.stage.StageCycle;
 import com.ichorpowered.guardianapi.entry.entity.EntityEntry;
 import com.ichorpowered.guardianapi.event.GuardianEvent;
 
