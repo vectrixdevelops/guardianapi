@@ -25,11 +25,12 @@ package com.ichorpowered.guardianapi.detection;
 
 import com.ichorpowered.guardianapi.content.ContentContainer;
 import com.ichorpowered.guardianapi.detection.stage.StageCycle;
+import org.slf4j.Logger;
 
 /**
  * Represents a detection.
  */
-public interface Detection extends ContentContainer {
+public interface Detection {
 
     /**
      * Returns this detections identifier.
@@ -46,11 +47,32 @@ public interface Detection extends ContentContainer {
     String getName();
 
     /**
+     * Returns this detections logger.
+     *
+     * @return this detections logger
+     */
+    Logger getLogger();
+
+    /**
      * Returns this detections stage cycle.
      *
      * @return this detections stage cycle
      */
     StageCycle getStageCycle();
+
+    /**
+     * Returns this detections content container.
+     *
+     * @return this detections content container
+     */
+    ContentContainer getContentContainer();
+
+    /**
+     * Returns this detections content loader.
+     *
+     * @return this detections content loader
+     */
+    DetectionContentLoader getContentLoader();
 
     /**
      * Returns this detections owner plugin.

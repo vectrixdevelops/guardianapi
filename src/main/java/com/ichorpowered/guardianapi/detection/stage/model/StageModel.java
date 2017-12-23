@@ -55,7 +55,7 @@ public interface StageModel<T extends Stage> extends Iterable<T> {
      * @param stage the stage
      * @return this model
      */
-    StageModel register(T stage);
+    StageModel<T> register(T stage);
 
     /**
      * Unregisters a stage from this model.
@@ -63,7 +63,7 @@ public interface StageModel<T extends Stage> extends Iterable<T> {
      * @param stageClass the stage class
      * @return this model
      */
-    StageModel unregister(Class<? extends T> stageClass);
+    StageModel<T> unregister(Class<? extends T> stageClass);
 
     /**
      * Unregisters a stage from this model.
@@ -71,7 +71,7 @@ public interface StageModel<T extends Stage> extends Iterable<T> {
      * @param stage the stage
      * @return this model
      */
-    StageModel unregister(T stage);
+    StageModel<T> unregister(T stage);
 
     /**
      * Returns an {@link Optional} that may contain

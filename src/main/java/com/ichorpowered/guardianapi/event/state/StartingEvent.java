@@ -38,6 +38,6 @@ public interface StartingEvent extends GuardianEvent, Cancellable {
      * @return the accessor managers and registries
      */
     @Nonnull
-    Guardian getGuardian();
+    Guardian<?> getGuardian();
 
 }

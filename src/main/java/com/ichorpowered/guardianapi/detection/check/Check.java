@@ -23,7 +23,23 @@
  */
 package com.ichorpowered.guardianapi.detection.check;
 
+import com.abilityapi.sequenceapi.SequenceBlueprint;
+import com.ichorpowered.guardianapi.detection.Detection;
 import com.ichorpowered.guardianapi.detection.stage.Stage;
 
+/**
+ * Represents a check stage.
+ */
 public interface Check extends Stage {
+
+    /**
+     * Returns the {@link SequenceBlueprint} for the
+     * specified {@link Detection}.
+     *
+     * @param detection the detection
+     * @param <T> the event type
+     * @return the sequence blueprint
+     */
+    <T> SequenceBlueprint<T> getSequence(Detection detection);
+
 }

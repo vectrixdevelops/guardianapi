@@ -45,9 +45,12 @@ public interface DetectionModule extends Detection {
     void onLoad();
 
     /**
-     * Called after the detection has been provided and
-     * registered.
+     * Handles the registration of this detection
+     * in the {@link DetectionManager}.
+     *
+     * @param detectionManager the detection manager
+     * @return the detection manager
      */
-    DetectionManager getRegistration(final DetectionManager detectionManager);
+    DetectionManager register(DetectionManager detectionManager);
 
 }

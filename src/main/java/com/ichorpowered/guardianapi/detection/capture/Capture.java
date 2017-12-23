@@ -24,7 +24,7 @@
 package com.ichorpowered.guardianapi.detection.capture;
 
 import com.ichorpowered.guardianapi.detection.Detection;
-import com.ichorpowered.guardianapi.entry.entity.EntityEntry;
+import com.ichorpowered.guardianapi.entry.entity.PlayerEntry;
 
 import javax.annotation.Nonnull;
 
@@ -43,7 +43,7 @@ public interface Capture {
      * @param entry the entity entry
      * @param captureContainer the capture container
      */
-    void update(@Nonnull EntityEntry entry, @Nonnull CaptureContainer captureContainer);
+    void update(@Nonnull PlayerEntry entry, @Nonnull CaptureContainer captureContainer);
 
     /**
      * Returns the detection that owns this capture.

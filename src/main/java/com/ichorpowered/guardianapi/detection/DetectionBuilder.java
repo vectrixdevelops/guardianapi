@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardianapi.detection;
 
+import com.ichorpowered.guardianapi.content.ContentContainer;
 import com.ichorpowered.guardianapi.detection.stage.Stage;
 import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
 import com.ichorpowered.guardianapi.detection.stage.model.StageModelArchetype;
@@ -68,9 +69,10 @@ public interface DetectionBuilder {
      * method was called in.
      *
      * @param stageModelArchetype the stage model archetype
+     * @param <T> the stage model type
      * @return this builder
      */
-    DetectionBuilder stage(StageModelArchetype stageModelArchetype);
+    <T extends Stage> DetectionBuilder stage(StageModelArchetype<T> stageModelArchetype);
 
     /**
      * Returns this builder and sets the
@@ -80,6 +82,15 @@ public interface DetectionBuilder {
      * @return this builder
      */
     DetectionBuilder contentLoader(DetectionContentLoader contentLoader);
+
+    /**
+     * Returns this builder and sets the
+     * detection content container.
+     *
+     * @param contentContainer the detection content container
+     * @return this builder
+     */
+    DetectionBuilder content(ContentContainer contentContainer);
 
     /**
      * Submits this builder to the {@link DetectionManager}

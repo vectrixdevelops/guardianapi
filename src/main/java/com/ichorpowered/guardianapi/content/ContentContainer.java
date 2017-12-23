@@ -34,7 +34,7 @@ import java.util.Set;
 /**
  * Represents a container for content data.
  */
-public interface ContentContainer {
+public interface ContentContainer extends Iterable<SingleValue<?>> {
 
     /**
      * Returns a {@link SingleValue} for offering

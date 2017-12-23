@@ -49,7 +49,7 @@ public interface DetectionManager {
      * @param stageModel the stage model
      * @return this detection manager
      */
-    DetectionManager provideStageModel(Class<? extends StageModel> stageModelClass, StageModel stageModel);
+    DetectionManager provideStageModel(Class<? extends StageModel<?>> stageModelClass, StageModel<?> stageModel);
 
     /**
      * Returns a {@link DetectionBuilder} that when
@@ -86,7 +86,7 @@ public interface DetectionManager {
      * @param id the stage model identifier
      * @return the stage model if present
      */
-    Optional<? extends StageModel> getStageModel(String id);
+    Optional<? extends StageModel<?>> getStageModel(String id);
 
     /**
      * Returns an {@link Optional} that may contain
@@ -95,6 +95,6 @@ public interface DetectionManager {
      * @param stageModelClass the stage model class
      * @return the stage model if present
      */
-    Optional<? extends StageModel> getStageModel(Class<? extends StageModel> stageModelClass);
+    Optional<? extends StageModel<?>> getStageModel(Class<? extends StageModel<?>> stageModelClass);
 
 }

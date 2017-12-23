@@ -111,7 +111,7 @@ public interface StageCycle {
      * @param stageModel the stage model
      * @return the model iterator size
      */
-    int sizeFor(final StageModel<?> stageModel);
+    int sizeFor(StageModel<?> stageModel);
 
     /**
      * Returns the size of all models iterators in this

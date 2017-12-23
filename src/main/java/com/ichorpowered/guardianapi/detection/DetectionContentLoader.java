@@ -31,6 +31,19 @@ import com.ichorpowered.guardianapi.content.ContentLoader;
 public interface DetectionContentLoader extends ContentLoader {
 
     /**
+     * Return the root config file name.
+     *
+     * @return the config file name
+     */
+    String getRoot();
+
+    /**
+     * Moves the contents from the configuration
+     * files to the container.
+     */
+    void load();
+
+    /**
      * Moves the contents from the container
      * to the configuration files.
      */

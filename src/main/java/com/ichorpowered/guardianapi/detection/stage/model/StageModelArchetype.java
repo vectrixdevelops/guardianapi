@@ -44,6 +44,12 @@ public interface StageModelArchetype<T extends Stage> {
      */
     Class<? extends StageModel<T>> getModelClass();
 
+    /**
+     * Returns the model filter containing the
+     * includes, excludes and filters.
+     *
+     * @return the model filter
+     */
     Predicate<T> getModelFilter();
 
     /**
