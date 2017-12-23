@@ -26,14 +26,13 @@ package com.ichorpowered.guardianapi.content.transaction.result;
 import com.ichorpowered.guardianapi.content.ContentContainer;
 import com.ichorpowered.guardianapi.content.transaction.ContentKey;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
- * Represents a single value result.
- *
- * @param <E> the element type
+ * Represents a batch value result.
  */
-public interface SingleValueResult<E> {
+public interface BatchValue {
 
     /**
      * Returns false if this content is not
@@ -45,20 +44,18 @@ public interface SingleValueResult<E> {
     boolean isDirty();
 
     /**
-     * Returns the key used with this element
-     * content.
+     * Returns the keys used with this content.
      *
-     * @return the key
+     * @return the keys
      */
-    ContentKey getKey();
+    List<ContentKey> getKeys();
 
     /**
-     * Returns the element used with this key
-     * content.
+     * Returns the elements used with this content.
      *
-     * @return the value
+     * @return the values
      */
-    Optional<E> getElement();
+    List<?> getElements();
 
     /**
      * Returns the original content container

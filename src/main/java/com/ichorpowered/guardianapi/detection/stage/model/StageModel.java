@@ -33,7 +33,7 @@ import java.util.Optional;
  *
  * @param <T> the stage model type
  */
-public interface StageModel<T extends Stage> extends Iterable<Stage> {
+public interface StageModel<T extends Stage> extends Iterable<T> {
 
     /**
      * Returns the identifier of this model.

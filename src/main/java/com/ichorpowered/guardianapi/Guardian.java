@@ -84,27 +84,4 @@ public interface Guardian<T> {
      */
     SequenceRegistry getSequenceRegistry();
 
-    // Stage Models
-
-    /**
-     * Returns the check model.
-     *
-     * @return the check model
-     */
-    CheckModel getCheckModel();
-
-    /**
-     * Returns the heuristic model.
-     *
-     * @return the heuristic model
-     */
-    HeuristicModel getHeuristicModel();
-
-    /**
-     * Returns the penalty model.
-     *
-     * @return the penalty model
-     */
-    PenaltyModel getPenaltyModel();
-
 }

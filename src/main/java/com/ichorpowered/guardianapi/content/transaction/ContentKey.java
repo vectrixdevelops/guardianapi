@@ -25,6 +25,8 @@ package com.ichorpowered.guardianapi.content.transaction;
 
 import com.google.common.reflect.TypeToken;
 
+import java.util.Set;
+
 /**
  * Represents a key that can be associated to
  * a content value.
@@ -51,5 +53,12 @@ public interface ContentKey {
      * @return the content key element type
      */
     TypeToken<?> getElementType();
+
+    /**
+     * Returns the set of assignments.
+     *
+     * @return the set of assignments
+     */
+    Set<? extends ContentAssignment> getAssignments();
 
 }

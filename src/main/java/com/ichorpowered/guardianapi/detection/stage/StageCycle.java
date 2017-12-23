@@ -105,7 +105,16 @@ public interface StageCycle {
     List<Class<? extends StageModel<?>>> getAll();
 
     /**
-     * The size of all models iterators in this
+     * Returns the size of the specified models iterator
+     * in this cycle.
+     *
+     * @param stageModel the stage model
+     * @return the model iterator size
+     */
+    int sizeFor(final StageModel<?> stageModel);
+
+    /**
+     * Returns the size of all models iterators in this
      * cycle.
      *
      * @return the models iterator size total

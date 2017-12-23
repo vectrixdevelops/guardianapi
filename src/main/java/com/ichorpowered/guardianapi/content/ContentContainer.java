@@ -24,8 +24,8 @@
 package com.ichorpowered.guardianapi.content;
 
 import com.ichorpowered.guardianapi.content.transaction.ContentKey;
-import com.ichorpowered.guardianapi.content.transaction.result.BatchValueResult;
-import com.ichorpowered.guardianapi.content.transaction.result.SingleValueResult;
+import com.ichorpowered.guardianapi.content.transaction.result.BatchValue;
+import com.ichorpowered.guardianapi.content.transaction.result.SingleValue;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +37,7 @@ import java.util.Set;
 public interface ContentContainer {
 
     /**
-     * Returns a {@link SingleValueResult} for offering
+     * Returns a {@link SingleValue} for offering
      * the content to be stored in this container under
      * the {@link ContentKey}
      *
@@ -46,10 +46,10 @@ public interface ContentContainer {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> SingleValueResult<E> offer(ContentKey key, E value);
+    <E> SingleValue<E> offer(ContentKey key, E value);
 
     /**
-     * Returns a {@link SingleValueResult} for offering
+     * Returns a {@link SingleValue} for offering
      * the content to be stored in this container under
      * the id.
      *
@@ -58,10 +58,10 @@ public interface ContentContainer {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> SingleValueResult<E> offer(String id, E value);
+    <E> Optional<SingleValue<E>> offer(String id, E value);
 
     /**
-     * Returns a {@link BatchValueResult} for offering
+     * Returns a {@link BatchValue} for offering
      * a list of content to be stored in this container under
      * each id.
      *
@@ -69,20 +69,10 @@ public interface ContentContainer {
      * @param values the values
      * @return the batch value result
      */
-    BatchValueResult offer(List<ContentKey> keys, List<?> values);
+    BatchValue offer(List<ContentKey> keys, List<?> values);
 
     /**
-     * Returns a {@link BatchValueResult} for offering
-     * a list of content to be stored in this container under
-     * each key, for another {@link ContentContainer}.
-     *
-     * @param contentContainer another content container
-     * @return the batch value result
-     */
-    BatchValueResult merge(ContentContainer contentContainer);
-
-    /**
-     * Returns a {@link SingleValueResult} for retrieving
+     * Returns a {@link SingleValue} for retrieving
      * the content that may be stored in this container under
      * the {@link ContentKey}.
      *
@@ -90,10 +80,10 @@ public interface ContentContainer {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> SingleValueResult<E> get(ContentKey key);
+    <E> Optional<SingleValue<E>> get(ContentKey key);
 
     /**
-     * Returns a {@link SingleValueResult} for retrieving
+     * Returns a {@link SingleValue} for retrieving
      * the content that may be stored in this container under
      * the id.
      *
@@ -101,7 +91,7 @@ public interface ContentContainer {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> SingleValueResult<E> get(String id);
+    <E> Optional<SingleValue<E>> get(String id);
 
     /**
      * Returns a set of keys that are stored in this

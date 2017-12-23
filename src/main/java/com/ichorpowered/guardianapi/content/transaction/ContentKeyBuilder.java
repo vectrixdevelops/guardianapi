@@ -58,6 +58,15 @@ public interface ContentKeyBuilder {
     ContentKeyBuilder element(TypeToken<?> typeToken);
 
     /**
+     * Returns this builder and adds a
+     * {@link ContentAssignment} for this key.
+     *
+     * @param contentAssignment the content assignment
+     * @return this builder
+     */
+    ContentKeyBuilder assignment(ContentAssignment contentAssignment);
+
+    /**
      * Returns a built {@link ContentKey} using
      * this builder.
      *

@@ -38,4 +38,16 @@ public interface DetectionModule extends Detection {
      */
     void onDeconstruction();
 
+    /**
+     * Called after the detection is registered and
+     * had its properties provided.
+     */
+    void onLoad();
+
+    /**
+     * Called after the detection has been provided and
+     * registered.
+     */
+    DetectionManager getRegistration(final DetectionManager detectionManager);
+
 }
