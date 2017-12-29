@@ -28,7 +28,7 @@ import com.google.common.reflect.TypeToken;
 /**
  * Represents a {@link ContentKey} builder.
  */
-public interface ContentKeyBuilder {
+public interface ContentKeyBuilder<T> {
 
     /**
      * Returns this builder and sets the
@@ -37,7 +37,7 @@ public interface ContentKeyBuilder {
      * @param id the content key id
      * @return this builder
      */
-    ContentKeyBuilder id(String id);
+    ContentKeyBuilder<T> id(String id);
 
     /**
      * Returns this builder and sets the
@@ -46,7 +46,7 @@ public interface ContentKeyBuilder {
      * @param name the content key name
      * @return this builder
      */
-    ContentKeyBuilder name(String name);
+    ContentKeyBuilder<T> name(String name);
 
     /**
      * Returns this builder and sets the
@@ -55,16 +55,16 @@ public interface ContentKeyBuilder {
      * @param typeToken the content key element type
      * @return this builder
      */
-    ContentKeyBuilder element(TypeToken<?> typeToken);
+    ContentKeyBuilder<T> element(TypeToken<T> typeToken);
 
     /**
      * Returns this builder and adds a
      * {@link ContentAssignment} for this key.
      *
-     * @param contentAssignment the content assignment
+     * @param assignment the content assignment
      * @return this builder
      */
-    ContentKeyBuilder assignment(ContentAssignment contentAssignment);
+    ContentKeyBuilder<T> assignment(ContentAssignment<?> assignment);
 
     /**
      * Returns a built {@link ContentKey} using
@@ -72,6 +72,6 @@ public interface ContentKeyBuilder {
      *
      * @return the new content key
      */
-    ContentKey build();
+    ContentKey<T> build();
 
 }

@@ -31,7 +31,7 @@ import java.util.Set;
  * Represents a key that can be associated to
  * a content value.
  */
-public interface ContentKey {
+public interface ContentKey<T> {
 
     /**
      * Returns the content key identifier.
@@ -52,7 +52,7 @@ public interface ContentKey {
      *
      * @return the content key element type
      */
-    TypeToken<?> getElementType();
+    TypeToken<T> getElementType();
 
     /**
      * Returns the set of assignments.

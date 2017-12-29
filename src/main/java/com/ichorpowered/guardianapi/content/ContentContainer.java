@@ -46,7 +46,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> SingleValue<E> offer(ContentKey key, E value);
+    <E> SingleValue<E> offer(ContentKey<E> key, E value);
 
     /**
      * Returns a {@link SingleValue} for offering
@@ -69,7 +69,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      * @param values the values
      * @return the batch value result
      */
-    BatchValue offer(List<ContentKey> keys, List<?> values);
+    BatchValue offer(List<ContentKey<?>> keys, List<?> values);
 
     /**
      * Returns a {@link SingleValue} for retrieving
@@ -80,7 +80,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> Optional<SingleValue<E>> get(ContentKey key);
+    <E> Optional<SingleValue<E>> get(ContentKey<E> key);
 
     /**
      * Returns a {@link SingleValue} for retrieving
@@ -99,7 +99,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      *
      * @return the set stored keys
      */
-    Set<ContentKey> getKeys();
+    Set<ContentKey<?>> getKeys();
 
     /**
      * Returns a set of values that are stored in this
@@ -115,7 +115,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      *
      * @return the set of possible keys
      */
-    Set<ContentKey> getPossibleKeys();
+    Set<ContentKey<?>> getPossibleKeys();
 
     /**
      * Returns an {@link Optional} that may contain a

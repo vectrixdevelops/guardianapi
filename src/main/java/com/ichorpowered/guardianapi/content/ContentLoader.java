@@ -53,7 +53,7 @@ public interface ContentLoader {
      *
      * @param contentKeys the content keys
      */
-    void acquireAll(Set<ContentKey> contentKeys);
+    void acquireAll(Set<ContentKey<?>> contentKeys);
 
     /**
      * Loads a single key specified to the
@@ -61,6 +61,6 @@ public interface ContentLoader {
      *
      * @param contentKey the content key
      */
-    void acquireSingle(ContentKey contentKey);
+    void acquireSingle(ContentKey<?> contentKey);
 
 }

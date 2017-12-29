@@ -50,7 +50,7 @@ public interface SingleValue<E> {
      *
      * @return the key
      */
-    ContentKey getKey();
+    ContentKey<E> getKey();
 
     /**
      * Returns the element used with this key
