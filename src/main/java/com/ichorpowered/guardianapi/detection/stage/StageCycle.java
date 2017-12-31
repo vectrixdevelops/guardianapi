@@ -51,6 +51,18 @@ public interface StageCycle {
      */
     boolean next();
 
+    /**
+     * Iterates to the next model whilst calling
+     * the appropriate events.
+     *
+     * <p>Returns {@code false} when the cycle is
+     * complete. Called again will start the cycle
+     * from the beginning.</p>
+     *
+     * @return the cycle state
+     */
+    boolean nextModel();
+
     // Getters
 
     /**

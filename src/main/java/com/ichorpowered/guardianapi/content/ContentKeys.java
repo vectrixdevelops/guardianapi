@@ -35,6 +35,33 @@ public class ContentKeys {
      */
     public static ContentKey<?> UNDEFINED;
 
+    ///////    Check     ///////
+
+    /**
+     * The {@link ContentKey} that represents the
+     * analysis time for a detection check.
+     */
+    public static ContentKey<Double> ANALYSIS_TIME;
+
+    /**
+     * The {@link ContentKey} that represents the
+     * occasional requirement for a check to have a
+     * base analysis value.
+     */
+    public static ContentKey<Double> ANALYSIS_INTERCEPT;
+
+    /**
+     * The {@link ContentKey} that represents the
+     * analysis minimum tick rate.
+     */
+    public static ContentKey<Double> ANALYSIS_MINIMUM_TICK;
+
+    /**
+     * The {@link ContentKey} that represents the
+     * analysis maximum tick rate.
+     */
+    public static ContentKey<Double> ANALYSIS_MAXIMUM_TICK;
+
     ///////    Capture   ///////
 
     // **   Control Movement Keys   **

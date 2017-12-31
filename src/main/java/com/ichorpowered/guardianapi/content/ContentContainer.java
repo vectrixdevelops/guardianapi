@@ -69,7 +69,7 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      * @param values the values
      * @return the batch value result
      */
-    BatchValue offer(List<ContentKey<?>> keys, List<?> values);
+    BatchValue offer(List<ContentKey> keys, List<?> values);
 
     /**
      * Returns a {@link SingleValue} for retrieving

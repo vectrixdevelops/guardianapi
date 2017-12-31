@@ -25,5 +25,5 @@ package com.ichorpowered.guardianapi.detection.check;
 
 import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
 
-public interface CheckModel extends StageModel<Check> {
+public interface CheckModel extends StageModel<Check<?>> {
 }

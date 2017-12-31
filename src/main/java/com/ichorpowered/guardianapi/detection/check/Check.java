@@ -29,17 +29,18 @@ import com.ichorpowered.guardianapi.detection.stage.Stage;
 
 /**
  * Represents a check stage.
+ *
+ * @param <T> the event type
  */
-public interface Check extends Stage {
+public interface Check<T> extends Stage {
 
     /**
      * Returns the {@link SequenceBlueprint} for the
      * specified {@link Detection}.
      *
      * @param detection the detection
-     * @param <T> the event type
      * @return the sequence blueprint
      */
-    <T> SequenceBlueprint<T> getSequence(Detection detection);
+    SequenceBlueprint<T> getSequence(Detection detection);
 
 }
