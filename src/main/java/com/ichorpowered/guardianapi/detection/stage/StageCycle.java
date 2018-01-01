@@ -63,6 +63,14 @@ public interface StageCycle {
      */
     boolean nextModel();
 
+    /**
+     * Returns {@code true} if there exists a next
+     * stage element.
+     *
+     * @return the cycle state
+     */
+    boolean hasNext();
+
     // Getters
 
     /**
