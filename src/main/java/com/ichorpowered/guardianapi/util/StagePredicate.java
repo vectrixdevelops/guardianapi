@@ -21,21 +21,29 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.heuristic;
+package com.ichorpowered.guardianapi.util;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
-import com.ichorpowered.guardianapi.util.StagePredicate;
+import com.ichorpowered.guardianapi.detection.Detection;
+import com.ichorpowered.guardianapi.detection.report.Summary;
+import com.ichorpowered.guardianapi.entry.entity.PlayerEntry;
 
 /**
- * Represents the heursitic stage.
+ * Represents a common predicate used in
+ * various stages.
  */
-public interface Heuristic extends Stage {
+@FunctionalInterface
+public interface StagePredicate {
 
     /**
-     * Returns the heuristic stage predicate.
+     * Tests whether this stage used and acted
+     * upon the results specified in the summary,
+     * for the specified detection and player.
      *
-     * @return the heuristic predicate
+     * @param detection the detection
+     * @param summary the summary
+     * @param playerEntry the player entry
+     * @return the result
      */
-    StagePredicate getPredicate();
+    boolean test(Detection detection, Summary summary, PlayerEntry playerEntry);
 
 }

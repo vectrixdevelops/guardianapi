@@ -24,6 +24,18 @@
 package com.ichorpowered.guardianapi.detection.penalty;
 
 import com.ichorpowered.guardianapi.detection.stage.Stage;
+import com.ichorpowered.guardianapi.util.StagePredicate;
 
+/**
+ * Represents the penalty stage.
+ */
 public interface Penalty extends Stage {
+
+    /**
+     * Returns the penalty stage predicate.
+     *
+     * @return the penalty predicate
+     */
+    StagePredicate getPredicate();
+
 }
