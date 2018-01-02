@@ -48,7 +48,7 @@ public interface BatchValue {
      *
      * @return the keys
      */
-    List<ContentKey<?>> getKeys();
+    List<ContentKey> getKeys();
 
     /**
      * Returns the elements used with this content.
