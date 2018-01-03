@@ -59,6 +59,6 @@ public interface ContentKey<T> {
      *
      * @return the set of assignments
      */
-    Set<? extends ContentAssignment<?>> getAssignments();
+    Set<ContentAssignment<?>> getAssignments();
 
 }
