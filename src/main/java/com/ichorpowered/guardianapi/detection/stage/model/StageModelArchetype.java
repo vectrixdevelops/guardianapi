@@ -42,7 +42,7 @@ public interface StageModelArchetype<T extends Stage> {
      *
      * @return the stage model class
      */
-    Class<? extends StageModel<T>> getModelClass();
+    Class<? extends StageModel<?>> getModelClass();
 
     /**
      * Returns the model filter containing the
