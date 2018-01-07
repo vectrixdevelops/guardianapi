@@ -125,7 +125,7 @@ public interface CaptureContainer {
      * @param <T> the capture value type
      * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
      */
-    @Nullable
+    @Nonnull
     <T> Optional<T> get(@Nonnull String key);
 
     /**
@@ -135,18 +135,8 @@ public interface CaptureContainer {
      * @param <T> the capture value type
      * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
      */
-    @Nullable
+    @Nonnull
     <T> Optional<T> get(@Nonnull NamedTypeKey<T> key);
-
-    /**
-     * Returns the key that represents its {@link Capture}.
-     *
-     * @param value the capture value
-     * @param <T> the capture value type
-     * @return the capture key, or {@code null} if the capture is not contained in this registry
-     */
-    @Nullable
-    <T> String key(@Nonnull T value);
 
     /**
      * Returns a set of keys that are contained inside this registry.
