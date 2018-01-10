@@ -23,6 +23,7 @@
  */
 package com.ichorpowered.guardianapi.detection.check;
 
+import com.abilityapi.sequenceapi.Sequence;
 import com.abilityapi.sequenceapi.SequenceBlueprint;
 import com.abilityapi.sequenceapi.SequenceHolder;
 import com.ichorpowered.guardianapi.detection.Detection;
@@ -43,5 +44,13 @@ public interface Check<T> extends Stage, SequenceHolder {
      * @return the sequence blueprint
      */
     SequenceBlueprint<T> getSequence(Detection detection);
+
+    /**
+     * Returns the {@link Sequence} event trigger
+     * class.
+     *
+     * @return the trigger class
+     */
+    Class<? extends T> getSequenceTrigger();
 
 }
