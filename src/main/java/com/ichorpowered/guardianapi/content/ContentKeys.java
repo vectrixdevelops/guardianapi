@@ -170,22 +170,4 @@ public class ContentKeys {
      */
     public static ContentKey<Double> BOX_PLAYER_SAFETY;
 
-    // **    Blacklist    **
-
-    /**
-     * The {@link ContentKey} that represents
-     * a list of blacklisted equipment that will
-     * block certain detection sequences from running
-     * for players found with it equipped.
-     */
-    public static ContentKey<List> EQUIPMENT_BLACKLIST;
-
-    /**
-     * The {@link ContentKey} that represents
-     * a list of blacklisted items that will
-     * block certain detection sequences from running
-     * for players found with it in their inventory.
-     */
-    public static ContentKey<List> ITEM_BLACKLIST;
-
 }
