@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,51 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.content.transaction.result;
+package com.ichorpowered.guardianapi.detection.capture;
 
-import com.ichorpowered.guardianapi.content.ContentContainer;
-import com.ichorpowered.guardianapi.content.transaction.ContentKey;
+import com.ichorpowered.guardianapi.util.item.key.Key;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-import java.util.Optional;
-
-/**
- * Represents a single value result.
- *
- * @param <E> the element type
- */
-public interface SingleValue<E> {
-
-    /**
-     * Returns false if this content is not
-     * yet stored in the container fully or
-     * the container is only a virtual one.
-     *
-     * @return the storage dirtiness
-     */
-    boolean isDirty();
-
-    /**
-     * Returns the key used with this element
-     * content.
-     *
-     * @return the key
-     */
-    ContentKey<E> getKey();
-
-    /**
-     * Returns the element used with this key
-     * content.
-     *
-     * @return the value
-     */
-    Optional<E> getElement();
-
-    /**
-     * Returns the original content container
-     * that this key is used for if there is one.
-     *
-     * @return the original content container
-     */
-    Optional<ContentContainer> getOriginalContainer();
+public interface CaptureKey<V extends BaseValue> extends Key<V> {
 
 }

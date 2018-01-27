@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,7 +145,7 @@ public final class Origin {
      *
      * @param target the class of the target type
      * @param <T> the type of object being queried for
-     * @return the first element of the type, if available
+     * @return the first type of the type, if available
      */
     public <T> Optional<T> first(Class<T> target) {
         for (Object anOrigin : this.origin) {
@@ -160,7 +162,7 @@ public final class Origin {
      *
      * @param target the class of the target type
      * @param <T> the type of object being queried for
-     * @return the last element of the type, if available
+     * @return the last type of the type, if available
      */
     public <T> Optional<T> last(Class<T> target) {
         for (int i = this.origin.length - 1; i >= 0; i--) {

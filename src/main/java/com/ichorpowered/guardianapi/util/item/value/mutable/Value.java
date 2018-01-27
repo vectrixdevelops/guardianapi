@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,48 +23,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.content.transaction.result;
+package com.ichorpowered.guardianapi.util.item.value.mutable;
 
-import com.ichorpowered.guardianapi.content.ContentContainer;
-import com.ichorpowered.guardianapi.content.transaction.ContentKey;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
 
 /**
- * Represents a batch value result.
+ * Represents a type of {@link BaseValue} that is mutable. Simply put, the
+ * underlying value can always be changed without creating a new {@link Value}.
+ *
+ * @param <E> the type of type
+ * @author SpongePowered
  */
-public interface BatchValue {
+public interface Value<E> extends BaseValue<E> {
 
     /**
-     * Returns false if this content is not
-     * yet stored in the container fully or
-     * the container is only a virtual one.
+     * Sets the underlying value to the provided {@code value}.
      *
-     * @return the storage dirtiness
+     * @param value the value to set
+     * @return this value container
      */
-    boolean isDirty();
+    Value<E> set(E value);
 
     /**
-     * Returns the keys used with this content.
+     * Attempts to transform the underlying value based on the provided
+     * {@link Function} such that the result of {@link Function#apply(Object)}
+     * will replace the underlying value.
      *
-     * @return the keys
+     * @param function the function to apply on the existing value
+     * @return this value container
      */
-    List<ContentKey> getKeys();
-
-    /**
-     * Returns the elements used with this content.
-     *
-     * @return the values
-     */
-    List<?> getElements();
-
-    /**
-     * Returns the original content container
-     * that this key is used for if there is one.
-     *
-     * @return the original content container
-     */
-    Optional<ContentContainer> getOriginalContainer();
-
+    Value<E> transform(Function<E, E> function);
 }

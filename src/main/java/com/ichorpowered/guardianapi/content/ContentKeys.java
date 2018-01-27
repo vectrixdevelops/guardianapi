@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +25,9 @@
  */
 package com.ichorpowered.guardianapi.content;
 
-import com.ichorpowered.guardianapi.content.transaction.ContentKey;
-
-import java.util.Map;
+import com.ichorpowered.guardianapi.content.key.ContentKey;
+import com.ichorpowered.guardianapi.util.item.value.mutable.MapValue;
+import com.ichorpowered.guardianapi.util.item.value.mutable.Value;
 
 public class ContentKeys {
 
@@ -41,26 +43,26 @@ public class ContentKeys {
      * The {@link ContentKey} that represents the
      * analysis time for a detection check.
      */
-    public static ContentKey<Double> ANALYSIS_TIME;
+    public static ContentKey<Value<Double>> ANALYSIS_TIME;
 
     /**
      * The {@link ContentKey} that represents the
      * occasional requirement for a check to have a
      * base analysis value.
      */
-    public static ContentKey<Double> ANALYSIS_INTERCEPT;
+    public static ContentKey<Value<Double>> ANALYSIS_INTERCEPT;
 
     /**
      * The {@link ContentKey} that represents the
      * analysis minimum tick rate.
      */
-    public static ContentKey<Double> ANALYSIS_MINIMUM_TICK;
+    public static ContentKey<Value<Double>> ANALYSIS_MINIMUM_TICK;
 
     /**
      * The {@link ContentKey} that represents the
      * analysis maximum tick rate.
      */
-    public static ContentKey<Double> ANALYSIS_MAXIMUM_TICK;
+    public static ContentKey<Value<Double>> ANALYSIS_MAXIMUM_TICK;
 
     ///////    Capture   ///////
 
@@ -70,31 +72,31 @@ public class ContentKeys {
      * The {@link ContentKey} that represents lift
      * movement speed.
      */
-    public static ContentKey<Double> MOVEMENT_LIFT_SPEED;
+    public static ContentKey<Value<Double>> MOVEMENT_LIFT_SPEED;
 
     /**
      * The {@link ContentKey} that represents sneak
      * movement speed.
      */
-    public static ContentKey<Double> MOVEMENT_SNEAK_SPEED;
+    public static ContentKey<Value<Double>> MOVEMENT_SNEAK_SPEED;
 
     /**
      * The {@link ContentKey} that represents walk
      * movement speed.
      */
-    public static ContentKey<Double> MOVEMENT_WALK_SPEED;
+    public static ContentKey<Value<Double>> MOVEMENT_WALK_SPEED;
 
     /**
      * The {@link ContentKey} that represents sprint
      * movement speed.
      */
-    public static ContentKey<Double> MOVEMENT_SPRINT_SPEED;
+    public static ContentKey<Value<Double>> MOVEMENT_SPRINT_SPEED;
 
     /**
      * The {@link ContentKey} that represents fly
      * movement speed.
      */
-    public static ContentKey<Double> MOVEMENT_FLY_SPEED;
+    public static ContentKey<Value<Double>> MOVEMENT_FLY_SPEED;
 
     // **    Material Keys    **
 
@@ -106,7 +108,7 @@ public class ContentKeys {
      *      grass: 1.052
      * </p>
      */
-    public static ContentKey<Map> MOVEMENT_MATERIAL_SPEED;
+    public static ContentKey<MapValue<String, Double>> MOVEMENT_MATERIAL_SPEED;
 
     /**
      * The {@link ContentKey} that represents
@@ -119,7 +121,7 @@ public class ContentKeys {
      *      gas: 1.065
      * </p>
      */
-    public static ContentKey<Map> MOVEMENT_MATTER_SPEED;
+    public static ContentKey<MapValue<String, Double>> MOVEMENT_MATTER_SPEED;
 
     // **    Effect Movement Keys    **
 
@@ -133,7 +135,7 @@ public class ContentKeys {
      *      jump: 0.02
      * </p>
      */
-    public static ContentKey<Map> MOVEMENT_EFFECT_SPEED;
+    public static ContentKey<MapValue<String, Double>> MOVEMENT_EFFECT_SPEED;
 
     /**
      * The {@link ContentKey} that represents
@@ -144,7 +146,7 @@ public class ContentKeys {
      *      jump: 3.18
      * </p>
      */
-    public static ContentKey<Map> MOVEMENT_EFFECT_LIFT;
+    public static ContentKey<MapValue<String, Double>> MOVEMENT_EFFECT_LIFT;
 
     // **    Player Model    **
 
@@ -152,13 +154,13 @@ public class ContentKeys {
      * The {@link ContentKey} that represents
      * the players bounding box width.
      */
-    public static ContentKey<Double> BOX_PLAYER_WIDTH;
+    public static ContentKey<Value<Double>> BOX_PLAYER_WIDTH;
 
     /**
      * The {@link ContentKey} that represents
      * the players bounding box height.
      */
-    public static ContentKey<Double> BOX_PLAYER_HEIGHT;
+    public static ContentKey<Value<Double>> BOX_PLAYER_HEIGHT;
 
     /**
      * The {@link ContentKey} that represents
@@ -167,6 +169,6 @@ public class ContentKeys {
      * be used in some detections where their may
      * need to be a less precise value.
      */
-    public static ContentKey<Double> BOX_PLAYER_SAFETY;
+    public static ContentKey<Value<Double>> BOX_PLAYER_SAFETY;
 
 }

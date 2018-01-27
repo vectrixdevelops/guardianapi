@@ -23,9 +23,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item.value.immutable;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-public interface CheckModel extends StageModel<Check<?>> {
+import java.util.function.Function;
+
+/**
+ * Represents a type of {@link BaseValue} that is immutable. Simply put, the
+ * underlying value cannot be changed without creating a new {@link ImmutableValue}.
+ *
+ * @param <E> the type of type
+ * @author SpongePowered
+ */
+public interface ImmutableValue<E> extends BaseValue<E> {
+
+    /**
+     * Creates a new {@link ImmutableValue} with the given <code>E</code> typed
+     * value.
+     *
+     * @param value The value to replace
+     * @return a new value container
+     */
+    ImmutableValue<E> with(E value);
+
+    /**
+     * Retrieves the underlying value for this {@link ImmutableValue} and
+     * applies the given {@link Function} onto that value, after which, the
+     * product is sent to a new {@link ImmutableValue} replacing this one.
+     *
+     * @param function The function to apply onto the existing value
+     * @return a new value container
+     */
+    ImmutableValue<E> transform(Function<E, E> function);
 }

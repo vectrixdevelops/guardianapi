@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,9 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.content.transaction;
+package com.ichorpowered.guardianapi.content.key;
 
-import com.google.common.reflect.TypeToken;
+import com.ichorpowered.guardianapi.content.transaction.ContentAssignment;
+import com.ichorpowered.guardianapi.util.item.key.Key;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
 import java.util.Set;
 
@@ -31,28 +35,7 @@ import java.util.Set;
  * Represents a key that can be associated to
  * a content value.
  */
-public interface ContentKey<T> {
-
-    /**
-     * Returns the content key identifier.
-     *
-     * @return the content key identifier
-     */
-    String getId();
-
-    /**
-     * Returns the content key name.
-     *
-     * @return the content key name
-     */
-    String getName();
-
-    /**
-     * Returns the content key element type.
-     *
-     * @return the content key element type
-     */
-    TypeToken<T> getElementType();
+public interface ContentKey<V extends BaseValue> extends Key<V> {
 
     /**
      * Returns the set of assignments.

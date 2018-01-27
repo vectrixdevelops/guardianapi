@@ -23,9 +23,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-public interface CheckModel extends StageModel<Check<?>> {
+/**
+ * A generic {@link BaseValue} builder.
+ *
+ * @param <E> the value element type
+ * @param <V> the value type
+ */
+public interface ValueBuilder<E, V extends BaseValue<E>> {
+
+    /**
+     * Copies the other values key, default element
+     * and value and sets the same here.
+     *
+     * @param otherValue the other value
+     * @return this value builder
+     */
+    ValueBuilder<E, V> with(V otherValue);
+
+    /**
+     * Sets the default element.
+     *
+     * @param element the default element
+     * @return this value builder
+     */
+    ValueBuilder<E, V> defaultElement(E element);
+
+    /**
+     * Sets the element.
+     *
+     * @param element the element
+     * @return this value builder
+     */
+    ValueBuilder<E, V> element(E element);
+
+    /**
+     * Creates the new value from this builder.
+     *
+     * @return the new value
+     */
+    V create();
+
 }

@@ -23,9 +23,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item.value.immutable;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import java.util.Set;
 
-public interface CheckModel extends StageModel<Check<?>> {
+/**
+ * Represents a type of {@link ImmutableCollectionValue} backed by a
+ * {@link Set}. The reasoning is that a {@link Set} retains no ordering of the
+ * elements it contains.
+ *
+ * @param <E> The type of elements supported
+ */
+public interface ImmutableSetValue<E> extends ImmutableCollectionValue<E, Set<E>, ImmutableSetValue<E>> {
+
 }

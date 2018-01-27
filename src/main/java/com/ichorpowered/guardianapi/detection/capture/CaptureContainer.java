@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +25,12 @@
  */
 package com.ichorpowered.guardianapi.detection.capture;
 
-import com.ichorpowered.guardianapi.util.Transform;
-import com.ichorpowered.guardianapi.util.key.NamedKey;
-import com.ichorpowered.guardianapi.util.key.NamedTypeKey;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
 import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 /**
  * Represents the capture container for storing
@@ -43,47 +42,20 @@ public interface CaptureContainer {
      * Inserts the {@link Capture} into this registry,
      * if it doesn't exist already.
      *
-     * <p>The capture key must be a unique key and is
-     * recommended to use the class name and a custom
-     * name.</p>
-     *
-     * @param key the capture key
-     * @param value the capture value
-     * @param <T> the capture value type
+     * @param item the capture item
+     * @param <E> the capture element type
+     * @param <V> the capture value type
      */
-    <T> void putOnce(@Nonnull String key, @Nullable T value);
-
-    /**
-     * Inserts the {@link Capture} into this registry,
-     * if it doesn't exist already.
-     *
-     * @param key the capture key
-     * @param value the capture value
-     * @param <T> the capture value type
-     */
-    <T> void putOnce(@Nonnull NamedTypeKey<T> key, @Nullable T value);
+    <E, V extends BaseValue<E>> void offerIfEmpty(@Nonnull V item);
 
     /**
      * Inserts the {@link Capture} into this registry.
      *
-     * <p>The capture key must be a unique key and is
-     * recommended to use the class name and a custom
-     * name.</p>
-     *
-     * @param key the capture key
-     * @param value the capture value
-     * @param <T> the capture value type
+     * @param item the capture item
+     * @param <E> the capture element type
+     * @param <V> the capture value type
      */
-    <T> void put(@Nonnull String key, @Nullable T value);
-
-    /**
-     * Inserts the {@link Capture} into this registry.
-     *
-     * @param key the capture key
-     * @param value the capture value
-     * @param <T> the capture value type
-     */
-    <T> void put(@Nonnull NamedTypeKey<T> key, @Nonnull T value);
+    <E, V extends BaseValue<E>> void offer(@Nonnull V item);
 
     /**
      * Merges values from another {@link CaptureContainer} into this.
@@ -95,48 +67,25 @@ public interface CaptureContainer {
     CaptureContainer merge(@Nonnull CaptureContainer captureContainer);
 
     /**
-     * Transforms the {@link Capture} in this registry.
-     *
-     * <p>The capture key must be a unique key and is
-     * recommended to use the class name and a custom
-     * name.</p>
+     * Returns the {@link Capture} element that is represented by its key.
      *
      * @param key the capture key
-     * @param transform the capture transformer
-     * @param defaultValue the default value in case the original value does not exist
-     * @param <T> the capture value type
+     * @param <E> the capture element type
+     * @param <V> the capture value type
+     * @return the capture element optional, or {@link Optional#empty()} if the capture element is not contained in this registry
      */
-    <T> void transform(@Nonnull String key, @Nullable Transform<T> transform, @Nonnull T defaultValue);
+    <E, V extends BaseValue<E>> Optional<E> get(@Nonnull CaptureKey<V> key);
 
     /**
-     * Transforms the {@link Capture} in this registry.
+     * Returns the {@link Capture} that is represented by its {@link CaptureKey}.
      *
      * @param key the capture key
-     * @param transform the capture transformer
-     * @param defaultValue the default value in case the original value does not exist
-     * @param <T> the capture value
-     */
-    <T> void transform(@Nonnull NamedTypeKey<T> key, @Nonnull Transform<T> transform, @Nonnull T defaultValue);
-
-    /**
-     * Returns the {@link Capture} that is represented by its key.
-     *
-     * @param key the capture key
-     * @param <T> the capture value type
+     * @param <E> the capture element type
+     * @param <V> the capture value type
      * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
      */
     @Nonnull
-    <T> Optional<T> get(@Nonnull String key);
-
-    /**
-     * Returns the {@link Capture} that is represented by its {@link NamedKey}.
-     *
-     * @param key the capture key
-     * @param <T> the capture value type
-     * @return the capture value optional, or {@link Optional#empty()} if the capture is not contained in this registry
-     */
-    @Nonnull
-    <T> Optional<T> get(@Nonnull NamedTypeKey<T> key);
+    <E, V extends BaseValue<E>> Optional<V> getValue(@Nonnull CaptureKey<V> key);
 
     /**
      * Returns a set of keys that are contained inside this registry.

@@ -23,9 +23,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.detection.capture;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.google.common.reflect.TypeToken;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-public interface CheckModel extends StageModel<Check<?>> {
+/**
+ * Represents a {@link CaptureKey} builder.
+ *
+ * @param <V> the value type
+ */
+public interface CaptureKeyBuilder<V extends BaseValue> {
+
+    /**
+     * Returns this builder and sets the
+     * {@link CaptureKey} id.
+     *
+     * @param id the content key id
+     * @return this builder
+     */
+    CaptureKeyBuilder<V> id(String id);
+
+    /**
+     * Returns this builder and sets the
+     * {@link CaptureKey} name.
+     *
+     * @param name the content key name
+     * @return this builder
+     */
+    CaptureKeyBuilder<V> name(String name);
+
+    /**
+     * Returns this builder and sets the
+     * {@link CaptureKey} value and element type.
+     *
+     * @param defaultValue the content key value type
+     * @param elementToken the content key element type
+     * @return this builder
+     */
+    CaptureKeyBuilder<V> type(V defaultValue, TypeToken<?> elementToken);
+
+    /**
+     * Returns a built {@link CaptureKey} using
+     * this builder.
+     *
+     * @return the new capture key
+     */
+    CaptureKey<V> build();
+
 }

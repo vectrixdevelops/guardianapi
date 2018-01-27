@@ -23,21 +23,62 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.heuristic;
+package com.ichorpowered.guardianapi.util.item.value;
 
-import com.ichorpowered.guardianapi.detection.stage.Stage;
-import com.ichorpowered.guardianapi.util.StagePredicate;
+import com.ichorpowered.guardianapi.util.item.key.Key;
+
+import java.util.Optional;
 
 /**
- * Represents the heursitic stage.
+ * Represents a value associated with a {@link Key}.
+ *
+ * @param <E> the value type
+ * @author SpongePowered
  */
-public interface Heuristic extends Stage {
+public interface BaseValue<E> {
 
     /**
-     * Returns the heuristic stage predicate.
+     * Returns the contained value. If that value is not
+     * present, the {@link #getDefault()} value is returned.
      *
-     * @return the heuristic predicate
+     * @return the contained value
      */
-    StagePredicate getPredicate();
+    E get();
+
+    /**
+     * Returns true if the value is presumed to exist.
+     *
+     * @return true if the value is contained
+     */
+    boolean exists();
+
+    /**
+     * Returns true if the value is immutable.
+     *
+     * @return true if the value is immutable
+     */
+    boolean isImmutable();
+
+    /**
+     * Returns the default value.
+     *
+     * @return the default value
+     */
+    E getDefault();
+
+    /**
+     * Returns the directly contained value. If that value is not
+     * present, it will return an {@link Optional#empty()}.
+     *
+     * @return the directly contained value
+     */
+    Optional<E> getDirect();
+
+    /**
+     * Returns the key associated with this {@link BaseValue}.
+     *
+     * @return the associated key
+     */
+    Key<? extends BaseValue<E>> getKey();
 
 }

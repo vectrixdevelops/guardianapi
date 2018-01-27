@@ -23,9 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
+import net.kyori.lunar.reflect.Reified;
 
-public interface CheckModel extends StageModel<Check<?>> {
+public interface ValueHolder<V extends BaseValue> extends Reified<V> {
+
 }

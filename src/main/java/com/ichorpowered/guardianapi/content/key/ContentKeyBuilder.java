@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,14 +23,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.content.transaction;
+package com.ichorpowered.guardianapi.content.key;
 
 import com.google.common.reflect.TypeToken;
+import com.ichorpowered.guardianapi.content.transaction.ContentAssignment;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
 /**
  * Represents a {@link ContentKey} builder.
+ *
+ * @param <V> the value type
  */
-public interface ContentKeyBuilder<T> {
+public interface ContentKeyBuilder<V extends BaseValue> {
 
     /**
      * Returns this builder and sets the
@@ -37,7 +43,7 @@ public interface ContentKeyBuilder<T> {
      * @param id the content key id
      * @return this builder
      */
-    ContentKeyBuilder<T> id(String id);
+    ContentKeyBuilder<V> id(String id);
 
     /**
      * Returns this builder and sets the
@@ -46,16 +52,17 @@ public interface ContentKeyBuilder<T> {
      * @param name the content key name
      * @return this builder
      */
-    ContentKeyBuilder<T> name(String name);
+    ContentKeyBuilder<V> name(String name);
 
     /**
      * Returns this builder and sets the
-     * {@link ContentKey} element type.
+     * {@link ContentKey} value and element type.
      *
-     * @param typeToken the content key element type
+     * @param value the content key value type
+     * @param elementToken the content key element type
      * @return this builder
      */
-    ContentKeyBuilder<T> element(TypeToken<T> typeToken);
+    ContentKeyBuilder<V> type(V value, TypeToken<?> elementToken);
 
     /**
      * Returns this builder and adds a
@@ -64,7 +71,7 @@ public interface ContentKeyBuilder<T> {
      * @param assignment the content assignment
      * @return this builder
      */
-    ContentKeyBuilder<T> assignment(ContentAssignment<?> assignment);
+    ContentKeyBuilder<V> assignment(ContentAssignment<?> assignment);
 
     /**
      * Returns a built {@link ContentKey} using
@@ -72,6 +79,6 @@ public interface ContentKeyBuilder<T> {
      *
      * @return the new content key
      */
-    ContentKey<T> build();
+    ContentKey<V> build();
 
 }

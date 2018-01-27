@@ -23,9 +23,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+public interface Identifiable {
 
-public interface CheckModel extends StageModel<Check<?>> {
+    /**
+     * Returns the identifier.
+     *
+     * @return the identifier
+     */
+    String getId();
+
+    /**
+     * Returns the name.
+     *
+     * @return the name
+     */
+    String getName();
+
 }

@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,54 +23,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.util.key;
+package com.ichorpowered.guardianapi.util.item.value.mutable;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.util.Set;
 
 /**
- * Represents a simple way of acquiring a complex named key.
+ * Represents a type of {@link CollectionValue} backed by a {@link Set}. The
+ * reasoning is that a {@link Set} retains no ordering of the elements it
+ * contains.
+ *
+ * @param <E> The type of elements supported
  */
-public class NamedKey {
-
-    private final String key;
-
-    /**
-     * Returns a new {@link NamedKey}.
-     *
-     * @param id the key
-     * @return a new named key
-     */
-    @Nonnull
-    public static NamedKey of(@Nonnull final String id) {
-        return new NamedKey(id);
-    }
-
-    private NamedKey(@Nonnull final String id) {
-        this.key = id;
-    }
-
-    /**
-     * Returns the key that this represents.
-     *
-     * @return the key
-     */
-    @Nonnull
-    public final String getName() {
-        return this.key;
-    }
-
-    @Override
-    public boolean equals(@Nullable final Object object) {
-        if (object == null) {
-            return false;
-        }
-
-        if (object instanceof NamedKey) {
-            return ((NamedKey) object).getName().equals(this.key);
-        }
-
-        return object.equals(this);
-    }
+public interface SetValue<E> extends CollectionValue<E, Set<E>, SetValue<E>> {
 
 }

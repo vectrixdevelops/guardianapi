@@ -1,7 +1,9 @@
 /*
  * MIT License
  *
- * Copyright (c) 2017 Connor Hartley
+ * Copyright (c) 2018 Connor Hartley
+ * Copyright (c) 2018 SpongePowered
+ * Copyright (c) 2018 contributors
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,56 +25,39 @@
  */
 package com.ichorpowered.guardianapi.content;
 
-import com.ichorpowered.guardianapi.content.transaction.ContentKey;
-import com.ichorpowered.guardianapi.content.transaction.result.BatchValue;
-import com.ichorpowered.guardianapi.content.transaction.result.SingleValue;
+import com.google.common.collect.ImmutableMap;
+import com.ichorpowered.guardianapi.content.key.ContentKey;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
 /**
  * Represents a container for content data.
  */
-public interface ContentContainer extends Iterable<SingleValue<?>> {
+public interface ContentContainer extends Iterable<BaseValue<?>> {
 
     /**
-     * Returns a {@link SingleValue} for offering
-     * the content to be stored in this container under
-     * the {@link ContentKey}
+     * Offers the content to be stored in this container under
+     * the {@link ContentKey}.
      *
      * @param key the key
      * @param value the value
      * @param <E> the value type
-     * @return the single value result
      */
-    <E> SingleValue<E> offer(ContentKey<E> key, E value);
+    <E extends BaseValue<?>> void offer(ContentKey<E> key, E value);
 
     /**
-     * Returns a {@link SingleValue} for offering
-     * the content to be stored in this container under
-     * the id.
+     * Attempts to offer the content to be stored in this
+     * container under the {@link ContentKey}.
      *
-     * @param id the key id
+     * @param key the key
      * @param value the value
-     * @param <E> the value type
-     * @return the single value result
      */
-    <E> Optional<SingleValue<E>> offer(String id, E value);
+    void attempt(ContentKey key, BaseValue<?> value);
 
     /**
-     * Returns a {@link BatchValue} for offering
-     * a list of content to be stored in this container under
-     * each id.
-     *
-     * @param keys the keys
-     * @param values the values
-     * @return the batch value result
-     */
-    BatchValue offer(List<ContentKey> keys, List<?> values);
-
-    /**
-     * Returns a {@link SingleValue} for retrieving
+     * Returns a value for retrieving
      * the content that may be stored in this container under
      * the {@link ContentKey}.
      *
@@ -80,18 +65,14 @@ public interface ContentContainer extends Iterable<SingleValue<?>> {
      * @param <E> the value type
      * @return the single value result
      */
-    <E> Optional<SingleValue<E>> get(ContentKey<E> key);
+    <E extends BaseValue<?>> Optional<E> get(ContentKey<E> key);
 
     /**
-     * Returns a {@link SingleValue} for retrieving
-     * the content that may be stored in this container under
-     * the id.
+     * Returns the underlying map for this container.
      *
-     * @param id the key id
-     * @param <E> the value type
-     * @return the single value result
+     * @return the underlying map
      */
-    <E> Optional<SingleValue<E>> get(String id);
+    ImmutableMap<ContentKey<?>, ?> getMap();
 
     /**
      * Returns a set of keys that are stored in this

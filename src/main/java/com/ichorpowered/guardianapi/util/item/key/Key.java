@@ -23,9 +23,32 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardianapi.detection.check;
+package com.ichorpowered.guardianapi.util.item.key;
 
-import com.ichorpowered.guardianapi.detection.stage.model.StageModel;
+import com.google.common.reflect.TypeToken;
+import com.ichorpowered.guardianapi.util.item.Identifiable;
+import com.ichorpowered.guardianapi.util.item.value.BaseValue;
 
-public interface CheckModel extends StageModel<Check<?>> {
+/**
+ * Represents a key to a {@link BaseValue} of a specific
+ * type.
+ *
+ * @param <V> the value type
+ */
+public interface Key<V extends BaseValue> extends Identifiable {
+
+    /**
+     * Gets the value type class.
+     *
+     * @return the value type class
+     */
+    V getDefaultValue();
+
+    /**
+     * Gets the type type class.
+     *
+     * @return the type type class
+     */
+    TypeToken<?> getElementToken();
+
 }
