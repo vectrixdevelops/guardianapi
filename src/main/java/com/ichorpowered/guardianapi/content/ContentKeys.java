@@ -162,13 +162,4 @@ public class ContentKeys {
      */
     public static ContentKey<Value<Double>> BOX_PLAYER_HEIGHT;
 
-    /**
-     * The {@link ContentKey} that represents
-     * a value that can be added to the height
-     * and width of the players bounding box to
-     * be used in some detections where their may
-     * need to be a less precise value.
-     */
-    public static ContentKey<Value<Double>> BOX_PLAYER_SAFETY;
-
 }
