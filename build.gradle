@@ -23,7 +23,7 @@ apply from: project.file("gradle/shared.gradle")
 
 defaultTasks 'licenseFormat', 'build'
 
-group = 'com.ichorpowered'
+group = 'com.ichorpowered.guardian'
 version = '4.0.0-SNAPSHOT'
 
 apply from: project.file("gradle/api.gradle")
@@ -35,6 +35,7 @@ dependencies {
     compile 'net.kyori:violet:2.0.0-SNAPSHOT'
     compile 'org.checkerframework:checker-qual:2.4.0'
     compile "org.fusesource.jansi:jansi:1.16"
+    compile 'org.slf4j:slf4j-api:1.7.25'
     compile 'org.ow2.asm:asm:5.2'
 }
 
