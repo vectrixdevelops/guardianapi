@@ -25,7 +25,6 @@
  */
 package com.ichorpowered.guardian.api.storage;
 
-import ninja.leaping.configurate.ConfigurationNode;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -36,6 +35,10 @@ public interface GlobalConfiguration {
 
     @NonNull ConfigurationLoader<CommentedConfigurationNode> getSource();
 
-    @NonNull ConfigurationNode getRoot();
+    @NonNull CommentedConfigurationNode getRoot();
+
+    @NonNull CommentedConfigurationNode getDetection(@NonNull String detection);
+
+    @NonNull CommentedConfigurationNode getModel(@NonNull String model);
 
 }

@@ -29,10 +29,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.model.Model;
 import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -46,7 +45,7 @@ public interface Component {
      *
      * @return the id this component is assigned
      */
-    @NonNull String getKey();
+    @NonNull String getId();
 
     /**
      * Returns the {@link Model} this {@link Component} belongs
@@ -65,7 +64,7 @@ public interface Component {
      * @param <E> the value type
      * @return the value container, if present
      */
-    @NonNull <E> Optional<Value<E>> getValue(@NonNull ValueKey<E> key);
+    @NonNull <E> Optional<Value<E>> get(@NonNull Key<E> key);
 
     /**
      * Sets the value based on the value key. Inserts the
@@ -77,7 +76,7 @@ public interface Component {
      * @param <E> the element type
      * @return the add value container, if present
      */
-    @NonNull <E> Optional<Value<E>> setValue(@NonNull ValueKey<E> key, E element);
+    @NonNull <E> Optional<Value<E>> set(@NonNull Key<E> key, E element);
 
     /**
      * Removes the value based on the node type, node key and
@@ -88,7 +87,7 @@ public interface Component {
      * @param <E> the value type
      * @return the empty value container, if present
      */
-    @NonNull <E> Optional<Value<E>> removeValue(@NonNull ValueKey<E> key);
+    @NonNull <E> Optional<Value<E>> remove(@NonNull Key<E> key);
 
     /**
      * Returns an {@link ImmutableList} of default {@link String}s.
@@ -98,12 +97,12 @@ public interface Component {
     @NonNull ImmutableList<String> defaultKeys();
 
     /**
-     * Returns an {@link ImmutableList} of {@link ValueKey}s contained
+     * Returns an {@link ImmutableList} of {@link Key}s contained
      * inside this {@link Component}.
      *
      * @return the currently stored component values
      */
-    @NonNull ImmutableList<ValueKey<?>> keys();
+    @NonNull ImmutableList<Key<?>> keys();
 
     /**
      * A factory for creating a new {@link Component}.
@@ -116,12 +115,10 @@ public interface Component {
          *
          * @param id the identifying key
          * @param model the owning model
-         * @param defaultValues the default keys
          * @return the new component
          */
         @NonNull Component create(@NonNull @Assisted String id,
-                                  @NonNull @Assisted Model model,
-                                  @NonNull @Assisted List<String> defaultValues);
+                                  @NonNull @Assisted Model model);
 
     }
 

@@ -27,10 +27,10 @@ package com.ichorpowered.guardian.api.game.model.value.key;
 
 import com.google.common.reflect.TypeToken;
 import com.google.inject.assistedinject.Assisted;
-import com.ichorpowered.guardian.api.game.model.value.store.ValueStores;
+import com.ichorpowered.guardian.api.game.model.value.store.Stores;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public interface ValueKey<E> {
+public interface Key<E> {
 
     @NonNull String getKey();
 
@@ -38,14 +38,14 @@ public interface ValueKey<E> {
 
     @NonNull TypeToken<?> getAttributeType();
 
-    @NonNull ValueStores getValueStore();
+    @NonNull Stores getValueStore();
 
     interface Factory {
 
-        ValueKey<?> create(@NonNull @Assisted String key,
-                        @NonNull @Assisted("elementType") TypeToken<?> elementType,
-                        @NonNull @Assisted("attributeType") TypeToken<?> attributeType,
-                        @NonNull @Assisted ValueStores valueStores);
+        Key<?> create(@NonNull @Assisted String key,
+                      @NonNull @Assisted("elementType") TypeToken<?> elementType,
+                      @NonNull @Assisted("attributeType") TypeToken<?> attributeType,
+                      @NonNull @Assisted Stores stores);
 
     }
 

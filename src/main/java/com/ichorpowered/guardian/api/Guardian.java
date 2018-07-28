@@ -31,7 +31,6 @@ import com.google.inject.Inject;
 import com.ichorpowered.guardian.api.game.model.ModelFactories;
 import com.ichorpowered.guardian.api.game.model.ModelRegistry;
 import com.ichorpowered.guardian.api.game.resource.ResourceFactories;
-import com.ichorpowered.guardian.api.storage.DefinitionConfiguration;
 import com.ichorpowered.guardian.api.storage.GlobalConfiguration;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -46,7 +45,6 @@ public final class Guardian {
     @Inject private static Path configPath;
     @Inject private static GuardianPlatform platform;
     @Inject private static GlobalConfiguration globalConfiguration;
-    @Inject private static DefinitionConfiguration definitionConfiguration;
     @Inject private static ModelRegistry modelRegistry;
     @Inject private static ModelFactories modelFactories;
     @Inject private static ResourceFactories resourceFactories;
@@ -77,10 +75,6 @@ public final class Guardian {
      */
     public static @Nullable GlobalConfiguration getGlobalConfiguration() {
         return check(globalConfiguration);
-    }
-
-    public static @Nullable DefinitionConfiguration getDefinitionConfiguration() {
-        return check(definitionConfiguration);
     }
 
     /**

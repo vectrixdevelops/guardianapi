@@ -27,7 +27,7 @@ package com.ichorpowered.guardian.api.game.model;
 
 import com.ichorpowered.guardian.api.game.model.component.Component;
 import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
@@ -35,15 +35,19 @@ import java.util.Optional;
 public interface ModelFactories {
 
     /**
-     * Creates a new {@link Value} with the specified
-     * properties.
+     * Creates a new physical {@link Value} with the
+     * specified properties.
      *
      * @param component the owning component
-     * @param valueKey the value key
+     * @param key the value key
      * @param <E> the value type
      * @return the new value, if present
      */
-    @NonNull <E> Optional<Value<E>> createValue(final @NonNull Component component,
-                                                final @NonNull ValueKey<E> valueKey);
+    @NonNull <E> Optional<Value<E>> createValue(@NonNull Component component,
+                                                @NonNull Key<E> key);
+
+    @NonNull <E> Optional<Value<E>> createValue(@NonNull Component component,
+                                                @NonNull Key<E> key,
+                                                @NonNull E element);
 
 }

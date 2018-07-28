@@ -23,11 +23,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.game.model.value.store;
+package com.ichorpowered.guardian.api.game.model.value.key;
 
-public enum ValueStores {
+import org.spongepowered.api.util.generator.dummy.DummyObjectProvider;
 
-    PHYSICAL,
-    VIRTUAL
+@SuppressWarnings({"unused", "WeakerAccess"})
+public final class Keys {
+
+    // Horizontal Movement
+
+    public static Key<Double> WALK_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "walk_speed");
+
+    public static Key<Double> SNEAK_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "sneak_speed");
+
+    public static Key<Double> SPRINT_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "sprint_speed");
+
+    public static Key<Double> FLIGHT_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "flight_speed");
+
+    // Vertical Movement
+
+    public static Key<Double> LIFT_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "lift_speed");
+
+
 
 }

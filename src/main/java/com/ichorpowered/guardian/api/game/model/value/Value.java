@@ -26,7 +26,7 @@
 package com.ichorpowered.guardian.api.game.model.value;
 
 import com.google.inject.assistedinject.Assisted;
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
@@ -39,7 +39,7 @@ import java.util.function.Function;
  */
 public interface Value<E> {
 
-    @NonNull ValueKey<E> getKey();
+    @NonNull Key<E> getKey();
 
     /**
      * Returns the contained value. If that value is not
@@ -101,8 +101,8 @@ public interface Value<E> {
          *
          * @return the new value
          */
-        @NonNull Value<?> create(@NonNull @Assisted("key") ValueKey<?> valueKey,
-                              @NonNull @Assisted("defaultElement") Object defaultElement);
+        @NonNull Value<?> create(@NonNull @Assisted("key") Key<?> key,
+                                 @NonNull @Assisted("defaultElement") Object defaultElement);
 
     }
 
