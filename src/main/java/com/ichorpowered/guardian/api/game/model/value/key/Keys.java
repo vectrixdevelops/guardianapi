@@ -27,8 +27,18 @@ package com.ichorpowered.guardian.api.game.model.value.key;
 
 import org.spongepowered.api.util.generator.dummy.DummyObjectProvider;
 
+import java.util.Map;
+
 @SuppressWarnings({"unused", "WeakerAccess"})
 public final class Keys {
+
+    // Entity Bounds
+
+    public static Key<Double> PLAYER_WIDTH = DummyObjectProvider.createExtendedFor(Key.class, "player_width");
+
+    public static Key<Double> PLAYER_HEIGHT = DummyObjectProvider.createExtendedFor(Key.class, "player_height");
+
+    public static Key<Double> RAY_TRACE_STEP = DummyObjectProvider.createExtendedFor(Key.class, "ray_trace_step");
 
     // Horizontal Movement
 
@@ -44,6 +54,16 @@ public final class Keys {
 
     public static Key<Double> LIFT_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "lift_speed");
 
+    // Material Movement
 
+    public static Key<Map<String, Double>> MATTER_HORIZONTAL_DISTANCE = DummyObjectProvider.createExtendedFor(Key.class, "matter_horizontal_distance");
+
+    public static Key<Map<String, Double>> MATERIAL_HORIZONTAL_DISTANCE = DummyObjectProvider.createExtendedFor(Key.class, "material_horizontal_distance");
+
+    // Potion Movement
+
+    public static Key<Map<String, Double>> EFFECT_HORIZONTAL_DISTANCE = DummyObjectProvider.createExtendedFor(Key.class, "effect_horizontal_distance");
+
+    public static Key<Map<String, Double>> EFFECT_VERTICAL_DISTANCE = DummyObjectProvider.createExtendedFor(Key.class, "effect_vertical_distance");
 
 }
