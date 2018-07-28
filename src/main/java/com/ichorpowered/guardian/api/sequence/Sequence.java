@@ -37,7 +37,7 @@ public interface Sequence<T> {
 
     @NonNull Process getProcess();
 
-    @NonNull BiPredicate<Class<?>, ?> getEventComparator();
+    @NonNull BiPredicate<Class<? extends T>, T> getEventComparator();
 
     @NonNull Class<T> getEventType();
 

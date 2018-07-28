@@ -33,7 +33,9 @@ public interface Process {
 
     @NonNull ProcessResult next();
 
-    @NonNull ProcessResult retry();
+    @NonNull ProcessResult end();
+
+    @NonNull ProcessResult skip();
 
     @NonNull CaptureRegistry getCaptures();
 
