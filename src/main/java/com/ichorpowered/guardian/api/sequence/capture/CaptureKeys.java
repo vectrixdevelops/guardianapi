@@ -34,4 +34,10 @@ public final class CaptureKeys {
 
     public static CaptureKey MOVEMENT_CONTROL_CAPTURE = DummyObjectProvider.createExtendedFor(CaptureKey.class, "movement_control_capture");
 
+    public static CaptureKey MOVEMENT_ALTITUDE_CAPTURE = DummyObjectProvider.createExtendedFor(CaptureKey.class, "movement_altitude_capture");
+
+    public static CaptureKey MOVEMENT_MATERIAL_CAPTURE = DummyObjectProvider.createExtendedFor(CaptureKey.class, "movement_material_capture");
+
+    public static CaptureKey MOVEMENT_EFFECT_CAPTURE = DummyObjectProvider.createExtendedFor(CaptureKey.class, "movement_effect_capture");
+
 }
