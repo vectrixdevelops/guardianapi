@@ -23,14 +23,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.game.model.value.key;
+package com.ichorpowered.guardian.api.game.model.value.store;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+public enum Stores {
 
-public interface ValueKeyRegistry {
-
-    @NonNull ValueKey<?> set(@NonNull String key, @NonNull ValueKey<?> valueKey);
-
-    @NonNull ValueKey<?> get(@NonNull String key);
+    PHYSICAL,
+    VIRTUAL
 
 }

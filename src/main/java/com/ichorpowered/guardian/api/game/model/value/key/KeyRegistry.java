@@ -23,23 +23,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.storage;
+package com.ichorpowered.guardian.api.game.model.value.key;
 
-import ninja.leaping.configurate.ConfigurationNode;
+import com.google.common.reflect.TypeToken;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface DefinitionConfiguration {
+public interface KeyRegistry {
 
-    void load(@NonNull boolean overwrite, @NonNull boolean merge);
+    @NonNull Optional<Key<?>> get(@NonNull String id);
 
-    @NonNull ConfigurationNode getRoot();
+    @NonNull <E> Optional<Key<E>> get(@NonNull String id, @NonNull TypeToken<E> typeToken);
 
-    @NonNull double getVersion();
-
-    @NonNull List<String> getComponents(@NonNull String model);
-
-    @NonNull List<String> getValues(@NonNull String component);
+    @NonNull KeyRegistry register(@NonNull Key<?> key);
 
 }

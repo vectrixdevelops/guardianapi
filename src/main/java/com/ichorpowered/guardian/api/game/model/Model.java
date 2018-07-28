@@ -29,8 +29,7 @@ import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.GameReference;
 import com.ichorpowered.guardian.api.game.model.component.Component;
 import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
-import com.ichorpowered.guardian.api.storage.ModelConfiguration;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.List;
@@ -43,6 +42,8 @@ import java.util.Set;
  */
 public interface Model {
 
+    @NonNull String getId();
+
     /**
      * Return the game reference this {@link Model}
      * represents.
@@ -52,21 +53,17 @@ public interface Model {
      */
     @NonNull <T> GameReference<T> getGameReference();
 
-    @NonNull ModelConfiguration getModelConfiguration();
+    @NonNull <E> List<Value<E>> offer(@NonNull Key<E> key, E element);
 
-    @NonNull Model setModelConfiguration(@NonNull ModelConfiguration modelConfiguration);
+    @NonNull <E> List<Value<E>> offer(@NonNull Set<String> components, @NonNull Key<E> key, E element);
 
-    @NonNull <E> List<Value<E>> offer(@NonNull ValueKey<E> key, E element);
+    @NonNull <E> List<Value<E>> request(@NonNull Key<E> key);
 
-    @NonNull <E> List<Value<E>> offer(@NonNull Set<String> components, @NonNull ValueKey<E> key, E element);
+    @NonNull <E> List<Value<E>> request(@NonNull Set<String> components, @NonNull Key<E> key);
 
-    @NonNull <E> List<Value<E>> request(@NonNull ValueKey<E> key);
+    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull Key<E> key);
 
-    @NonNull <E> List<Value<E>> request(@NonNull Set<String> components, @NonNull ValueKey<E> key);
-
-    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull ValueKey<E> key);
-
-    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull String component, @NonNull ValueKey<E> key);
+    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull String component, @NonNull Key<E> key);
 
     /**
      * Creates a new {@link Component} that matches the class type.
@@ -81,30 +78,30 @@ public interface Model {
     /**
      * Returns the {@link Component} that matches the type.
      *
-     * @param key the component key
+     * @param id the component id
      * @return the component, if present
      */
-    @NonNull Optional<Component> getComponent(@NonNull String key);
+    @NonNull Optional<Component> getComponent(@NonNull String id);
 
     /**
      * Clones the {@link Component} that matches the type
      * and overwrites it with the specified {@link Component}
      * values.
      *
-     * @param key the component key
+     * @param id the component id
      * @param component the other component
      * @return the cloned component, if present
      */
-    @NonNull Optional<Component> cloneComponent(@NonNull String key, @NonNull Component component);
+    @NonNull Optional<Component> cloneComponent(@NonNull String id, @NonNull Component component);
 
     /**
      * Removes the {@link Component} that matches the type
      * from this frame container.
      *
-     * @param key the component key
+     * @param id the component id
      * @return the removed component, if present
      */
-    @NonNull Optional<Component> removeComponent(@NonNull String key);
+    @NonNull Optional<Component> removeComponent(@NonNull String id);
 
     /**
      * Returns an immutable {@link List} of default {@link Component}s.

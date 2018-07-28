@@ -25,7 +25,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 
-public interface CaptureKey extends ValueKey<CaptureValue> {
+public interface CaptureKey extends Key<CaptureValue> {
 }

@@ -27,7 +27,7 @@ package com.ichorpowered.guardian.api.sequence.capture;
 
 import com.ichorpowered.guardian.api.game.GameReference;
 import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.ValueKey;
+import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
@@ -37,14 +37,14 @@ public interface CaptureRegistry {
 
     @NonNull GameReference<?> getGameReference();
 
-    @NonNull Optional<Value<CaptureValue>> get(@NonNull ValueKey<CaptureValue> key);
+    @NonNull Optional<Value<CaptureValue>> get(@NonNull Key<CaptureValue> key);
 
-    @NonNull Value<CaptureValue> set(@NonNull ValueKey<CaptureValue> key, @NonNull Value<CaptureValue> element);
+    @NonNull Value<CaptureValue> set(@NonNull Key<CaptureValue> key, @NonNull Value<CaptureValue> element);
 
     @NonNull Set<Value<CaptureValue>> values();
 
-    @NonNull Set<ValueKey<CaptureValue>> keys();
+    @NonNull Set<Key<CaptureValue>> keys();
 
-    @NonNull Set<ValueKey<CaptureValue>> defaultKeys();
+    @NonNull Set<Key<CaptureValue>> defaultKeys();
 
 }
