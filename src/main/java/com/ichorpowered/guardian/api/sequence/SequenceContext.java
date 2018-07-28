@@ -25,7 +25,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
-import com.google.gson.reflect.TypeToken;
+import com.google.common.reflect.TypeToken;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Map;
