@@ -25,6 +25,7 @@
  */
 package com.ichorpowered.guardian.api.sequence;
 
+import com.google.gson.reflect.TypeToken;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Map;
@@ -32,20 +33,20 @@ import java.util.function.Function;
 
 public interface SequenceContext {
 
-    @NonNull <T> T set(@NonNull String key, @NonNull Class<T> type, @NonNull T element);
+    @NonNull <T> T set(@NonNull String key, @NonNull TypeToken<T> typeToken, @NonNull T element);
 
-    @NonNull <T> T setOnce(@NonNull String key, @NonNull Class<T> type, @NonNull T element);
+    @NonNull <T> T setOnce(@NonNull String key, @NonNull TypeToken<T> typeToken, @NonNull T element);
 
-    @NonNull <T> SequenceContext add(@NonNull String key, @NonNull Class<T> type, @NonNull T element);
+    @NonNull <T> SequenceContext add(@NonNull String key, @NonNull TypeToken<T> typeToken, @NonNull T element);
 
-    @NonNull <T> SequenceContext transform(@NonNull String key, @NonNull Class<T> type, @NonNull Function<T, T> function);
+    @NonNull <T> SequenceContext transform(@NonNull String key, @NonNull TypeToken<T> typeToken, @NonNull Function<T, T> function);
 
     @NonNull SequenceContext from(@NonNull SequenceContext sequenceContext);
 
-    @NonNull <T> T get(@NonNull String key, @NonNull Class<T> type);
+    @NonNull <T> T get(@NonNull String key, @NonNull TypeToken<T> typeToken);
 
     @NonNull Map<String, Object> getAll();
 
-    @NonNull <T> T remove(@NonNull String key, @NonNull Class<T> type);
+    @NonNull <T> T remove(@NonNull String key, @NonNull TypeToken<T> typeToken);
 
 }
