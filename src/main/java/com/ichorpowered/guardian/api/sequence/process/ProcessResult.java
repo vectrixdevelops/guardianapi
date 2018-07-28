@@ -31,6 +31,10 @@ public interface ProcessResult {
 
     @NonNull boolean toNext();
 
+    @NonNull boolean toSkip();
+
     void setNext(@NonNull boolean next);
+
+    void setSkip(@NonNull boolean skip);
 
 }
