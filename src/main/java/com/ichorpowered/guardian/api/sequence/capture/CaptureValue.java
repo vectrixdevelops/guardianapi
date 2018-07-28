@@ -33,8 +33,8 @@ public interface CaptureValue {
 
     void apply(@NonNull Process process);
 
-    static String asKey(@NonNull CaptureValue captureValue, @NonNull String key) {
-        return "capture:" + captureValue.toString().toLowerCase() + ":" + key;
+    static String asKey(@NonNull Class<? extends CaptureValue> captureValue, @NonNull String key) {
+        return "capture:" + captureValue.getSimpleName().toLowerCase() + ":" + key;
     }
 
 }
