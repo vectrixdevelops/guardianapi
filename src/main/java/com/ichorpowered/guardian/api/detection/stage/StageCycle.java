@@ -48,6 +48,8 @@ public interface StageCycle {
 
     @NonNull boolean next();
 
+    @NonNull <T extends StageProcess> List<T> getFor(@NonNull Class<? extends Stage<T>> stage);
+
     interface Factory {
 
         @NonNull StageCycle create(@NonNull List<Stage<?>> stages);

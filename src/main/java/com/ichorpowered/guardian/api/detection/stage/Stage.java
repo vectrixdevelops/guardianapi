@@ -29,10 +29,13 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 public interface Stage<T extends StageProcess> extends Iterable<T> {
 
     @NonNull Optional<T> getProcess(@NonNull Class<? extends T> stageProcessType);
+
+    @NonNull Stream<T> getProcesses();
 
     @NonNull int getMaximum();
 
