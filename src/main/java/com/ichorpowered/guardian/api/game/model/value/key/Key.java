@@ -42,10 +42,10 @@ public interface Key<E> {
 
     interface Factory {
 
-        Key<?> create(@NonNull @Assisted String key,
-                      @NonNull @Assisted("elementType") TypeToken<?> elementType,
-                      @NonNull @Assisted("attributeType") TypeToken<?> attributeType,
-                      @NonNull @Assisted Stores stores);
+        Key create(@NonNull @Assisted String key,
+                   @NonNull @Assisted("elementType") TypeToken<?> elementType,
+                   @NonNull @Assisted("attributeType") TypeToken<?> attributeType,
+                   @NonNull @Assisted Stores stores);
 
     }
 

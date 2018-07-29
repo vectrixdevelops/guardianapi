@@ -101,8 +101,8 @@ public interface Value<E> {
          *
          * @return the new value
          */
-        @NonNull Value<?> create(@NonNull @Assisted("key") Key<?> key,
-                                 @NonNull @Assisted("defaultElement") Object defaultElement);
+        @NonNull Value create(@NonNull @Assisted("key") Key key,
+                              @NonNull @Assisted("defaultElement") Object defaultElement);
 
     }
 
