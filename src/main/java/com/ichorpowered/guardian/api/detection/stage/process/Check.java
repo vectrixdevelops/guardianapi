@@ -25,13 +25,14 @@
  */
 package com.ichorpowered.guardian.api.detection.stage.process;
 
+import com.ichorpowered.guardian.api.detection.Detection;
 import com.ichorpowered.guardian.api.detection.stage.StageProcess;
 import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface Check<T> extends StageProcess {
 
-    @NonNull SequenceBlueprint<? extends T> getSequence();
+    @NonNull SequenceBlueprint<? extends T> getSequence(@NonNull Detection detection);
 
     @NonNull Class<? extends T> getEventType();
 
