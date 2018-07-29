@@ -36,17 +36,19 @@ public interface StageCycle {
 
     @NonNull <T extends StageProcess> Optional<T> getStageProcess();
 
-    @NonNull int size();
+    int size();
 
-    @NonNull int sizeFor(@NonNull Stage<?> stage);
+    int sizeFor(@NonNull Stage<?> stage);
 
-    @NonNull int totalSize();
+    int sizeFor(@NonNull Class<? extends Stage<?>> stage);
 
-    @NonNull boolean hasNext();
+    int totalSize();
 
-    @NonNull boolean nextStage();
+    boolean hasNext();
 
-    @NonNull boolean next();
+    boolean nextStage();
+
+    boolean next();
 
     @NonNull <T extends StageProcess> List<T> getFor(@NonNull Class<? extends Stage<T>> stage);
 
