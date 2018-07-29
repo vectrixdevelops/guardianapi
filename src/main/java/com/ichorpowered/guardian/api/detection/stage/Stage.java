@@ -28,7 +28,6 @@ package com.ichorpowered.guardian.api.detection.stage;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public interface Stage<T extends StageProcess> extends Iterable<T> {
