@@ -23,16 +23,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection.check;
+package com.ichorpowered.guardian.api.detection.stage.process;
 
 import com.ichorpowered.guardian.api.detection.stage.StageProcess;
-import com.ichorpowered.guardian.api.sequence.SequenceBlueprint;
+import com.ichorpowered.guardian.api.sequence.process.Process;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public interface Check<T> extends StageProcess {
+public interface Penalty extends StageProcess {
 
-    @NonNull SequenceBlueprint<? extends T> getSequence();
-
-    @NonNull Class<? extends T> getEventType();
+    boolean test(@NonNull Process process);
 
 }
