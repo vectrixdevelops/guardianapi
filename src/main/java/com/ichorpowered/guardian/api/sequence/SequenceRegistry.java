@@ -30,9 +30,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import java.util.Optional;
 import java.util.Set;
 
-public interface SequenceRegistry<T> extends Iterable<SequenceBlueprint<T>> {
+public interface SequenceRegistry extends Iterable<SequenceBlueprint> {
 
-    void set(@NonNull Class<?> sequenceType, @NonNull SequenceBlueprint<T> sequenceBlueprint);
+    void set(@NonNull Class<?> sequenceType, @NonNull SequenceBlueprint<?> sequenceBlueprint);
 
     @NonNull Optional<SequenceBlueprint<?>> get(@NonNull Class<?> sequenceType);
 
