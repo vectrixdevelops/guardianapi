@@ -27,13 +27,12 @@ package com.ichorpowered.guardian.api.sequence;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.awt.*;
 import java.util.Optional;
 import java.util.Set;
 
 public interface SequenceRegistry<T> extends Iterable<SequenceBlueprint<T>> {
 
-    void set(@NonNull Class<?> sequenceType, @NonNull SequenceBlueprint<Event> sequenceBlueprint);
+    void set(@NonNull Class<?> sequenceType, @NonNull SequenceBlueprint<T> sequenceBlueprint);
 
     @NonNull Optional<SequenceBlueprint<?>> get(@NonNull Class<?> sequenceType);
 
