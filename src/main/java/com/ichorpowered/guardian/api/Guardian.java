@@ -28,6 +28,7 @@ package com.ichorpowered.guardian.api;
 import static com.google.common.base.Preconditions.checkState;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.ichorpowered.guardian.api.game.model.ModelFactories;
 import com.ichorpowered.guardian.api.game.model.ModelRegistry;
 import com.ichorpowered.guardian.api.game.resource.ResourceFactories;
@@ -42,7 +43,7 @@ import java.nio.file.Path;
  */
 public final class Guardian {
 
-    @Inject private static Path configPath;
+    @Inject @Named("config") private static Path configPath;
     @Inject private static GuardianPlatform platform;
     @Inject private static GlobalConfiguration globalConfiguration;
     @Inject private static ModelRegistry modelRegistry;
