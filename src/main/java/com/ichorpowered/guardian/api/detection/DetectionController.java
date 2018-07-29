@@ -29,7 +29,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 
-public interface DetectionController {
+public interface DetectionController extends Iterable<Detection> {
 
     @NonNull DetectionBuilder builder(@NonNull String detection);
 
