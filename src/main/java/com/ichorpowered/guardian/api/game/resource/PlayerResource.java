@@ -46,7 +46,7 @@ public interface PlayerResource {
      * @param reference the player reference
      * @return this resource
      */
-    @NonNull PlayerResource add(GameReference<?> reference);
+    @NonNull PlayerResource add(@NonNull GameReference<?> reference);
 
     /**
      * Adds the new player references to the resource
@@ -55,7 +55,7 @@ public interface PlayerResource {
      * @param references the player references
      * @return this resource
      */
-    @NonNull PlayerResource add(GameReference<?>[] references);
+    @NonNull PlayerResource add(@NonNull GameReference<?>[] references);
 
     /**
      * Returns a {@link Collection} of {@link GameReference}s in
@@ -73,7 +73,9 @@ public interface PlayerResource {
      * @param reference the player reference
      * @return the group id
      */
-    @NonNull Optional<Integer> get(GameReference<?> reference);
+    @NonNull Optional<Integer> get(@NonNull GameReference<?> reference);
+
+    @NonNull Optional<GameReference<?>> getReference(@NonNull String id);
 
     /**
      * Returns the collection of resource entries.
