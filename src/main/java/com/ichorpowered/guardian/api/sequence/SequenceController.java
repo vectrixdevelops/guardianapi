@@ -26,6 +26,7 @@
 package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.game.GameReference;
+import com.ichorpowered.guardian.api.game.resource.PlayerResource;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.function.Predicate;
@@ -79,6 +80,8 @@ public interface SequenceController<T> {
      * @return true if it successfully removes, false if it does not
      */
     @NonNull boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, @NonNull Long index);
+
+    @NonNull PlayerResource getPlayerResource();
 
     void clean(@NonNull boolean force);
 
