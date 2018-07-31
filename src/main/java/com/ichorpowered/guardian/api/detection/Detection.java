@@ -27,6 +27,7 @@ package com.ichorpowered.guardian.api.detection;
 
 import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.detection.stage.StageCycle;
+import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface Detection {
@@ -36,6 +37,8 @@ public interface Detection {
     @NonNull String getName();
 
     @NonNull StageCycle getStageCycle();
+
+    @NonNull CommentedConfigurationNode getConfiguration();
 
     @NonNull Object getPlugin();
 
