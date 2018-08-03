@@ -36,8 +36,8 @@ public interface ObserverActionBuilder<T> extends ActionBuilder<T> {
 
     @NonNull ObserverActionBuilder<T> condition(@NonNull Function<Process, ProcessResult> function);
 
-    @NonNull ObserverActionBuilder<T> delay(@NonNull int value);
+    @NonNull ObserverActionBuilder<T> delay(int value);
 
-    @NonNull ObserverActionBuilder<T> expire(@NonNull int expire);
+    @NonNull ObserverActionBuilder<T> expire(int expire);
 
 }

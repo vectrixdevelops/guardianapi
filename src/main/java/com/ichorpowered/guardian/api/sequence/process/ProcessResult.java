@@ -25,16 +25,14 @@
  */
 package com.ichorpowered.guardian.api.sequence.process;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface ProcessResult {
 
-    @NonNull boolean toNext();
+    boolean toNext();
 
-    @NonNull boolean toSkip();
+    boolean toSkip();
 
-    void setNext(@NonNull boolean next);
+    void setNext(boolean next);
 
-    void setSkip(@NonNull boolean skip);
+    void setSkip(boolean skip);
 
 }

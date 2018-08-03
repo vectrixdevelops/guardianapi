@@ -68,7 +68,7 @@ public interface SequenceController<T> {
      * @param eventType the event type
      * @return the id of the avoidance ticket
      */
-    @NonNull Long avoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType);
+    long avoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType);
 
     /**
      * Removes the event type and {@link GameReference}
@@ -80,7 +80,7 @@ public interface SequenceController<T> {
      * @param index the id of the avoidance ticket
      * @return true if it successfully removes, false if it does not
      */
-    @NonNull boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, @NonNull Long index);
+    @NonNull boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, long index);
 
     @NonNull PlayerResource getPlayerResource();
 

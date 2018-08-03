@@ -36,6 +36,6 @@ public interface AfterActionBuilder<T> extends ActionBuilder<T> {
 
     @NonNull AfterActionBuilder<T> condition(@NonNull Function<Process, ProcessResult> function);
 
-    @NonNull AfterActionBuilder<T> delay(@NonNull int value);
+    @NonNull AfterActionBuilder<T> delay(int value);
 
 }

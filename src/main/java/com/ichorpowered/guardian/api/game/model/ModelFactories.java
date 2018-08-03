@@ -25,7 +25,6 @@
  */
 package com.ichorpowered.guardian.api.game.model;
 
-import com.ichorpowered.guardian.api.game.model.component.Component;
 import com.ichorpowered.guardian.api.game.model.value.Value;
 import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;

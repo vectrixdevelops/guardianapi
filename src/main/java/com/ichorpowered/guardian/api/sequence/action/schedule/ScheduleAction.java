@@ -27,14 +27,13 @@ package com.ichorpowered.guardian.api.sequence.action.schedule;
 
 import com.ichorpowered.guardian.api.sequence.action.Action;
 import com.ichorpowered.guardian.api.sequence.action.Expirable;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface ScheduleAction extends Action, Expirable {
 
-    void setPeriod(@NonNull int period);
+    void setPeriod(int period);
 
-    @NonNull int getPeriod();
+    int getPeriod();
 
-    @NonNull int getRepeats();
+    int getRepeats();
 
 }
