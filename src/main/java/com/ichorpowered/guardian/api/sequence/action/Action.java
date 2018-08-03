@@ -35,10 +35,10 @@ public interface Action {
 
     void addCondition(@NonNull Function<Process, ProcessResult> function);
 
-    void setDelay(@NonNull int period);
+    void setDelay(int period);
 
-    @NonNull int getDelay();
+    int getDelay();
 
-    @NonNull boolean apply(@NonNull Process process);
+    boolean apply(@NonNull Process process);
 
 }

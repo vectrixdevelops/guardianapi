@@ -32,7 +32,7 @@ public interface StageBuilder {
 
     @NonNull <T extends StageProcess> StageBuilder add(@NonNull Class<T> stageClass);
 
-    @NonNull StageBuilder max(@NonNull int maximum);
+    @NonNull StageBuilder max(int maximum);
 
     @NonNull DetectionBuilder submit();
 

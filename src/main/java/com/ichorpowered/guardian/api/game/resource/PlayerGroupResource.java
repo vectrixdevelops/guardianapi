@@ -54,7 +54,7 @@ public interface PlayerGroupResource extends Iterable<Map.Entry<Integer, GameRef
     interface Factory {
 
         @NonNull PlayerGroupResource create(@Assisted("maxContainerSize") int maxContainerSize,
-                                       @Assisted("minGroupSize") int minGroupSize);
+                                            @Assisted("minGroupSize") int minGroupSize);
 
     }
 

@@ -25,12 +25,10 @@
  */
 package com.ichorpowered.guardian.api.sequence.action;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 public interface Expirable {
 
-    void setExpire(@NonNull int period);
+    void setExpire(int period);
 
-    @NonNull int getExpire();
+    int getExpire();
 
 }

@@ -36,10 +36,10 @@ public interface ScheduleActionBuilder<T> extends ActionBuilder<T> {
 
     @NonNull ScheduleActionBuilder<T> condition(@NonNull Function<Process, ProcessResult> function);
 
-    @NonNull ScheduleActionBuilder<T> delay(@NonNull int value);
+    @NonNull ScheduleActionBuilder<T> delay(int value);
 
-    @NonNull ScheduleActionBuilder<T> expire(@NonNull int expire);
+    @NonNull ScheduleActionBuilder<T> expire(int expire);
 
-    @NonNull ScheduleActionBuilder<T> period(@NonNull int period);
+    @NonNull ScheduleActionBuilder<T> period(int period);
 
 }

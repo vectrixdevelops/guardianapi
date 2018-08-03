@@ -23,11 +23,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.game.model.component;
+package com.ichorpowered.guardian.api.game.model;
 
 import com.google.common.collect.ImmutableList;
 import com.google.inject.assistedinject.Assisted;
-import com.ichorpowered.guardian.api.game.model.Model;
 import com.ichorpowered.guardian.api.game.model.value.Value;
 import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;

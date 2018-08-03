@@ -27,7 +27,6 @@ package com.ichorpowered.guardian.api.game.model;
 
 import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.GameReference;
-import com.ichorpowered.guardian.api.game.model.component.Component;
 import com.ichorpowered.guardian.api.game.model.value.Value;
 import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -73,8 +72,6 @@ public interface Model {
      */
     @NonNull Component createComponent(@NonNull String id);
 
-    @NonNull Component createComponent(@NonNull String id, @NonNull List<String> defaultValues);
-
     /**
      * Returns the {@link Component} that matches the type.
      *
@@ -90,9 +87,9 @@ public interface Model {
      *
      * @param id the component id
      * @param component the other component
-     * @return the cloned component, if present
+     * @return the cloned component
      */
-    @NonNull Optional<Component> cloneComponent(@NonNull String id, @NonNull Component component);
+    @NonNull Component cloneComponent(@NonNull String id, @NonNull Component component);
 
     /**
      * Removes the {@link Component} that matches the type

@@ -27,11 +27,10 @@ package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.game.model.value.key.Key;
 import com.ichorpowered.guardian.api.sequence.action.ActionBuilder;
-import com.ichorpowered.guardian.api.sequence.capture.CaptureValue;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface SequenceBuilder<T> extends ActionBuilder<T> {
 
-    @NonNull SequenceBuilder<T> captures(@NonNull Key<CaptureValue>... captureValues);
+    @NonNull SequenceBuilder<T> captures(@NonNull Key<?>... captureValues);
 
 }

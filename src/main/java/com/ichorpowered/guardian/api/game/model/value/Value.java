@@ -65,13 +65,6 @@ public interface Value<E> {
     @NonNull Optional<E> getDirect();
 
     /**
-     * Returns true if the value is presumed to exist.
-     *
-     * @return true if the value is contained
-     */
-    @NonNull boolean isEmpty();
-
-    /**
      * Sets the underlying value to the provided {@code value}.
      *
      * @param value the value to add
@@ -88,6 +81,13 @@ public interface Value<E> {
      * @return this value container
      */
     @NonNull Value<E> transform(@NonNull Function<E, E> function);
+
+    /**
+     * Returns true if the value is presumed to exist.
+     *
+     * @return true if the value is contained
+     */
+    boolean isEmpty();
 
     /**
      * A factory for creating a new {@link Value}.
