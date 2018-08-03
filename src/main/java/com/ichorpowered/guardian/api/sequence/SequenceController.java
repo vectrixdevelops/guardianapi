@@ -26,6 +26,7 @@
 package com.ichorpowered.guardian.api.sequence;
 
 import com.ichorpowered.guardian.api.game.GameReference;
+import com.ichorpowered.guardian.api.game.resource.PlayerGroupResource;
 import com.ichorpowered.guardian.api.game.resource.PlayerResource;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -82,6 +83,8 @@ public interface SequenceController<T> {
     @NonNull boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, @NonNull Long index);
 
     @NonNull PlayerResource getPlayerResource();
+
+    @NonNull PlayerGroupResource getPlayerGroupResource();
 
     void clean(@NonNull boolean force);
 

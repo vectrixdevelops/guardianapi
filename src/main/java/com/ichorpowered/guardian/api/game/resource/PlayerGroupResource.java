@@ -29,38 +29,32 @@ import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.GameReference;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 
-/**
- * Represents a container of grouped players
- * that are automatically assigned on addition.
- */
-public interface PlayerResource {
+public interface PlayerGroupResource extends Iterable<Map.Entry<Integer, GameReference<?>>> {
 
-    @NonNull GameReference<?> add(@NonNull GameReference<?> reference);
+    @NonNull PlayerGroupResource balance();
 
-    @NonNull Optional<GameReference<?>> remove(@NonNull String referenceId);
+    @NonNull PlayerGroupResource add(@NonNull GameReference<?> gameReference);
 
-    @NonNull Optional<GameReference<?>> get(@NonNull String referenceId);
+    @NonNull PlayerGroupResource add(@NonNull GameReference<?>... gameReferences);
 
-    /**
-     * Removes all references.
-     */
+    @NonNull Optional<Map.Entry<Integer, GameReference<?>>> remove(@NonNull GameReference<?> gameReference);
+
+    @NonNull Collection<GameReference<?>> removeGroup(int group);
+
+    @NonNull Optional<Map.Entry<Integer, GameReference<?>>> get(@NonNull GameReference<?> gameReference);
+
+    @NonNull Collection<GameReference<?>> getGroup(int group);
+
     void clear();
 
-    /**
-     * A factory for creating a new {@link PlayerResource}.
-     */
     interface Factory {
 
-        /**
-         * Create a new {@link PlayerResource} with the specified
-         * properties.
-         *
-         * @param maxContainerSize the maximum container size
-         * @return the new player resource
-         */
-        @NonNull PlayerResource create(@Assisted("maxContainerSize") int maxContainerSize);
+        @NonNull PlayerGroupResource create(@Assisted("maxContainerSize") int maxContainerSize,
+                                       @Assisted("minGroupSize") int minGroupSize);
 
     }
 

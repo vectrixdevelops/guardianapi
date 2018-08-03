@@ -30,14 +30,22 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 public interface ResourceFactories {
 
     /**
+     * Creates a new {@link PlayerGroupResource} with the specified
+     * properties.
+     *
+     * @param maxContainerSize the maximum container size
+     * @param minGroupSize the minimum group size
+     * @return the new player group resource
+     */
+    @NonNull PlayerGroupResource create(int maxContainerSize, int minGroupSize);
+
+    /**
      * Creates a new {@link PlayerResource} with the specified
      * properties.
      *
      * @param maxContainerSize the maximum container size
-     * @param maxGroupSize the maximum group size
-     * @param minGroupSize the minimum group size
      * @return the new player resource
      */
-    @NonNull PlayerResource create(@NonNull Integer maxContainerSize, @NonNull Integer maxGroupSize, @NonNull Integer minGroupSize);
+    @NonNull PlayerResource create(int maxContainerSize);
 
 }
