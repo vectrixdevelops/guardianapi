@@ -43,4 +43,6 @@ public final class CaptureKeys {
 
     public static Key<CaptureValue> CLIENT_PING_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "client_ping_capture");
 
+    public static Key<CaptureValue> CLIENT_TICK_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "client_tick_capture");
+
 }
