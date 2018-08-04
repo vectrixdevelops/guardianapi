@@ -80,14 +80,14 @@ public interface SequenceController<T> {
      * @param index the id of the avoidance ticket
      * @return true if it successfully removes, false if it does not
      */
-    @NonNull boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, long index);
+    boolean unavoidObserver(@NonNull GameReference<?> gameReference, @NonNull Class<? extends T> eventType, long index);
 
     @NonNull PlayerResource getPlayerResource();
 
     @NonNull PlayerGroupResource getPlayerGroupResource();
 
-    void clean(@NonNull boolean force);
+    void clean(boolean force);
 
-    void clean(@NonNull GameReference<?> gameReference, @NonNull boolean force);
+    void clean(@NonNull GameReference<?> gameReference, boolean force);
 
 }

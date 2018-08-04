@@ -40,6 +40,10 @@ public final class Keys {
 
     public static Key<Double> RAY_TRACE_STEP = DummyObjectProvider.createExtendedFor(Key.class, "ray_trace_step");
 
+    public static Key<Integer> JOIN_PING = DummyObjectProvider.createExtendedFor(Key.class, "join_ping");
+
+    public static Key<Double> AVERAGE_PING = DummyObjectProvider.createExtendedFor(Key.class, "average_ping");
+
     // Horizontal Movement
 
     public static Key<Double> WALK_SPEED = DummyObjectProvider.createExtendedFor(Key.class, "walk_speed");
