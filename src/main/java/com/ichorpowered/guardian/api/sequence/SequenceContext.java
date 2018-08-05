@@ -27,6 +27,7 @@ package com.ichorpowered.guardian.api.sequence;
 
 import com.google.common.reflect.TypeToken;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 
 import java.util.Map;
 import java.util.function.Function;
@@ -43,7 +44,7 @@ public interface SequenceContext {
 
     @NonNull SequenceContext from(@NonNull SequenceContext sequenceContext);
 
-    @NonNull <T> T get(@NonNull String key, @NonNull TypeToken<T> typeToken);
+    @Nullable <T> T get(@NonNull String key, @NonNull TypeToken<T> typeToken);
 
     @NonNull Map<String, Object> getAll();
 
