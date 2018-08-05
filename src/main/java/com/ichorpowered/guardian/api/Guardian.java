@@ -29,6 +29,7 @@ import static com.google.common.base.Preconditions.checkState;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import com.ichorpowered.guardian.api.detection.DetectionController;
 import com.ichorpowered.guardian.api.game.model.ModelFactories;
 import com.ichorpowered.guardian.api.game.model.ModelRegistry;
 import com.ichorpowered.guardian.api.game.resource.ResourceFactories;
@@ -45,6 +46,7 @@ public final class Guardian {
 
     @Inject @Named("config") private static Path configPath;
     @Inject private static GuardianPlatform platform;
+    @Inject private static DetectionController detectionController;
     @Inject private static GlobalConfiguration globalConfiguration;
     @Inject private static ModelRegistry modelRegistry;
     @Inject private static ModelFactories modelFactories;
@@ -67,6 +69,16 @@ public final class Guardian {
      */
     public static @Nullable GuardianPlatform getPlatform() {
         return check(platform);
+    }
+
+    /**
+     * Returns the {@link DetectionController} for registering detections
+     * that execute the cheat checks for the game.
+     *
+     * @return the detection controller
+     */
+    public static @Nullable DetectionController getDetectionController() {
+        return check(detectionController);
     }
 
     /**
