@@ -43,9 +43,8 @@ public interface ResourceFactories {
      * Creates a new {@link PlayerResource} with the specified
      * properties.
      *
-     * @param maxContainerSize the maximum container size
      * @return the new player resource
      */
-    @NonNull PlayerResource create(int maxContainerSize);
+    @NonNull PlayerResource create();
 
 }
