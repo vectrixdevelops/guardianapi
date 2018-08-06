@@ -25,7 +25,6 @@
  */
 package com.ichorpowered.guardian.api.game.resource;
 
-import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.GameReference;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -57,10 +56,9 @@ public interface PlayerResource {
          * Create a new {@link PlayerResource} with the specified
          * properties.
          *
-         * @param maxContainerSize the maximum container size
          * @return the new player resource
          */
-        @NonNull PlayerResource create(@Assisted("maxContainerSize") int maxContainerSize);
+        @NonNull PlayerResource create();
 
     }
 
