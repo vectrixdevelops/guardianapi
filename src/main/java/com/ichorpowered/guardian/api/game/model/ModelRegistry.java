@@ -26,6 +26,7 @@
 package com.ichorpowered.guardian.api.game.model;
 
 import com.ichorpowered.guardian.api.game.GameReference;
+import com.ichorpowered.guardian.api.game.model.value.GameValue;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.List;
@@ -90,7 +91,7 @@ public interface ModelRegistry {
     @NonNull <T extends Model> Optional<T> remove(@NonNull GameReference<?> gameReference);
 
     /**
-     * Clones the {Value}s from the other {@link Model} and adds
+     * Clones the {@link GameValue}s from the other {@link Model} and adds
      * them to a new one representing the game object reference.
      *
      * @param gameReference the game object reference

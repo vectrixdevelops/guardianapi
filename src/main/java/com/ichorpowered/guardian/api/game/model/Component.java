@@ -27,8 +27,8 @@ package com.ichorpowered.guardian.api.game.model;
 
 import com.google.common.collect.ImmutableList;
 import com.google.inject.assistedinject.Assisted;
-import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.Key;
+import com.ichorpowered.guardian.api.game.model.value.GameValue;
+import com.ichorpowered.guardian.api.game.model.value.key.GameKey;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
@@ -59,34 +59,34 @@ public interface Component {
      * the underlying value if it is present in the storage
      * adapter, if not returns an empty value container.
      *
-     * @param key the value key
+     * @param gameKey the value key
      * @param <E> the value type
      * @return the value container, if present
      */
-    @NonNull <E> Optional<Value<E>> get(@NonNull Key<E> key);
+    @NonNull <E> Optional<GameValue<E>> get(@NonNull GameKey<E> gameKey);
 
     /**
      * Sets the value based on the value key. Inserts the
      * element as the underlying value into the adapter and
      * value container.
      *
-     * @param key the value key
+     * @param gameKey the value key
      * @param element the element
      * @param <E> the element type
      * @return the add value container, if present
      */
-    @NonNull <E> Optional<Value<E>> set(@NonNull Key<E> key, E element);
+    @NonNull <E> Optional<GameValue<E>> set(@NonNull GameKey<E> gameKey, E element);
 
     /**
      * Removes the value based on the node type, node key and
      * type token. Removes the underlying value from the adapter
      * and value container.
      *
-     * @param key the value key
+     * @param gameKey the value gameKey
      * @param <E> the value type
      * @return the empty value container, if present
      */
-    @NonNull <E> Optional<Value<E>> remove(@NonNull Key<E> key);
+    @NonNull <E> Optional<GameValue<E>> remove(@NonNull GameKey<E> gameKey);
 
     /**
      * Returns an {@link ImmutableList} of default {@link String}s.
@@ -96,12 +96,12 @@ public interface Component {
     @NonNull ImmutableList<String> defaultKeys();
 
     /**
-     * Returns an {@link ImmutableList} of {@link Key}s contained
+     * Returns an {@link ImmutableList} of {@link GameKey}s contained
      * inside this {@link Component}.
      *
      * @return the currently stored component values
      */
-    @NonNull ImmutableList<Key<?>> keys();
+    @NonNull ImmutableList<GameKey<?>> keys();
 
     /**
      * A factory for creating a new {@link Component}.

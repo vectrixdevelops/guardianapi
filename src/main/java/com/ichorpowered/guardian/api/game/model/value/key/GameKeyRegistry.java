@@ -30,12 +30,12 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
 
-public interface KeyRegistry {
+public interface GameKeyRegistry {
 
-    @NonNull Optional<Key<?>> get(@NonNull String id);
+    @NonNull Optional<GameKey<?>> get(@NonNull String id);
 
-    @NonNull <E> Optional<Key<E>> get(@NonNull String id, @NonNull TypeToken<E> typeToken);
+    @NonNull <E> Optional<GameKey<E>> get(@NonNull String id, @NonNull TypeToken<E> typeToken);
 
-    @NonNull KeyRegistry register(@NonNull Key<?> key);
+    @NonNull GameKeyRegistry register(@NonNull GameKey<?> gameKey);
 
 }

@@ -23,11 +23,30 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.game.model.value.store;
+package com.ichorpowered.guardian.api.game.model.value.key;
 
-public enum Stores {
+import com.google.common.reflect.TypeToken;
+import com.google.inject.assistedinject.Assisted;
+import com.ichorpowered.guardian.api.game.model.value.store.GameStores;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
-    PHYSICAL,
-    VIRTUAL
+public interface GameKey<E> {
+
+    @NonNull String getKey();
+
+    @NonNull TypeToken<E> getElementType();
+
+    @NonNull TypeToken<?> getAttributeType();
+
+    @NonNull GameStores getValueStore();
+
+    interface Factory {
+
+        @NonNull GameKey create(@NonNull @Assisted String key,
+                                @NonNull @Assisted("elementType") TypeToken<?> elementType,
+                                @NonNull @Assisted("attributeType") TypeToken<?> attributeType,
+                                @NonNull @Assisted GameStores gameStores);
+
+    }
 
 }
