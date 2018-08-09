@@ -27,8 +27,8 @@ package com.ichorpowered.guardian.api.game.model;
 
 import com.google.inject.assistedinject.Assisted;
 import com.ichorpowered.guardian.api.game.GameReference;
-import com.ichorpowered.guardian.api.game.model.value.Value;
-import com.ichorpowered.guardian.api.game.model.value.key.Key;
+import com.ichorpowered.guardian.api.game.model.value.GameValue;
+import com.ichorpowered.guardian.api.game.model.value.key.GameKey;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.List;
@@ -52,17 +52,17 @@ public interface Model {
      */
     @NonNull <T> GameReference<T> getGameReference();
 
-    @NonNull <E> List<Value<E>> offer(@NonNull Key<E> key, E element);
+    @NonNull <E> List<GameValue<E>> offer(@NonNull GameKey<E> gameKey, E element);
 
-    @NonNull <E> List<Value<E>> offer(@NonNull Set<String> components, @NonNull Key<E> key, E element);
+    @NonNull <E> List<GameValue<E>> offer(@NonNull Set<String> components, @NonNull GameKey<E> gameKey, E element);
 
-    @NonNull <E> List<Value<E>> request(@NonNull Key<E> key);
+    @NonNull <E> List<GameValue<E>> request(@NonNull GameKey<E> gameKey);
 
-    @NonNull <E> List<Value<E>> request(@NonNull Set<String> components, @NonNull Key<E> key);
+    @NonNull <E> List<GameValue<E>> request(@NonNull Set<String> components, @NonNull GameKey<E> gameKey);
 
-    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull Key<E> key);
+    @NonNull <E> Optional<GameValue<E>> requestFirst(@NonNull GameKey<E> gameKey);
 
-    @NonNull <E> Optional<Value<E>> requestFirst(@NonNull String component, @NonNull Key<E> key);
+    @NonNull <E> Optional<GameValue<E>> requestFirst(@NonNull String component, @NonNull GameKey<E> gameKey);
 
     /**
      * Creates a new {@link Component} that matches the class type.

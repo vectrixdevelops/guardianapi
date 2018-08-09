@@ -26,7 +26,7 @@
 package com.ichorpowered.guardian.api.game.model.value;
 
 import com.google.inject.assistedinject.Assisted;
-import com.ichorpowered.guardian.api.game.model.value.key.Key;
+import com.ichorpowered.guardian.api.game.model.value.key.GameKey;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Optional;
@@ -37,13 +37,13 @@ import java.util.function.Function;
  *
  * @param <E> the element type
  */
-public interface Value<E> {
+public interface GameValue<E> {
 
-    @NonNull Key<E> getKey();
+    @NonNull GameKey<E> getGameKey();
 
     /**
      * Returns the contained value. If that value is not
-     * present, the {@link Value#getDefault()} value is returned.
+     * present, the {@link GameValue#getDefault()} value is returned.
      *
      * @return the contained value
      */
@@ -70,7 +70,7 @@ public interface Value<E> {
      * @param value the value to add
      * @return this value container
      */
-    @NonNull Value<E> set(@NonNull E value);
+    @NonNull GameValue<E> set(@NonNull E value);
 
     /**
      * Attempts to transform the underlying value based on the provided
@@ -80,7 +80,7 @@ public interface Value<E> {
      * @param function the function to apply on the existing value
      * @return this value container
      */
-    @NonNull Value<E> transform(@NonNull Function<E, E> function);
+    @NonNull GameValue<E> transform(@NonNull Function<E, E> function);
 
     /**
      * Returns true if the value is presumed to exist.
@@ -90,19 +90,19 @@ public interface Value<E> {
     boolean isEmpty();
 
     /**
-     * A factory for creating a new {@link Value}.
+     * A factory for creating a new {@link GameValue}.
      */
     interface Factory {
 
         /**
-         * Creates a new {@link Value} with the specified
+         * Creates a new {@link GameValue} with the specified
          * properties.
          *
          *
          * @return the new value
          */
-        @NonNull Value create(@NonNull @Assisted("key") Key key,
-                              @NonNull @Assisted("defaultElement") Object defaultElement);
+        @NonNull GameValue create(@NonNull @Assisted("gameKey") GameKey gameKey,
+                                  @NonNull @Assisted("defaultElement") Object defaultElement);
 
     }
 

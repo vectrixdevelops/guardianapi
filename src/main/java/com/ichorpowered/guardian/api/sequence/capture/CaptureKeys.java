@@ -25,7 +25,7 @@
  */
 package com.ichorpowered.guardian.api.sequence.capture;
 
-import com.ichorpowered.guardian.api.game.model.value.key.Key;
+import com.ichorpowered.guardian.api.game.model.value.key.GameKey;
 import org.spongepowered.api.util.generator.dummy.DummyObjectProvider;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
@@ -33,16 +33,16 @@ public final class CaptureKeys {
 
     // Movement
 
-    public static Key<CaptureValue> MOVEMENT_CONTROL_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "movement_control_capture");
+    public static GameKey<CaptureValue> MOVEMENT_CONTROL_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "movement_control_capture");
 
-    public static Key<CaptureValue> MOVEMENT_ALTITUDE_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "movement_altitude_capture");
+    public static GameKey<CaptureValue> MOVEMENT_ALTITUDE_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "movement_altitude_capture");
 
-    public static Key<CaptureValue> MOVEMENT_MATERIAL_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "movement_material_capture");
+    public static GameKey<CaptureValue> MOVEMENT_MATERIAL_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "movement_material_capture");
 
-    public static Key<CaptureValue> MOVEMENT_EFFECT_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "movement_effect_capture");
+    public static GameKey<CaptureValue> MOVEMENT_EFFECT_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "movement_effect_capture");
 
-    public static Key<CaptureValue> CLIENT_PING_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "client_ping_capture");
+    public static GameKey<CaptureValue> CLIENT_PING_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "client_ping_capture");
 
-    public static Key<CaptureValue> CLIENT_TICK_CAPTURE = DummyObjectProvider.createExtendedFor(Key.class, "client_tick_capture");
+    public static GameKey<CaptureValue> CLIENT_TICK_CAPTURE = DummyObjectProvider.createExtendedFor(GameKey.class, "client_tick_capture");
 
 }

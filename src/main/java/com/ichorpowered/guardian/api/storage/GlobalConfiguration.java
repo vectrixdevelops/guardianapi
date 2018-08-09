@@ -31,7 +31,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface GlobalConfiguration {
 
-    void load(@NonNull boolean overwrite, @NonNull boolean merge);
+    void load(boolean overwrite, boolean merge);
 
     @NonNull ConfigurationLoader<CommentedConfigurationNode> getSource();
 
