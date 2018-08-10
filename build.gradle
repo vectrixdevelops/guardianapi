@@ -32,7 +32,7 @@ apply from: project.file("gradle/publish.gradle")
 dependencies {
     compile 'ninja.leaping.configurate:configurate-gson:3.3'
     compile 'ninja.leaping.configurate:configurate-hocon:3.3'
-    compile 'net.kyori:violet:2.0.0-SNAPSHOT'
+    compile 'net.kyori:violet:1.1.0'
     compile 'org.checkerframework:checker-qual:2.4.0'
     compile "org.fusesource.jansi:jansi:1.16"
     compile 'org.slf4j:slf4j-api:1.7.25'
