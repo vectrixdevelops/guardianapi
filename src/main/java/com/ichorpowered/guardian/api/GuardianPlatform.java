@@ -69,28 +69,4 @@ public interface GuardianPlatform {
      */
     @NonNull String getReleaseCandidate();
 
-    /**
-     * A factory for creating a new {@link GuardianPlatform}.
-     */
-    interface Factory {
-
-        /**
-         * Creates a new {@link GuardianPlatform} with the
-         * specified properties.
-         *
-         * @param platformName the platform name
-         * @param platformVersion the platform version
-         * @param gameVersion the game version
-         * @param version the version
-         * @param releaseCandidate the release candidate
-         * @return the new guardian platform
-         */
-        @NonNull GuardianPlatform create(@NonNull @Assisted("platformName") String platformName,
-                                         @NonNull @Assisted("platformVersion") String platformVersion,
-                                         @NonNull @Assisted("gameVersion") String gameVersion,
-                                         @NonNull @Assisted("version") String version,
-                                         @NonNull @Assisted("releaseCandidate") String releaseCandidate);
-
-    }
-
 }
