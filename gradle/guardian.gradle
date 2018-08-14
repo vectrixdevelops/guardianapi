@@ -1,0 +1,125 @@
+// Shared Gradle Configuration for the Guardian Projects
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+defaultTasks 'licenseFormat', 'build'
+
+group = 'com.ichorpowered.guardian'
+archivesBaseName = project.name.toLowerCase()
+
+// Java Version
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://oss.sonatype.org/content/groups/public/' }
+}
+
+// Source Compiler
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ['-Xlint:all', '-Xlint:-path', '-parameters']
+    options.deprecation = true
+    options.encoding = 'UTF-8'
+}
+
+// Set Manifest Entries
+jar {
+    manifest {
+        attributes(
+                'Specification-Title': api.name,
+                'Specification-Version': api.version,
+                'Specification-Vendor': api.organization,
+
+                'Created-By': "${System.properties['java.version']} (${System.properties['java.vendor']})"
+        )
+    }
+}
+
+afterEvaluate {
+    jar.manifest {
+        if (commit) attributes['Git-Commit'] = commit
+        if (branch) attributes['Git-Branch'] = branch
+    }
+
+    // Fail if one file is included several times
+    tasks.withType(AbstractArchiveTask) {
+        if (duplicatesStrategy == DuplicatesStrategy.INCLUDE) {
+            duplicatesStrategy = DuplicatesStrategy.FAIL
+        }
+    }
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+    options.charSet = 'UTF-8'
+    options.links(
+            'http://www.slf4j.org/apidocs/',
+            'https://google.github.io/guava/releases/21.0/api/docs/',
+            'https://google.github.io/guice/api-docs/4.1/javadoc/',
+            'https://zml2008.github.io/configurate/configurate-core/apidocs/',
+            'https://zml2008.github.io/configurate/configurate-hocon/apidocs/',
+            'http://asm.ow2.org/asm50/javadoc/user/',
+            'https://docs.oracle.com/javase/8/docs/api/'
+    )
+
+    // Disable the crazy super-strict doclint tool in Java 8
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// Code Style
+apply plugin: 'com.github.hierynomus.license'
+apply plugin: 'checkstyle'
+
+// License Settings
+license {
+    header = file('LICENSE.txt')
+    include '**/*.java'
+
+    ignoreFailures = false
+    strictCheck = true
+
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+}
+
+processResources {
+    // Include LICENSE in final JAR
+    from 'LICENSE.txt'
+}
+
+// Checkstyle Settings
+checkstyle {
+    toolVersion = '7.6.1'
+    configFile = file('checkstyle.xml')
+    configProperties = [
+            'basedir': project.projectDir,
+            'severity': 'warning'
+    ]
+}
+
+// Disable checkstyle by default (won't run unless 'checkstyle' is explicitly invoked)
+task checkstyle(dependsOn: tasks.withType(Checkstyle))
+
+gradle.taskGraph.whenReady { TaskExecutionGraph graph ->
+    if (!graph.allTasks.contains(tasks.checkstyle)) {
+        graph.allTasks.findAll { it.name.startsWith('checkstyle') }.each { it.enabled = false }
+    }
+}
+
+// Apply publish configuration
+apply from: api.file('gradle/publish.gradle')
+
+// Gradle Wrapper
+task wrapper(type: Wrapper) {
+    gradleVersion = api.gradleVersion
+}

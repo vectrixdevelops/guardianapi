@@ -1,23 +1,12 @@
+apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
-task sourceJar(type: Jar) {
-    classifier = 'source'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-jar {
-    classifier = ''
-}
-
-artifacts {
-    archives sourceJar
-    archives javadocJar
-    archives jar
+// Environment variables for the build set by the build server
+ext {
+    buildNumber = System.env.BUILD_NUMBER ?: '0'
+    ciSystem = System.env.CI_SYSTEM
+    commit = System.env.GIT_COMMIT
+    branch = System.env.GIT_BRANCH
 }
 
 if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
@@ -29,7 +18,7 @@ if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
                 }
 
                 pom.project {
-                    name project.name
+                    name project.archivesBaseName
 
                     licenses {
                         license {
