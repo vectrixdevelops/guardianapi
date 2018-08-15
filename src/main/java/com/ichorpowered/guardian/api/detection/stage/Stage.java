@@ -36,8 +36,6 @@ public interface Stage<T extends StageProcess> extends Iterable<T> {
 
     @NonNull Stream<T> getProcesses();
 
-    int getMaximum();
-
     int getSize();
 
 }

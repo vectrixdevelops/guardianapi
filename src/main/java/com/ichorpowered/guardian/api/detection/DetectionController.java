@@ -31,10 +31,10 @@ import java.util.Optional;
 
 public interface DetectionController extends Iterable<Detection> {
 
-    @NonNull DetectionBuilder builder(@NonNull String detection);
+    @NonNull DetectionBuilder builder();
 
-    @NonNull Optional<Detection> getDetection(@NonNull String detection);
+    @NonNull Optional<Detection> getDetection(@NonNull String id);
 
-    @NonNull DetectionController removeDetection(@NonNull String detection);
+    @NonNull DetectionController removeDetection(@NonNull String id);
 
 }

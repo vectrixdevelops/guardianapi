@@ -23,17 +23,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.ichorpowered.guardian.api.detection.stage;
+package com.ichorpowered.guardian.api.detection;
 
-import com.ichorpowered.guardian.api.detection.DetectionBuilder;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-public interface StageBuilder {
+public interface DetectionProvider {
 
-    @NonNull <T extends StageProcess> StageBuilder add(@NonNull Class<T> stageClass);
+    @NonNull String getId();
 
-    @NonNull StageBuilder max(int maximum);
+    @NonNull String getName();
 
-    @NonNull DetectionBuilder submit();
+    @NonNull Detection provide();
+
+    void setProvider(@NonNull Detection detection);
 
 }

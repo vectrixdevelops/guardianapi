@@ -26,15 +26,13 @@
 package com.ichorpowered.guardian.api.detection;
 
 import com.ichorpowered.guardian.api.detection.stage.Stage;
-import com.ichorpowered.guardian.api.detection.stage.StageBuilder;
+import com.ichorpowered.guardian.api.detection.stage.StageProcess;
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 public interface DetectionBuilder {
 
-    @NonNull StageBuilder stage(@NonNull Class<? extends Stage<?>> stageType);
+    <E extends StageProcess, T extends Stage<E>> @NonNull DetectionBuilder stage(@NonNull Class<T> stageType, Class<? extends E>... stageProcesses);
 
-    @NonNull DetectionBuilder stage(@NonNull Stage<?> stage);
-
-    @NonNull DetectionController register(@NonNull String name, @NonNull Object plugin);
+    @NonNull DetectionController register(@NonNull DetectionProvider detectionProvider, @NonNull Object plugin);
 
 }
