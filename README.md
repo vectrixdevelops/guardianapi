@@ -1,21 +1,18 @@
 <h1 align="center">
   <img src="https://forums-cdn.spongepowered.org/uploads/default/original/3X/f/9/f97c66af122e9aed4ef7387b59460778234bd690.png" width="620">
 </h1>
-<p align="center">An Extensible AntiCheat Plugin API For Sponge.</p>
+<p align="center">**API**</p>
+<p align="center">An Extensible AntiCheat Plugin API.</p>
 
 <p align="center">
   <a href="https://travis-ci.org/ichorpowered/guardianapi"><img alt="Build Status" src="https://travis-ci.org/ichorpowered/guardianapi.svg?branch=master"></a>
-  <a href="https://discord.gg/pvSFtMm"><img alt="Join Discord" src="https://img.shields.io/badge/Join-Discord-blue.svg?style=flat-square"></a>
+  <a href="https://discord.gg/V2PFPkn"><img alt="Join Discord" src="https://img.shields.io/badge/Join-Discord-blue.svg?style=flat-square"></a>
 </p>
 
 Guardian is an extensible AntiCheat API that gives you the flexibility to add detections, checks and more and integrate with
-their results and transforms. You are able to listen for various events that the API has and modify their results using a built
-in event bus. All of these features are linked together in a chain-able way that makes adding and removing summaries through the chain
-easy.
+their results and transforms.
 
-The plugin is a work in progress and may appear difficult to understand without an implementation or documentation yet.
-
-Make sure to come chat with us on the [Guardian Discord](https://discord.gg/pvSFtMm) or the [IchorPowered Discord](https://discord.gg/NzfKazX).
+Make sure to come chat with us on the [IchorPowered Discord](https://discord.gg/NzfKazX).
 
 ## Contributing
 
@@ -33,14 +30,6 @@ for you.
 For code style we stick with the [Sponge Code Style](https://docs.spongepowered.org/master/en/contributing/implementation/codestyle.html).
 
 If you're unsure about something, don't be afraid to make an issue or join the discord to chat.
-
-## Versioning
-
-The versioning follows:
-
-`guardian-[guardian-major | guardian-minor | guardian-patch]`
-
-e.g `guardian-0.1.0`
 
 ## Credits
 
