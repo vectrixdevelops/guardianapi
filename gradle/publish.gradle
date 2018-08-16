@@ -3,7 +3,7 @@ apply plugin: 'maven-publish'
 
 // Environment variables for the build set by the build server
 ext {
-    buildNumber = System.env.BUILD_NUMBER ?: '0'
+    buildNumber = System.env.TRAVIS_BUILD_NUMBER ?: '0'
     ciSystem = System.env.CI_SYSTEM
     commit = System.env.GIT_COMMIT
     branch = System.env.GIT_BRANCH
