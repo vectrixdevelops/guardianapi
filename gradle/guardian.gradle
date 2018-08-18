@@ -57,6 +57,7 @@ javadoc {
     options.encoding = 'UTF-8'
     options.charSet = 'UTF-8'
     options.links(
+            'http://reactivex.io/RxJava/javadoc/',
             'http://www.slf4j.org/apidocs/',
             'https://google.github.io/guava/releases/21.0/api/docs/',
             'https://google.github.io/guice/api-docs/4.1/javadoc/',
