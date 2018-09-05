@@ -54,6 +54,8 @@ public final class GameKeys {
 
     public static GameKey<Double> FLIGHT_SPEED = DummyObjectProvider.createExtendedFor(GameKey.class, "flight_speed");
 
+    public static GameKey<Double> SPECTATOR_SPEED = DummyObjectProvider.createExtendedFor(GameKey.class, "spectator_speed");
+
     // Vertical Movement
 
     public static GameKey<Double> LIFT_SPEED = DummyObjectProvider.createExtendedFor(GameKey.class, "lift_speed");
