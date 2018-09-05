@@ -1,7 +1,7 @@
 <h1 align="center">
   <img src="https://forums-cdn.spongepowered.org/uploads/default/original/3X/f/9/f97c66af122e9aed4ef7387b59460778234bd690.png" width="620">
 </h1>
-<p align="center">**API**</p>
+<p align="center"><b>API</b></p>
 <p align="center">An Extensible AntiCheat Plugin API.</p>
 
 <p align="center">
