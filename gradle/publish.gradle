@@ -13,7 +13,11 @@ if (System.env.TRAVIS && !Boolean.valueOf(System.env.TRAVIS_PULL_REQUEST)) {
     uploadArchives {
         repositories {
             mavenDeployer {
-                repository(url: 'http://maven.ichorpowered.com/repository/maven-snapshots/') {
+                def base = 'http://maven.ichorpowered.com/repository'
+                def releasesRepo = "$base/maven-releases/"
+                def snapshotsRepo = "$base/maven-snapshots/"
+                
+                repository(url: version.endsWith('SNAPSHOT') ? snapshotsRepo : releasesRepo) {
                     authentication(userName: System.env.MAVEN_USER, password: System.env.MAVEN_PASS)
                 }
 

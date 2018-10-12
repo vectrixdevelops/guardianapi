@@ -13,6 +13,19 @@ archivesBaseName = project.name.toLowerCase()
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
+ext {
+    getCurrentBranchName = {
+        new ByteArrayOutputStream().withStream { os ->
+            exec {
+                executable = "git"
+                args = ["rev-parse", "--abbrev-ref", "HEAD"]
+                standardOutput = os
+            }
+            return os.toString().trim()
+        }
+    }
+}
+
 repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
